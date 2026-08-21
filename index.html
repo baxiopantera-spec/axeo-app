@@ -1,18 +1,193 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AXEO App</title>
-</head>
+<button class="card" onclick="article('')">
+      <div class="bank">
+        <div class="bank-logo">С</div>
 
-<body style="background:#111;color:white;font-family:Arial;text-align:center;padding:50px;">
+        <div>
+          <div class="title">
+            Сбербанк
+          </div>
 
-  <h1>AXEO App</h1>
+          <div class="description">
+            Открыть мануал
+          </div>
+        </div>
+      </div>
+    </button>
 
-  <p>Mini App работает 🔥</p>
 
-  <p>RosPlat</p>
+    <button class="card" onclick="article('')">
+      <div class="bank">
+        <div class="bank-logo">O</div>
+
+        <div>
+          <div class="title">
+            Озон Банк
+          </div>
+
+          <div class="description">
+            Открыть мануал
+          </div>
+        </div>
+      </div>
+    </button>
+
+
+    <button class="card" onclick="article('')">
+      <div class="bank">
+        <div class="bank-logo">У</div>
+
+        <div>
+          <div class="title">
+            Уралсиб
+          </div>
+
+          <div class="description">
+            Открыть мануал
+          </div>
+        </div>
+      </div>
+    </button>
+
+  </div>
+
+
+  <!-- ТАБЛИЦЫ -->
+
+  <div id="tables" class="screen">
+
+    <div class="back" onclick="show('home')">
+      ← Назад
+    </div>
+
+    <h1>Таблицы</h1>
+
+    <div class="subtitle">
+      Рабочие материалы
+    </div>
+
+    <div class="empty">
+      Здесь будут находиться рабочие таблицы.
+      <br><br>
+      Добавим их позже.
+    </div>
+
+  </div>
+
+
+  <!-- НОВИЧОК -->
+
+  <div id="guide" class="screen">
+
+    <div class="back" onclick="show('home')">
+      ← Назад
+    </div>
+
+    <h1>Новичку</h1>
+
+    <div class="subtitle">
+      Руководство для новых сотрудников
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        ШАГ 01
+      </div>
+
+      <div class="step-title">
+        С чего начать
+      </div>
+
+      <div class="step-text">
+        Здесь будет базовая информация для нового сотрудника.
+      </div>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        ШАГ 02
+      </div>
+
+      <div class="step-title">
+        Основные термины
+      </div>
+
+      <div class="step-text">
+        Здесь разместим основные рабочие понятия.
+      </div>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        ШАГ 03
+      </div>
+
+      <div class="step-title">
+        Первые действия
+      </div>
+
+      <div class="step-text">
+        Пошаговая инструкция для начала работы.
+      </div>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        ШАГ 04
+      </div>
+
+      <div class="step-title">
+        Частые ошибки
+      </div>
+
+      <div class="step-text">
+        Разберём типичные ошибки и способы их избежать.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function show(id) {
+
+  var screens = document.getElementsByClassName("screen");
+
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].className = "screen";
+  }
+
+  document.getElementById(id).className = "screen active";
+
+  window.scrollTo(0, 0);
+}
+
+
+function article(url) {
+
+  if (url === "") {
+    alert("Ссылка на Telegraph пока не добавлена.");
+    return;
+  }
+
+  window.location.href = url;
+}
+
+</script>
 
 </body>
 </html>
