@@ -2,14 +2,21 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
 <title>AXEO App</title>
+
 
 <style>
 
 :root {
+
     --bg: #050505;
     --bg-soft: #0b0b0b;
     --card: #101010;
@@ -36,12 +43,16 @@
 ========================= */
 
 * {
+
     box-sizing: border-box;
+
     -webkit-tap-highlight-color: transparent;
+
 }
 
 html,
 body {
+
     margin: 0;
     padding: 0;
 
@@ -58,14 +69,19 @@ body {
         "Segoe UI",
         Arial,
         sans-serif;
+
 }
 
 body {
+
     overflow-x: hidden;
+
 }
 
 button {
+
     font-family: inherit;
+
 }
 
 
@@ -74,6 +90,7 @@ button {
 ========================= */
 
 body::before {
+
     content: "";
 
     position: fixed;
@@ -100,10 +117,12 @@ body::before {
 
     animation:
         backgroundGlow 8s ease-in-out infinite;
+
 }
 
 
 body::after {
+
     content: "";
 
     position: fixed;
@@ -129,34 +148,42 @@ body::after {
 
     animation:
         backgroundGlow 10s ease-in-out infinite reverse;
+
 }
 
 
 @keyframes backgroundGlow {
 
     0% {
+
         transform: scale(.9);
         opacity: .55;
+
     }
 
     50% {
+
         transform: scale(1.12);
         opacity: 1;
+
     }
 
     100% {
+
         transform: scale(.9);
         opacity: .55;
+
     }
 
 }
 
 
 /* =========================
-   FLOATING PARTICLES
+   PARTICLES
 ========================= */
 
 .particles {
+
     position: fixed;
 
     inset: 0;
@@ -166,10 +193,12 @@ body::after {
     pointer-events: none;
 
     z-index: 0;
+
 }
 
 
 .particle {
+
     position: absolute;
 
     width: 3px;
@@ -187,41 +216,52 @@ body::after {
 
     animation:
         particleFloat linear infinite;
+
 }
 
 
 @keyframes particleFloat {
 
     0% {
+
         transform:
             translateY(30px)
             scale(.5);
 
         opacity: 0;
+
     }
 
     15% {
+
         opacity: .8;
+
     }
 
     50% {
+
         transform:
             translateY(-35vh)
             translateX(15px)
             scale(1);
+
     }
 
     85% {
+
         opacity: .5;
+
     }
 
     100% {
+
         transform:
             translateY(-75vh)
             translateX(-20px)
             scale(.3);
 
         opacity: 0;
+
     }
 
 }
@@ -232,10 +272,13 @@ body::after {
 ========================= */
 
 .app {
+
     position: relative;
+
     z-index: 2;
 
     width: 100%;
+
     max-width: 520px;
 
     min-height: 100vh;
@@ -246,6 +289,7 @@ body::after {
         22px
         16px
         110px;
+
 }
 
 
@@ -254,6 +298,7 @@ body::after {
 ========================= */
 
 .top {
+
     display: flex;
 
     align-items: center;
@@ -263,25 +308,35 @@ body::after {
 
     animation:
         topAppear .7s ease both;
+
 }
 
 
 @keyframes topAppear {
 
     from {
+
         opacity: 0;
-        transform: translateY(-10px);
+
+        transform:
+            translateY(-10px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
 
 
 .brand {
+
     font-size: 26px;
 
     font-weight: 800;
@@ -290,19 +345,23 @@ body::after {
 
     text-shadow:
         0 0 20px rgba(214,173,91,.08);
+
 }
 
 
 .brand span {
+
     color: var(--gold);
 
     text-shadow:
         0 0 8px rgba(214,173,91,.8),
         0 0 22px rgba(214,173,91,.35);
+
 }
 
 
 .status {
+
     position: relative;
 
     width: 9px;
@@ -319,10 +378,12 @@ body::after {
 
     animation:
         statusPulse 2.2s ease-in-out infinite;
+
 }
 
 
 .status::after {
+
     content: "";
 
     position: absolute;
@@ -331,10 +392,13 @@ body::after {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(214,173,91,.35);
+    border:
+        1px solid
+        rgba(214,173,91,.35);
 
     animation:
         statusRing 2.2s ease-out infinite;
+
 }
 
 
@@ -342,13 +406,17 @@ body::after {
 
     0%,
     100% {
+
         transform: scale(.85);
         opacity: .75;
+
     }
 
     50% {
+
         transform: scale(1.2);
         opacity: 1;
+
     }
 
 }
@@ -357,13 +425,17 @@ body::after {
 @keyframes statusRing {
 
     0% {
+
         transform: scale(.5);
         opacity: .7;
+
     }
 
     100% {
+
         transform: scale(1.8);
         opacity: 0;
+
     }
 
 }
@@ -374,11 +446,15 @@ body::after {
 ========================= */
 
 .hero {
+
     position: relative;
 
     overflow: hidden;
 
-    padding: 34px 24px 38px;
+    padding:
+        34px
+        24px
+        38px;
 
     border-radius: 30px;
 
@@ -400,7 +476,9 @@ body::after {
             #080808
         );
 
-    border: 1px solid var(--border-strong);
+    border:
+        1px solid
+        var(--border-strong);
 
     box-shadow:
         0 20px 65px rgba(0,0,0,.45),
@@ -411,31 +489,37 @@ body::after {
 
     animation:
         heroAppear .8s cubic-bezier(.2,.8,.2,1) both;
+
 }
 
 
 @keyframes heroAppear {
 
     from {
+
         opacity: 0;
+
         transform:
             translateY(18px)
             scale(.97);
+
     }
 
     to {
+
         opacity: 1;
+
         transform:
             translateY(0)
             scale(1);
+
     }
 
 }
 
 
-/* Moving glow inside hero */
-
 .hero::before {
+
     content: "";
 
     position: absolute;
@@ -460,41 +544,47 @@ body::after {
 
     animation:
         heroGlow 5s ease-in-out infinite;
+
 }
 
 
 @keyframes heroGlow {
 
     0% {
+
         transform:
             translate(0,0)
             scale(.85);
 
         opacity: .55;
+
     }
 
     50% {
+
         transform:
             translate(-35px,35px)
             scale(1.15);
 
         opacity: 1;
+
     }
 
     100% {
+
         transform:
             translate(0,0)
             scale(.85);
 
         opacity: .55;
+
     }
 
 }
 
 
-/* Golden orbit */
-
 .hero::after {
+
     content: "";
 
     position: absolute;
@@ -517,24 +607,33 @@ body::after {
 
     animation:
         orbitRotate 16s linear infinite;
+
 }
 
 
 @keyframes orbitRotate {
 
     from {
-        transform: rotate(0deg);
+
+        transform:
+            rotate(0deg);
+
     }
 
     to {
-        transform: rotate(360deg);
+
+        transform:
+            rotate(360deg);
+
     }
 
 }
 
 
 .hero-small {
+
     position: relative;
+
     z-index: 3;
 
     color: var(--gold);
@@ -549,11 +648,14 @@ body::after {
 
     text-shadow:
         0 0 12px rgba(214,173,91,.35);
+
 }
 
 
 .hero-title {
+
     position: relative;
+
     z-index: 3;
 
     font-size: 30px;
@@ -566,13 +668,13 @@ body::after {
 
     margin-bottom: 11px;
 
-    text-shadow:
-        0 0 25px rgba(255,255,255,.04);
 }
 
 
 .hero-text {
+
     position: relative;
+
     z-index: 3;
 
     color: var(--muted-light);
@@ -582,20 +684,24 @@ body::after {
     line-height: 1.55;
 
     max-width: 285px;
+
 }
 
 
 /* =========================
-   HERO LIGHT LINE
+   HERO LIGHT
 ========================= */
 
 .hero-light {
+
     position: absolute;
 
     left: -30%;
+
     top: 0;
 
     width: 25%;
+
     height: 100%;
 
     background:
@@ -616,18 +722,23 @@ body::after {
         lightSweep 6s ease-in-out infinite;
 
     pointer-events: none;
+
 }
 
 
 @keyframes lightSweep {
 
     0% {
+
         left: -40%;
+
     }
 
     45%,
     100% {
+
         left: 130%;
+
     }
 
 }
@@ -638,6 +749,7 @@ body::after {
 ========================= */
 
 .section-title {
+
     margin:
         25px
         4px
@@ -655,6 +767,7 @@ body::after {
 
     text-shadow:
         0 0 12px rgba(214,173,91,.18);
+
 }
 
 
@@ -663,12 +776,14 @@ body::after {
 ========================= */
 
 .grid {
+
     display: grid;
 
     grid-template-columns:
         1fr 1fr;
 
     gap: 11px;
+
 }
 
 
@@ -677,6 +792,7 @@ body::after {
 ========================= */
 
 .tile {
+
     position: relative;
 
     min-height: 150px;
@@ -692,7 +808,9 @@ body::after {
             #0d0d0d
         );
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     color: var(--white);
 
@@ -712,39 +830,51 @@ body::after {
 
     animation:
         tileAppear .65s cubic-bezier(.2,.8,.2,1) both;
+
 }
 
 
 .tile:nth-child(1) {
+
     animation-delay: .15s;
+
 }
 
 
 .tile:nth-child(2) {
+
     animation-delay: .25s;
+
 }
 
 
 @keyframes tileAppear {
 
     from {
+
         opacity: 0;
+
         transform:
             translateY(22px)
             scale(.94);
+
     }
 
     to {
+
         opacity: 1;
+
         transform:
             translateY(0)
             scale(1);
+
     }
 
 }
 
 
 .tile::before {
+
     content: "";
 
     position: absolute;
@@ -766,40 +896,26 @@ body::after {
 
     filter: blur(4px);
 
-    transition:
-        transform .4s ease,
-        opacity .4s ease;
-}
-
-
-.tile:hover::before,
-.tile:active::before {
-    transform: scale(1.5);
-}
-
-
-.tile:hover {
-    border-color: var(--border-strong);
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.3),
-        0 0 25px rgba(214,173,91,.06);
 }
 
 
 .tile:active {
-    transform: scale(.965);
 
-    border-color: var(--gold);
+    transform:
+        scale(.965);
+
+    border-color:
+        var(--gold);
 
     box-shadow:
-        0 0 30px rgba(214,173,91,.18);
+        0 0 30px
+        rgba(214,173,91,.18);
+
 }
 
 
-/* TILE ICON */
-
 .tile-icon {
+
     width: 43px;
     height: 43px;
 
@@ -832,6 +948,7 @@ body::after {
 
     animation:
         iconPulse 3s ease-in-out infinite;
+
 }
 
 
@@ -839,35 +956,44 @@ body::after {
 
     0%,
     100% {
+
         box-shadow:
             0 0 15px rgba(214,173,91,.05);
+
     }
 
     50% {
+
         box-shadow:
             0 0 25px rgba(214,173,91,.16);
+
     }
 
 }
 
 
 .tile-title {
+
     font-size: 16px;
 
     font-weight: 700;
 
     margin-bottom: 5px;
+
 }
 
 
 .tile-info {
+
     color: var(--muted);
 
     font-size: 11px;
+
 }
 
 
 .arrow {
+
     position: absolute;
 
     right: 16px;
@@ -877,16 +1003,6 @@ body::after {
 
     font-size: 18px;
 
-    transition:
-        transform .25s ease,
-        color .25s ease;
-}
-
-
-.tile:hover .arrow {
-    transform: translateX(4px);
-
-    color: var(--gold-light);
 }
 
 
@@ -895,6 +1011,7 @@ body::after {
 ========================= */
 
 .big-card {
+
     position: relative;
 
     width: 100%;
@@ -927,34 +1044,41 @@ body::after {
         border-color .25s ease,
         box-shadow .25s ease;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.025);
-
     animation:
-        bigCardAppear .7s .35s cubic-bezier(.2,.8,.2,1) both;
+        bigCardAppear .7s .35s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+
 }
 
 
 @keyframes bigCardAppear {
 
     from {
+
         opacity: 0;
+
         transform:
             translateY(25px)
             scale(.96);
+
     }
 
     to {
+
         opacity: 1;
+
         transform:
             translateY(0)
             scale(1);
+
     }
 
 }
 
 
 .big-card::before {
+
     content: "";
 
     position: absolute;
@@ -976,6 +1100,7 @@ body::after {
 
     animation:
         bigGlow 4s ease-in-out infinite;
+
 }
 
 
@@ -983,38 +1108,41 @@ body::after {
 
     0%,
     100% {
+
         transform: scale(.8);
         opacity: .5;
+
     }
 
     50% {
+
         transform: scale(1.25);
         opacity: 1;
+
     }
 
-}
-
-
-.big-card:hover {
-    border-color: var(--border-strong);
-
-    box-shadow:
-        0 0 35px rgba(214,173,91,.08);
 }
 
 
 .big-card:active {
-    transform: scale(.98);
 
-    border-color: var(--gold);
+    transform:
+        scale(.98);
+
+    border-color:
+        var(--gold);
 
     box-shadow:
-        0 0 30px rgba(214,173,91,.15);
+        0 0 30px
+        rgba(214,173,91,.15);
+
 }
 
 
 .big-content {
+
     position: relative;
+
     z-index: 2;
 
     display: flex;
@@ -1022,10 +1150,12 @@ body::after {
     align-items: center;
 
     gap: 14px;
+
 }
 
 
 .big-icon {
+
     width: 48px;
     height: 48px;
 
@@ -1055,44 +1185,37 @@ body::after {
 
     font-weight: 700;
 
-    box-shadow:
-        0 0 20px rgba(214,173,91,.08);
 }
 
 
 .big-title {
+
     font-size: 16px;
 
     font-weight: 700;
 
     margin-bottom: 5px;
+
 }
 
 
 .big-text {
+
     color: var(--muted);
 
     font-size: 11px;
+
 }
 
 
 .big-arrow {
+
     margin-left: auto;
 
     color: var(--gold);
 
     font-size: 21px;
 
-    transition:
-        transform .25s ease;
-}
-
-
-.big-card:hover .big-arrow {
-    transform: translateX(5px);
-
-    text-shadow:
-        0 0 12px rgba(214,173,91,.7);
 }
 
 
@@ -1101,42 +1224,111 @@ body::after {
 ========================= */
 
 .page {
+
     display: none;
 
     animation:
-        pageIn .35s cubic-bezier(.2,.8,.2,1);
+        pageIn .35s
+        cubic-bezier(.2,.8,.2,1);
+
 }
 
 
 .page.active {
+
     display: block;
+
 }
 
 
 @keyframes pageIn {
 
     from {
+
         opacity: 0;
+
         transform:
             translateY(12px)
             scale(.985);
+
     }
 
     to {
+
         opacity: 1;
+
         transform:
             translateY(0)
             scale(1);
+
     }
 
 }
 
 
 /* =========================
-   BANKS
+   BACK BUTTON
+========================= */
+
+.back-button {
+
+    width: 100%;
+
+    margin-bottom: 12px;
+
+    padding: 13px 16px;
+
+    border-radius: 17px;
+
+    border:
+        1px solid
+        rgba(214,173,91,.16);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(214,173,91,.08),
+            rgba(214,173,91,.025)
+        );
+
+    color:
+        var(--gold-light);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.back-button:active {
+
+    transform:
+        scale(.98);
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 25px
+        rgba(214,173,91,.12);
+
+}
+
+
+/* =========================
+   BANK CARDS
 ========================= */
 
 .bank-card {
+
     position: relative;
 
     width: 100%;
@@ -1168,10 +1360,12 @@ body::after {
         .2s ease;
 
     overflow: hidden;
+
 }
 
 
 .bank-card::after {
+
     content: "";
 
     position: absolute;
@@ -1190,11 +1384,14 @@ body::after {
             rgba(214,173,91,.12),
             transparent 70%
         );
+
 }
 
 
 .bank-card:active {
-    transform: scale(.985);
+
+    transform:
+        scale(.985);
 
     border-color:
         var(--gold);
@@ -1202,11 +1399,14 @@ body::after {
     box-shadow:
         0 0 25px
         rgba(214,173,91,.1);
+
 }
 
 
 .bank-content {
+
     position: relative;
+
     z-index: 2;
 
     display: flex;
@@ -1214,10 +1414,12 @@ body::after {
     align-items: center;
 
     gap: 14px;
+
 }
 
 
 .bank-icon {
+
     width: 45px;
     height: 45px;
 
@@ -1237,39 +1439,230 @@ body::after {
         1px solid
         rgba(214,173,91,.22);
 
-    color: var(--gold-light);
+    color:
+        var(--gold-light);
 
     font-size: 17px;
 
     font-weight: 800;
 
     box-shadow:
-        0 0 15px rgba(214,173,91,.04);
+        0 0 15px
+        rgba(214,173,91,.04);
+
 }
 
 
 .bank-name {
+
     font-size: 15px;
 
     font-weight: 700;
 
     margin-bottom: 4px;
+
 }
 
 
 .bank-description {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     font-size: 11px;
+
 }
 
 
 .bank-arrow {
+
     margin-left: auto;
 
-    color: var(--gold-dark);
+    color:
+        var(--gold-dark);
 
     font-size: 20px;
+
+}
+
+
+/* =========================
+   SECTION CARDS
+========================= */
+
+.section-card {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 76px;
+
+    margin-bottom: 10px;
+
+    padding: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #15130f,
+            #0f0f0f
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    color: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.section-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: -75px;
+    top: -65px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(214,173,91,.15),
+            transparent 70%
+        );
+
+    filter:
+        blur(3px);
+
+}
+
+
+.section-card:active {
+
+    transform:
+        scale(.975);
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 30px
+        rgba(214,173,91,.16);
+
+}
+
+
+.section-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(214,173,91,.20),
+            rgba(214,173,91,.04)
+        );
+
+    border:
+        1px solid
+        rgba(214,173,91,.27);
+
+    color:
+        var(--gold-light);
+
+    font-size: 18px;
+
+    box-shadow:
+        0 0 20px
+        rgba(214,173,91,.07);
+
+}
+
+
+.section-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.section-name {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+
+}
+
+
+.section-description {
+
+    color:
+        var(--muted);
+
+    font-size: 11px;
+
+}
+
+
+.section-arrow {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-left: auto;
+
+    color:
+        var(--gold);
+
+    font-size: 20px;
+
 }
 
 
@@ -1278,7 +1671,9 @@ body::after {
 ========================= */
 
 .empty {
-    padding: 28px 22px;
+
+    padding:
+        28px 22px;
 
     border-radius: 22px;
 
@@ -1295,14 +1690,13 @@ body::after {
 
     text-align: center;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 13px;
 
     line-height: 1.5;
 
-    box-shadow:
-        0 0 25px rgba(214,173,91,.035);
 }
 
 
@@ -1311,6 +1705,7 @@ body::after {
 ========================= */
 
 .step {
+
     position: relative;
 
     padding: 19px;
@@ -1330,25 +1725,13 @@ body::after {
         1px solid
         var(--border);
 
-    transition:
-        .2s ease;
-}
-
-
-.step:active {
-    transform: scale(.985);
-
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 25px
-        rgba(214,173,91,.08);
 }
 
 
 .step-number {
-    color: var(--gold);
+
+    color:
+        var(--gold);
 
     font-size: 10px;
 
@@ -1358,26 +1741,29 @@ body::after {
 
     margin-bottom: 8px;
 
-    text-shadow:
-        0 0 10px rgba(214,173,91,.25);
 }
 
 
 .step-title {
+
     font-size: 16px;
 
     font-weight: 700;
 
     margin-bottom: 5px;
+
 }
 
 
 .step-text {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     font-size: 12px;
 
     line-height: 1.5;
+
 }
 
 
@@ -1386,9 +1772,11 @@ body::after {
 ========================= */
 
 .navigation {
+
     position: fixed;
 
     left: 50%;
+
     bottom: 11px;
 
     transform:
@@ -1431,40 +1819,21 @@ body::after {
 
     z-index: 100;
 
-    animation:
-        navAppear .8s .45s ease both;
-}
-
-
-@keyframes navAppear {
-
-    from {
-        opacity: 0;
-        transform:
-            translateX(-50%)
-            translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-
 }
 
 
 .nav-button {
+
     border: 0;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: #666666;
+    color:
+        #666666;
 
     padding:
-        9px
-        3px;
+        9px 3px;
 
     border-radius: 15px;
 
@@ -1474,10 +1843,12 @@ body::after {
 
     transition:
         .2s ease;
+
 }
 
 
 .nav-button.active {
+
     color:
         var(--gold-light);
 
@@ -1490,33 +1861,25 @@ body::after {
         0 0 20px
         rgba(214,173,91,.05);
 
-    text-shadow:
-        0 0 10px
-        rgba(246,217,143,.35);
 }
 
 
 .nav-button:active {
-    transform: scale(.92);
+
+    transform:
+        scale(.92);
+
 }
 
 
 .nav-icon {
+
     display: block;
 
     font-size: 17px;
 
     margin-bottom: 4px;
 
-    transition:
-        transform .2s ease;
-}
-
-
-.nav-button.active .nav-icon {
-    transform:
-        translateY(-1px)
-        scale(1.08);
 }
 
 
@@ -1527,12 +1890,16 @@ body::after {
 @media (max-width: 360px) {
 
     .grid {
+
         grid-template-columns:
             1fr;
+
     }
 
     .tile {
+
         min-height: 125px;
+
     }
 
 }
@@ -1547,21 +1914,31 @@ body::after {
     *,
     *::before,
     *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- FLOATING PARTICLES -->
+<!-- =========================
+     PARTICLES
+========================= -->
 
 <div class="particles">
 
@@ -1603,7 +1980,9 @@ body::after {
 <div class="app">
 
 
-<!-- HOME -->
+<!-- =========================
+     HOME
+========================= -->
 
 <div id="home" class="page active">
 
@@ -1661,7 +2040,7 @@ body::after {
             </div>
 
             <div class="tile-info">
-                5 материалов
+                5 банков
             </div>
 
             <div class="arrow">
@@ -1738,7 +2117,9 @@ body::after {
 </div>
 
 
-<!-- MANUALS -->
+<!-- =========================
+     MANUALS
+========================= -->
 
 <div id="manuals" class="page">
 
@@ -1779,7 +2160,12 @@ body::after {
     </div>
 
 
-    <button class="bank-card" onclick="openArticle('')">
+    <!-- АЛЬФА -->
+
+    <button
+        class="bank-card"
+        onclick="openBank('alpha')"
+    >
 
         <div class="bank-content">
 
@@ -1794,7 +2180,7 @@ body::after {
                 </div>
 
                 <div class="bank-description">
-                    Мануал по работе
+                    Мануалы по работе
                 </div>
 
             </div>
@@ -1808,7 +2194,12 @@ body::after {
     </button>
 
 
-    <button class="bank-card" onclick="openArticle('')">
+    <!-- Т-БАНК -->
+
+    <button
+        class="bank-card"
+        onclick="openBank('tbank')"
+    >
 
         <div class="bank-content">
 
@@ -1823,7 +2214,7 @@ body::after {
                 </div>
 
                 <div class="bank-description">
-                    Мануал по работе
+                    Мануалы по работе
                 </div>
 
             </div>
@@ -1837,7 +2228,12 @@ body::after {
     </button>
 
 
-    <button class="bank-card" onclick="openArticle('')">
+    <!-- СБЕР -->
+
+    <button
+        class="bank-card"
+        onclick="openBank('sber')"
+    >
 
         <div class="bank-content">
 
@@ -1852,7 +2248,7 @@ body::after {
                 </div>
 
                 <div class="bank-description">
-                    Мануал по работе
+                    Мануалы по работе
                 </div>
 
             </div>
@@ -1866,7 +2262,12 @@ body::after {
     </button>
 
 
-    <button class="bank-card" onclick="openArticle('')">
+    <!-- ОЗОН -->
+
+    <button
+        class="bank-card"
+        onclick="openBank('ozon')"
+    >
 
         <div class="bank-content">
 
@@ -1881,7 +2282,7 @@ body::after {
                 </div>
 
                 <div class="bank-description">
-                    Мануал по работе
+                    ГУ · ФИЗ
                 </div>
 
             </div>
@@ -1895,7 +2296,12 @@ body::after {
     </button>
 
 
-    <button class="bank-card" onclick="openArticle('')">
+    <!-- УРАЛСИБ -->
+
+    <button
+        class="bank-card"
+        onclick="openBank('uralsib')"
+    >
 
         <div class="bank-content">
 
@@ -1910,7 +2316,7 @@ body::after {
                 </div>
 
                 <div class="bank-description">
-                    Мануал по работе
+                    Мануалы по работе
                 </div>
 
             </div>
@@ -1927,7 +2333,122 @@ body::after {
 </div>
 
 
-<!-- TABLES -->
+<!-- =========================
+     BANK MENU
+========================= -->
+
+<div id="bankMenu" class="page">
+
+
+    <div class="top">
+
+        <div class="brand">
+            AXEO<span>.</span>
+        </div>
+
+        <div class="status"></div>
+
+    </div>
+
+
+    <button
+        class="back-button"
+        onclick="openPage('manuals')"
+    >
+        ← Назад к банкам
+    </button>
+
+
+    <div class="hero">
+
+        <div class="hero-light"></div>
+
+        <div class="hero-small" id="bankMenuSmall">
+            BANK DOCUMENTATION
+        </div>
+
+        <div class="hero-title" id="bankMenuTitle">
+            Банк
+        </div>
+
+        <div class="hero-text" id="bankMenuText">
+            Выберите нужный раздел.
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        Разделы
+    </div>
+
+
+    <div id="bankMenuItems"></div>
+
+
+</div>
+
+
+<!-- =========================
+     OZON FIZ
+========================= -->
+
+<div id="ozonFiz" class="page">
+
+
+    <div class="top">
+
+        <div class="brand">
+            AXEO<span>.</span>
+        </div>
+
+        <div class="status"></div>
+
+    </div>
+
+
+    <button
+        class="back-button"
+        onclick="openPage('bankMenu')"
+    >
+        ← Назад к Озон Банку
+    </button>
+
+
+    <div class="hero">
+
+        <div class="hero-light"></div>
+
+        <div class="hero-small">
+            OZON BANK · ФИЗ
+        </div>
+
+        <div class="hero-title">
+            ФИЗ
+        </div>
+
+        <div class="hero-text">
+            Выберите нужный раздел
+            рабочего мануала.
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        Разделы · ФИЗ
+    </div>
+
+
+    <div id="ozonFizItems"></div>
+
+
+</div>
+
+
+<!-- =========================
+     TABLES
+========================= -->
 
 <div id="tables" class="page">
 
@@ -1988,7 +2509,9 @@ body::after {
 </div>
 
 
-<!-- GUIDE -->
+<!-- =========================
+     GUIDE
+========================= -->
 
 <div id="guide" class="page">
 
@@ -2107,7 +2630,9 @@ body::after {
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <div class="navigation">
 
@@ -2172,6 +2697,243 @@ body::after {
 
 
 <script>
+
+
+/* =========================
+   DATA
+========================= */
+
+
+/*
+   Сюда позже вставим реальные
+   ссылки Telegraph.
+
+   Сейчас ссылки пустые.
+*/
+
+
+var manuals = {
+
+    alpha: {
+
+        name: "Альфа-Банк",
+
+        sections: [
+
+            {
+                name: "Ферма",
+                icon: "◈",
+                description: "Мануал по ферме",
+                url: ""
+            },
+
+            {
+                name: "КА",
+                icon: "◇",
+                description: "Мануал по КА",
+                url: ""
+            },
+
+            {
+                name: "Сушка",
+                icon: "◌",
+                description: "Мануал по сушке",
+                url: ""
+            },
+
+            {
+                name: "Советы по работе",
+                icon: "✦",
+                description: "Полезные рекомендации",
+                url: ""
+            }
+
+        ]
+
+    },
+
+
+    tbank: {
+
+        name: "Т-Банк",
+
+        sections: [
+
+            {
+                name: "Ферма",
+                icon: "◈",
+                description: "Мануал по ферме",
+                url: ""
+            },
+
+            {
+                name: "КА",
+                icon: "◇",
+                description: "Мануал по КА",
+                url: ""
+            },
+
+            {
+                name: "Сушка",
+                icon: "◌",
+                description: "Мануал по сушке",
+                url: ""
+            },
+
+            {
+                name: "Советы по работе",
+                icon: "✦",
+                description: "Полезные рекомендации",
+                url: ""
+            }
+
+        ]
+
+    },
+
+
+    sber: {
+
+        name: "Сбербанк",
+
+        sections: [
+
+            {
+                name: "Ферма",
+                icon: "◈",
+                description: "Мануал по ферме",
+                url: ""
+            },
+
+            {
+                name: "КА",
+                icon: "◇",
+                description: "Мануал по КА",
+                url: ""
+            },
+
+            {
+                name: "Сушка",
+                icon: "◌",
+                description: "Мануал по сушке",
+                url: ""
+            },
+
+            {
+                name: "Советы по работе",
+                icon: "✦",
+                description: "Полезные рекомендации",
+                url: ""
+            }
+
+        ]
+
+    },
+
+
+    ozon: {
+
+        name: "Озон Банк",
+
+        special: true,
+
+        sections: [
+
+            {
+                name: "ГУ",
+                icon: "G",
+                description: "Мануал ГУ",
+                url: "GU_URL"
+            },
+
+            {
+                name: "ФИЗ",
+                icon: "F",
+                description: "Мануалы ФИЗ",
+                page: "ozonFiz"
+            }
+
+        ]
+
+    },
+
+
+    uralsib: {
+
+        name: "Уралсиб",
+
+        sections: [
+
+            {
+                name: "Ферма",
+                icon: "◈",
+                description: "Мануал по ферме",
+                url: ""
+            },
+
+            {
+                name: "КА",
+                icon: "◇",
+                description: "Мануал по КА",
+                url: ""
+            },
+
+            {
+                name: "Сушка",
+                icon: "◌",
+                description: "Мануал по сушке",
+                url: ""
+            },
+
+            {
+                name: "Советы по работе",
+                icon: "✦",
+                description: "Полезные рекомендации",
+                url: ""
+            }
+
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   OZON FIZ DATA
+========================= */
+
+var ozonFizSections = [
+
+    {
+        name: "Ферма",
+        icon: "◈",
+        description: "Мануал по ферме",
+        url: ""
+    },
+
+    {
+        name: "КА",
+        icon: "◇",
+        description: "Мануал по КА",
+        url: ""
+    },
+
+    {
+        name: "Сушка",
+        icon: "◌",
+        description: "Мануал по сушке",
+        url: ""
+    },
+
+    {
+        name: "Советы по работе",
+        icon: "✦",
+        description: "Полезные рекомендации",
+        url: ""
+    }
+
+];
 
 
 /* =========================
@@ -2257,12 +3019,184 @@ function openPage(id) {
 
 
 /* =========================
+   OPEN BANK
+========================= */
+
+function openBank(bankId) {
+
+    var bank =
+        manuals[bankId];
+
+
+    if (!bank) return;
+
+
+    document.getElementById(
+        "bankMenuTitle"
+    ).innerText =
+        bank.name;
+
+
+    document.getElementById(
+        "bankMenuSmall"
+    ).innerText =
+        bank.special
+            ? "OZON BANK"
+            : "BANK DOCUMENTATION";
+
+
+    document.getElementById(
+        "bankMenuText"
+    ).innerText =
+        bank.special
+            ? "Выберите тип мануала."
+            : "Выберите нужный раздел.";
+
+
+    var container =
+        document.getElementById(
+            "bankMenuItems"
+        );
+
+
+    container.innerHTML = "";
+
+
+    for (
+        var i = 0;
+        i < bank.sections.length;
+        i++
+    ) {
+
+        createSectionCard(
+            container,
+            bank.sections[i]
+        );
+
+    }
+
+
+    openPage("bankMenu");
+
+}
+
+
+/* =========================
+   OPEN OZON FIZ
+========================= */
+
+function openOzonFiz() {
+
+    var container =
+        document.getElementById(
+            "ozonFizItems"
+        );
+
+
+    container.innerHTML = "";
+
+
+    for (
+        var i = 0;
+        i < ozonFizSections.length;
+        i++
+    ) {
+
+        createSectionCard(
+            container,
+            ozonFizSections[i]
+        );
+
+    }
+
+
+    openPage("ozonFiz");
+
+}
+
+
+/* =========================
+   CREATE SECTION CARD
+========================= */
+
+function createSectionCard(
+    container,
+    section
+) {
+
+    var button =
+        document.createElement(
+            "button"
+        );
+
+
+    button.className =
+        "section-card";
+
+
+    button.innerHTML = `
+
+        <div class="section-icon">
+            ${section.icon}
+        </div>
+
+        <div class="section-content">
+
+            <div class="section-name">
+                ${section.name}
+            </div>
+
+            <div class="section-description">
+                ${section.description}
+            </div>
+
+        </div>
+
+        <div class="section-arrow">
+            →
+        </div>
+
+    `;
+
+
+    button.onclick =
+        function() {
+
+            if (
+                section.page === "ozonFiz"
+            ) {
+
+                openOzonFiz();
+
+                return;
+
+            }
+
+
+            openArticle(
+                section.url
+            );
+
+        };
+
+
+    container.appendChild(
+        button
+    );
+
+}
+
+
+/* =========================
    TELEGRAPH ARTICLE
 ========================= */
 
 function openArticle(url) {
 
-    if (!url) {
+    if (
+        !url ||
+        url === "GU_URL"
+    ) {
 
         alert(
             "Ссылка на Telegraph пока не добавлена."
@@ -2298,7 +3232,7 @@ if (
 
 
 /* =========================
-   SMALL TOUCH GLOW
+   TOUCH GLOW
 ========================= */
 
 document.addEventListener(
@@ -2307,8 +3241,9 @@ document.addEventListener(
 
         var target =
             event.target.closest(
-                ".tile, .big-card, .bank-card"
+                ".tile, .big-card, .bank-card, .section-card"
             );
+
 
         if (!target) return;
 
@@ -2329,8 +3264,9 @@ document.addEventListener(
 
         var target =
             event.target.closest(
-                ".tile, .big-card, .bank-card"
+                ".tile, .big-card, .bank-card, .section-card"
             );
+
 
         if (!target) return;
 
@@ -2338,7 +3274,8 @@ document.addEventListener(
         setTimeout(
             function() {
 
-                target.style.boxShadow = "";
+                target.style.boxShadow =
+                    "";
 
             },
             180
@@ -2349,6 +3286,7 @@ document.addEventListener(
         passive: true
     }
 );
+
 
 </script>
 
