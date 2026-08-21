@@ -1,190 +1,1008 @@
-<button class="card" onclick="article('')">
-      <div class="bank">
-        <div class="bank-logo">С</div>
 
-        <div>
-          <div class="title">
-            Сбербанк
-          </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-          <div class="description">
-            Открыть мануал
-          </div>
+<title>AXEO App</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #08090c;
+    color: #ffffff;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+}
+
+.app {
+    width: 100%;
+    max-width: 520px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 22px 16px 105px;
+}
+
+/* HEADER */
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.brand {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand span {
+    color: #8baeff;
+}
+
+.status {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #7dff9b;
+    box-shadow: 0 0 14px rgba(125,255,155,.7);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 25px 22px;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(111,145,255,.25),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #171b25,
+            #101218
+        );
+
+    border: 1px solid #242a36;
+
+    margin-bottom: 18px;
+}
+
+.hero::after {
+    content: "AXEO";
+
+    position: absolute;
+
+    right: -18px;
+    bottom: -25px;
+
+    font-size: 90px;
+    font-weight: 900;
+
+    color: rgba(255,255,255,.025);
+
+    pointer-events: none;
+}
+
+.hero-small {
+    color: #8f98a8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    margin-bottom: 9px;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 2;
+
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -1.1px;
+
+    margin-bottom: 8px;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+
+    color: #9199a8;
+
+    font-size: 14px;
+    line-height: 1.45;
+
+    max-width: 280px;
+}
+
+/* SECTION */
+
+.section-title {
+    margin: 25px 3px 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #6f7785;
+
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+}
+
+.tile {
+    position: relative;
+
+    min-height: 145px;
+
+    padding: 17px;
+
+    border-radius: 20px;
+
+    background: #11141a;
+
+    border: 1px solid #20252e;
+
+    color: #fff;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform .12s ease,
+        background .12s ease;
+}
+
+.tile:active {
+    transform: scale(.97);
+    background: #181c24;
+}
+
+.tile-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #1b2029;
+
+    font-size: 19px;
+
+    margin-bottom: 22px;
+}
+
+.tile-title {
+    font-size: 16px;
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.tile-info {
+    color: #737b89;
+
+    font-size: 12px;
+}
+
+.arrow {
+    position: absolute;
+
+    right: 16px;
+    bottom: 16px;
+
+    color: #68717f;
+
+    font-size: 17px;
+}
+
+/* BIG CARD */
+
+.big-card {
+    width: 100%;
+
+    padding: 19px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #151a23,
+            #101217
+        );
+
+    border: 1px solid #242a34;
+
+    color: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: transform .12s ease;
+}
+
+.big-card:active {
+    transform: scale(.985);
+}
+
+.big-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.big-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #1d2430;
+
+    font-size: 21px;
+}
+
+.big-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.big-text {
+    color: #737b89;
+    font-size: 12px;
+}
+
+.big-arrow {
+    margin-left: auto;
+    color: #788191;
+    font-size: 20px;
+}
+
+/* NAVIGATION */
+
+.navigation {
+    position: fixed;
+
+    left: 50%;
+    bottom: 12px;
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 24px);
+    max-width: 496px;
+
+    padding: 8px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+
+    background: rgba(16,18,23,.94);
+
+    border: 1px solid #252a34;
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    z-index: 100;
+}
+
+.nav-button {
+    border: 0;
+
+    background: transparent;
+
+    color: #656d7b;
+
+    padding: 9px 3px;
+
+    border-radius: 14px;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.nav-button.active {
+    background: #1c222d;
+    color: #ffffff;
+}
+
+.nav-icon {
+    display: block;
+
+    font-size: 17px;
+
+    margin-bottom: 4px;
+}
+
+/* PAGE */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* MOBILE */
+
+@media (max-width: 360px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tile {
+        min-height: 120px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HOME -->
+
+    <div id="home" class="page active">
+
+        <div class="top">
+
+            <div class="brand">
+                AXEO<span>.</span>
+            </div>
+
+            <div class="status"></div>
+
         </div>
-      </div>
+
+
+        <div class="hero">
+
+            <div class="hero-small">
+                ROPLAT WORKSPACE
+            </div>
+
+            <div class="hero-title">
+                Рабочая база команды
+            </div>
+
+            <div class="hero-text">
+                Мануалы, таблицы и руководство
+                собраны в одном месте.
+            </div>
+
+        </div>
+
+
+        <div class="section-title">
+            Рабочие разделы
+        </div>
+
+
+        <div class="grid">
+
+            <button class="tile"
+                    onclick="openPage('manuals', this)">
+
+                <div class="tile-icon">
+                    ◈
+                </div>
+
+                <div class="tile-title">
+                    Мануалы
+                </div>
+
+                <div class="tile-info">
+                    5 материалов
+                </div>
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </button>
+
+
+            <button class="tile"
+                    onclick="openPage('tables', this)">
+
+                <div class="tile-icon">
+                    ▦
+                </div>
+
+                <div class="tile-title">
+                    Таблицы
+                </div>
+
+                <div class="tile-info">
+                    Рабочие данные
+                </div>
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <div class="section-title">
+            Быстрый старт
+        </div>
+
+
+        <button class="big-card"
+                onclick="openPage('guide', this)">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    ◎
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Руководство для новичка
+                    </div>
+
+                    <div class="big-text">
+                        Пошаговый старт работы
+                    </div>
+
+                </div>
+
+                <div class="big-arrow">
+                    ›
+                </div>
+
+            </div>
+
+        </button>
+
+    </div>
+
+
+    <!-- MANUALS -->
+
+    <div id="manuals" class="page">
+
+        <div class="top">
+
+            <div class="brand">
+                AXEO<span>.</span>
+            </div>
+
+            <div class="status"></div>
+
+        </div>
+
+        <div class="hero">
+
+            <div class="hero-small">
+                DOCUMENTATION
+            </div>
+
+            <div class="hero-title">
+                Мануалы
+            </div>
+
+            <div class="hero-text">
+                Инструкции и материалы
+                по банкам.
+            </div>
+
+        </div>
+
+
+        <div class="section-title">
+            Банки · 5 материалов
+        </div>
+
+
+        <button class="big-card"
+                onclick="openArticle('')">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    A
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Альфа-Банк
+                    </div>
+
+                    <div class="big-text">
+                        Мануал по работе
+                    </div>
+
+                </div>
+
+                <div class="big-arrow">
+                    ›
+                </div>
+
+            </div>
+
+        </button>
+
+
+        <button class="big-card"
+                onclick="openArticle('')"
+                style="margin-top:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    Т
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Т-Банк
+                    </div>
+
+                    <div class="big-text">
+                        Мануал по работе
+                    </div>
+
+                </div>
+
+                <div class="big-arrow">
+                    ›
+                </div>
+
+            </div>
+
+        </button>
+
+
+        <button class="big-card"
+                onclick="openArticle('')"
+                style="margin-top:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    С
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Сбербанк
+                    </div>
+
+                    <div class="big-text">
+                        Мануал по работе
+                    </div>
+
+                </div>
+
+                <div class="big-arrow">
+                    ›
+                </div>
+
+            </div>
+
+        </button>
+
+
+        <button class="big-card"
+                onclick="openArticle('')"
+                style="margin-top:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    O
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Озон Банк
+                    </div>
+
+                    <div class="big-text">
+                        Мануал по работе
+                    </div>
+
+                </div>
+
+                <div class="big-arrow">
+                    ›
+                </div>
+
+            </div>
+
+        </button>
+
+
+        <button class="big-card"
+                onclick="openArticle('')"
+                style="margin-top:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    У
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Уралсиб
+                    </div>
+
+                    <div class="big-text">
+                        Мануал по работе
+                    </div>
+
+                </div>
+
+                <div class="big-arrow">
+                    ›
+                </div>
+
+            </div>
+
+        </button>
+
+    </div>
+
+
+    <!-- TABLES -->
+
+    <div id="tables" class="page">
+
+        <div class="top">
+
+            <div class="brand">
+                AXEO<span>.</span>
+            </div>
+
+            <div class="status"></div>
+
+        </div>
+
+
+        <div class="hero">
+
+            <div class="hero-small">
+                WORKSPACE
+            </div>
+
+            <div class="hero-title">
+                Таблицы
+            </div>
+
+            <div class="hero-text">
+                Рабочие данные команды.
+            </div>
+
+        </div>
+
+
+        <div class="empty" style="
+            padding:25px;
+            background:#11141a;
+            border:1px solid #20252e;
+            border-radius:20px;
+            color:#737b89;
+            text-align:center;
+        ">
+
+            Здесь появятся
+            рабочие таблицы.
+
+        </div>
+
+    </div>
+
+
+    <!-- GUIDE -->
+
+    <div id="guide" class="page">
+
+        <div class="top">
+
+            <div class="brand">
+                AXEO<span>.</span>
+            </div>
+
+            <div class="status"></div>
+
+        </div>
+
+
+        <div class="hero">
+
+            <div class="hero-small">
+                QUICK START
+            </div>
+
+            <div class="hero-title">
+                Руководство
+            </div>
+
+            <div class="hero-text">
+                Пошаговое обучение
+                для нового сотрудника.
+            </div>
+
+        </div>
+
+
+        <div class="section-title">
+            Обучение
+        </div>
+
+
+        <div class="big-card"
+             style="margin-bottom:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    01
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        С чего начать
+                    </div>
+
+                    <div class="big-text">
+                        Первые шаги
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="big-card"
+             style="margin-bottom:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    02
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Основные термины
+                    </div>
+
+                    <div class="big-text">
+                        Рабочая терминология
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="big-card"
+             style="margin-bottom:10px">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    03
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Первые действия
+                    </div>
+
+                    <div class="big-text">
+                        Пошаговый порядок работы
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="big-card">
+
+            <div class="big-content">
+
+                <div class="big-icon">
+                    04
+                </div>
+
+                <div>
+
+                    <div class="big-title">
+                        Частые ошибки
+                    </div>
+
+                    <div class="big-text">
+                        Что важно не забывать
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+    <button class="nav-button active"
+            onclick="openPage('home', this)">
+
+        <span class="nav-icon">⌂</span>
+        Главная
+
     </button>
 
 
-    <button class="card" onclick="article('')">
-      <div class="bank">
-        <div class="bank-logo">O</div>
+    <button class="nav-button"
+            onclick="openPage('manuals', this)">
 
-        <div>
-          <div class="title">
-            Озон Банк
-          </div>
+        <span class="nav-icon">◈</span>
+        Мануалы
 
-          <div class="description">
-            Открыть мануал
-          </div>
-        </div>
-      </div>
     </button>
 
 
-    <button class="card" onclick="article('')">
-      <div class="bank">
-        <div class="bank-logo">У</div>
+    <button class="nav-button"
+            onclick="openPage('tables', this)">
 
-        <div>
-          <div class="title">
-            Уралсиб
-          </div>
+        <span class="nav-icon">▦</span>
+        Таблицы
 
-          <div class="description">
-            Открыть мануал
-          </div>
-        </div>
-      </div>
     </button>
 
-  </div>
 
+    <button class="nav-button"
+            onclick="openPage('guide', this)">
 
-  <!-- ТАБЛИЦЫ -->
+        <span class="nav-icon">◎</span>
+        Новичку
 
-  <div id="tables" class="screen">
-
-    <div class="back" onclick="show('home')">
-      ← Назад
-    </div>
-
-    <h1>Таблицы</h1>
-
-    <div class="subtitle">
-      Рабочие материалы
-    </div>
-
-    <div class="empty">
-      Здесь будут находиться рабочие таблицы.
-      <br><br>
-      Добавим их позже.
-    </div>
-
-  </div>
-
-
-  <!-- НОВИЧОК -->
-
-  <div id="guide" class="screen">
-
-    <div class="back" onclick="show('home')">
-      ← Назад
-    </div>
-
-    <h1>Новичку</h1>
-
-    <div class="subtitle">
-      Руководство для новых сотрудников
-    </div>
-
-
-    <div class="step">
-
-      <div class="step-number">
-        ШАГ 01
-      </div>
-
-      <div class="step-title">
-        С чего начать
-      </div>
-
-      <div class="step-text">
-        Здесь будет базовая информация для нового сотрудника.
-      </div>
-
-    </div>
-
-
-    <div class="step">
-
-      <div class="step-number">
-        ШАГ 02
-      </div>
-
-      <div class="step-title">
-        Основные термины
-      </div>
-
-      <div class="step-text">
-        Здесь разместим основные рабочие понятия.
-      </div>
-
-    </div>
-
-
-    <div class="step">
-
-      <div class="step-number">
-        ШАГ 03
-      </div>
-
-      <div class="step-title">
-        Первые действия
-      </div>
-
-      <div class="step-text">
-        Пошаговая инструкция для начала работы.
-      </div>
-
-    </div>
-
-
-    <div class="step">
-
-      <div class="step-number">
-        ШАГ 04
-      </div>
-
-      <div class="step-title">
-        Частые ошибки
-      </div>
-
-      <div class="step-text">
-        Разберём типичные ошибки и способы их избежать.
-      </div>
-
-    </div>
-
-  </div>
+    </button>
 
 </div>
 
 
 <script>
 
-function show(id) {
+function openPage(id, button) {
 
-  var screens = document.getElementsByClassName("screen");
+    var pages = document.querySelectorAll(".page");
 
-  for (var i = 0; i < screens.length; i++) {
-    screens[i].className = "screen";
-  }
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove("active");
+    }
 
-  document.getElementById(id).className = "screen active";
+    document.getElementById(id).classList.add("active");
 
-  window.scrollTo(0, 0);
+
+    var buttons = document.querySelectorAll(".nav-button");
+
+    for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove("active");
+    }
+
+
+    var map = {
+        home: 0,
+        manuals: 1,
+        tables: 2,
+        guide: 3
+    };
+
+
+    if (map[id] !== undefined) {
+        buttons[map[id]].classList.add("active");
+    }
+
+
+    window.scrollTo(0, 0);
 }
 
 
-function article(url) {
+function openArticle(url) {
 
-  if (url === "") {
-    alert("Ссылка на Telegraph пока не добавлена.");
-    return;
-  }
+    if (!url) {
 
-  window.location.href = url;
+        alert(
+            "Ссылка на Telegraph пока не добавлена."
+        );
+
+        return;
+    }
+
+    window.open(url, "_blank");
+
 }
 
 </script>
