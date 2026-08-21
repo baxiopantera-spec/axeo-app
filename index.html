@@ -298,6 +298,7 @@ body::after {
 ========================= */
 
 .top {
+    position: relative;
 
     display: flex;
 
@@ -306,9 +307,10 @@ body::after {
 
     margin-bottom: 28px;
 
+    min-height: 32px;
+
     animation:
         topAppear .7s ease both;
-
 }
 
 
@@ -335,17 +337,29 @@ body::after {
 }
 
 
+.brand {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .brand img {
-    width: 90px;
+    width: 100px;
     height: auto;
+
     display: block;
 
     filter:
-        drop-shadow(0 0 7px rgba (214,173,91,.55))
-        drop-shadow(0 0 18px rgba (214,173,91,.25));
+        drop-shadow(0 0 7px rgba(214,173,91,.55))
+        drop-shadow(0 0 18px rgba(214,173,91,.25));
 }
-
-
 .brand span {
 
     color: var(--gold);
