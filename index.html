@@ -335,17 +335,14 @@ body::after {
 }
 
 
-.brand {
+.brand img {
+    width: 90px;
+    height: auto;
+    display: block;
 
-    font-size: 26px;
-
-    font-weight: 800;
-
-    letter-spacing: -1.3px;
-
-    text-shadow:
-        0 0 20px rgba(214,173,91,.08);
-
+    filter:
+        drop-shadow(0 0 7px rgba (214,173,91,.55))
+        drop-shadow(0 0 18px rgba (214,173,91,.25));
 }
 
 
@@ -1990,7 +1987,7 @@ body::after {
     <div class="top">
 
         <div class="brand">
-            AXEO<span>.</span>
+            <img src="logo.png" alt="AXEO">
         </div>
 
         <div class="status"></div>
