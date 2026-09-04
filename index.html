@@ -2733,6 +2733,138 @@ body:after{
 .main-card .card-icon{
   display:none!important;
 }
+
+/* =====================================================
+   FINAL CLEAN LAYOUT — no overlaps / no baked-image cache
+   ===================================================== */
+
+/* kill decorative layers that were visually competing with the UI */
+.hero:before,
+.hero:after,
+.main-card .card-scan{
+  display:none!important;
+}
+
+/* keep the hero compact and clean */
+.hero{
+  min-height:142px!important;
+  height:142px!important;
+  box-sizing:border-box!important;
+  padding:18px 18px!important;
+  background-image:
+    linear-gradient(90deg,rgba(3,6,9,.42),rgba(3,6,9,.12) 55%,rgba(3,6,9,.24)),
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.20)),
+    url("images/private-forum.jpg?v=20260904-clean2")!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.hero-label{font-size:9px!important;letter-spacing:3px!important}
+.hero h1{font-size:27px!important;line-height:1.05!important;margin:7px 0 0!important}
+.hero p{font-size:11px!important;line-height:1.35!important;margin:8px 0 0!important;max-width:520px!important;color:#b9c0c9!important}
+
+/* cards */
+.main-grid{align-items:stretch!important}
+.main-card{
+  min-height:120px!important;
+  height:120px!important;
+  box-sizing:border-box!important;
+  padding:14px!important;
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+
+/* force fresh image requests so the old collage cannot remain in cache */
+.main-card:nth-child(1){
+  background-image:linear-gradient(90deg,rgba(5,6,7,.22),rgba(5,6,7,.08) 58%,rgba(5,6,7,.18)),url("images/manuals.jpg?v=20260904-clean2")!important;
+}
+.main-card:nth-child(2){
+  background-image:linear-gradient(90deg,rgba(3,8,13,.20),rgba(3,8,13,.07) 58%,rgba(3,8,13,.16)),url("images/connect.jpg?v=20260904-clean2")!important;
+}
+.main-card:nth-child(3){
+  background-image:linear-gradient(90deg,rgba(7,4,13,.20),rgba(7,4,13,.07) 58%,rgba(7,4,13,.16)),url("images/guide.jpg?v=20260904-clean2")!important;
+}
+.main-card:nth-child(4){
+  background-image:linear-gradient(90deg,rgba(11,4,7,.20),rgba(11,4,7,.07) 58%,rgba(11,4,7,.16)),url("images/media.jpg?v=20260904-clean2")!important;
+}
+
+/* no square icon */
+.main-card .card-icon{display:none!important}
+
+/* content sits together at the bottom-left instead of flowing/overlapping */
+.main-card h3{
+  position:absolute!important;
+  left:14px!important;
+  bottom:30px!important;
+  z-index:3!important;
+  margin:0!important;
+  font-size:16px!important;
+  line-height:1.05!important;
+  color:#fff!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.85)!important;
+}
+.main-card p{
+  position:absolute!important;
+  left:14px!important;
+  bottom:13px!important;
+  z-index:3!important;
+  margin:0!important;
+  max-width:calc(100% - 72px)!important;
+  font-size:10px!important;
+  line-height:1.2!important;
+  color:#d3d9e0!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.9)!important;
+}
+
+/* one clean arrow, centered inside one circle */
+.main-card:before{
+  content:"→"!important;
+  position:absolute!important;
+  right:13px!important;
+  bottom:13px!important;
+  width:46px!important;
+  height:46px!important;
+  z-index:4!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  border:1px solid color-mix(in srgb,var(--accent) 65%,white 8%)!important;
+  border-radius:50%!important;
+  background:rgba(5,7,10,.28)!important;
+  color:#fff!important;
+  font-size:24px!important;
+  font-weight:400!important;
+  line-height:1!important;
+  padding:0 0 2px 2px!important;
+  text-shadow:0 0 10px color-mix(in srgb,var(--accent) 45%,transparent)!important;
+  box-shadow:0 0 18px color-mix(in srgb,var(--accent) 13%,transparent),inset 0 0 12px rgba(255,255,255,.03)!important;
+  transform:none!important;
+  animation:none!important;
+  pointer-events:none!important;
+}
+.main-card:after{
+  display:none!important;
+}
+
+@media(max-width:430px){
+  .hero{height:132px!important;min-height:132px!important;padding:16px 14px!important}
+  .hero h1{font-size:23px!important}
+  .hero p{font-size:10px!important;max-width:92%!important}
+  .main-card{height:112px!important;min-height:112px!important;padding:12px!important}
+  .main-card h3{left:12px!important;bottom:28px!important;font-size:14px!important}
+  .main-card p{left:12px!important;bottom:11px!important;font-size:9px!important}
+  .main-card:before{right:10px!important;bottom:10px!important;width:40px!important;height:40px!important;font-size:20px!important}
+}
+
+@media(max-width:360px){
+  .hero{height:124px!important;min-height:124px!important}
+  .hero h1{font-size:21px!important}
+  .main-card{height:108px!important;min-height:108px!important}
+}
+
 </style>
 
 </head>
