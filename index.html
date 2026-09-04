@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -9,11 +10,15 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 >
 
-<title>NotFake × RosPlat</title>
+<title>NotFakeCommunity × RosPlat</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
+
+/* =========================================================
+   BASE
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -26,8 +31,12 @@ body {
     padding: 0;
     width: 100%;
     min-height: 100%;
-    background: #030811;
+
+    background:
+        #02060d;
+
     color: #fff;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -39,70 +48,663 @@ body {
 
 body {
     overflow-x: hidden;
-    padding-bottom: 92px;
+    padding-bottom: 88px;
 }
 
-/* ================================
-   BACKGROUND
-================================ */
+
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
 
 body::before {
     content: "";
+
     position: fixed;
-    inset: -30%;
+    inset: 0;
+
     pointer-events: none;
 
     background:
         radial-gradient(
-            circle at 20% 20%,
-            rgba(0, 125, 255, .10),
+            circle at 15% 15%,
+            rgba(0, 132, 255, .16),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(255, 193, 54, .13),
             transparent 25%
         ),
+
         radial-gradient(
-            circle at 80% 15%,
-            rgba(255, 190, 50, .08),
-            transparent 25%
+            circle at 80% 70%,
+            rgba(135, 55, 255, .13),
+            transparent 28%
         ),
+
         radial-gradient(
-            circle at 70% 80%,
-            rgba(150, 60, 255, .07),
+            circle at 10% 80%,
+            rgba(0, 195, 255, .08),
             transparent 25%
         );
 
-    animation: backgroundMove 12s ease-in-out infinite alternate;
-    z-index: -2;
+    animation:
+        bgFloat 14s ease-in-out infinite alternate;
+
+    z-index: -10;
 }
+
 
 body::after {
     content: "";
+
     position: fixed;
-    width: 260px;
-    height: 260px;
-    top: 15%;
-    right: -150px;
+    inset: 0;
 
-    border: 1px solid rgba(255, 193, 55, .08);
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 70px rgba(255, 190, 50, .04);
-
-    animation: orbit 14s linear infinite;
     pointer-events: none;
-    z-index: -1;
+
+    opacity: .25;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 42px 42px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
+    z-index: -9;
+
+    animation:
+        gridMove 18s linear infinite;
 }
 
-@keyframes backgroundMove {
+@keyframes bgFloat {
+
+    0% {
+        transform:
+            scale(1)
+            translate3d(-2%, -1%, 0);
+    }
+
+    50% {
+        transform:
+            scale(1.08)
+            translate3d(1%, 2%, 0);
+    }
+
+    100% {
+        transform:
+            scale(1.04)
+            translate3d(3%, -2%, 0);
+    }
+}
+
+@keyframes gridMove {
+
     from {
-        transform: translate3d(-2%, -2%, 0) scale(1);
+        background-position: 0 0;
     }
 
     to {
-        transform: translate3d(2%, 2%, 0) scale(1.05);
+        background-position: 42px 42px;
     }
 }
 
-@keyframes orbit {
+
+/* =========================================================
+   FLOATING LIGHTS
+========================================================= */
+
+.bg-light {
+    position: fixed;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(35px);
+
+    opacity: .13;
+
+    z-index: -8;
+}
+
+.bg-light.one {
+    top: 8%;
+    left: -80px;
+
+    background: #007dff;
+
+    animation:
+        lightOne 11s ease-in-out infinite alternate;
+}
+
+.bg-light.two {
+    top: 42%;
+    right: -100px;
+
+    background: #ffb52e;
+
+    animation:
+        lightTwo 13s ease-in-out infinite alternate;
+}
+
+.bg-light.three {
+    bottom: 5%;
+    left: 20%;
+
+    background: #933cff;
+
+    animation:
+        lightThree 15s ease-in-out infinite alternate;
+}
+
+@keyframes lightOne {
+
+    from {
+        transform:
+            translate(0,0)
+            scale(.8);
+    }
+
+    to {
+        transform:
+            translate(90px,120px)
+            scale(1.25);
+    }
+}
+
+@keyframes lightTwo {
+
+    from {
+        transform:
+            translate(0,0)
+            scale(.75);
+    }
+
+    to {
+        transform:
+            translate(-100px,70px)
+            scale(1.2);
+    }
+}
+
+@keyframes lightThree {
+
+    from {
+        transform:
+            translate(0,30px)
+            scale(.8);
+    }
+
+    to {
+        transform:
+            translate(120px,-100px)
+            scale(1.3);
+    }
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle {
+    position: fixed;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #e9b842;
+
+    box-shadow:
+        0 0 8px rgba(235,185,65,.8);
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    opacity: 0;
+}
+
+.p1 {
+    left: 12%;
+    top: 25%;
+    animation: particleFloat 7s 1s infinite;
+}
+
+.p2 {
+    left: 74%;
+    top: 18%;
+    animation: particleFloat 9s 3s infinite;
+}
+
+.p3 {
+    left: 35%;
+    top: 70%;
+    animation: particleFloat 8s 2s infinite;
+}
+
+.p4 {
+    left: 88%;
+    top: 62%;
+    animation: particleFloat 10s 4s infinite;
+}
+
+.p5 {
+    left: 55%;
+    top: 40%;
+    animation: particleFloat 6s 1.5s infinite;
+}
+
+@keyframes particleFloat {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(.5);
+    }
+
+    30% {
+        opacity: .7;
+    }
+
+    70% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-90px)
+            scale(1.4);
+    }
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    padding:
+        10px
+        15px
+        22px;
+}
+
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+.page {
+    display: none;
+
+    animation:
+        pageEnter .42s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px)
+            scale(.985);
+        filter: blur(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+}
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.logo-notfake {
+    font-size: 19px;
+
+    font-weight: 950;
+
+    letter-spacing: -1px;
+
+    color: #f2bd43;
+
+    text-shadow:
+        0 0 12px rgba(242,189,67,.22),
+        0 0 30px rgba(242,189,67,.08);
+
+    animation:
+        logoGlow 3s ease-in-out infinite alternate;
+}
+
+.logo-community {
+    color: #8995a5;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.7px;
+
+    margin-left: -3px;
+
+    opacity: .8;
+}
+
+.logo-x {
+    color: #495464;
+
+    font-size: 15px;
+
+    font-weight: 300;
+}
+
+.logo-rosplat {
+    font-size: 17px;
+
+    font-weight: 800;
+
+    color: #eef1f5;
+
+    letter-spacing: -.6px;
+}
+
+.logo-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #f4c044;
+
+    box-shadow:
+        0 0 7px #f4c044,
+        0 0 18px rgba(244,192,68,.7);
+
+    animation:
+        dotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+
+    from {
+        text-shadow:
+            0 0 10px rgba(242,189,67,.18);
+    }
+
+    to {
+        text-shadow:
+            0 0 18px rgba(242,189,67,.34),
+            0 0 35px rgba(242,189,67,.08);
+    }
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(.75);
+        opacity: .6;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   ONLINE
+========================================================= */
+
+.status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding:
+        6px 10px;
+
+    border-radius: 30px;
+
+    color: #8490a0;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid rgba(255,255,255,.065);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+.status-dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #56dc8c;
+
+    box-shadow:
+        0 0 7px rgba(86,220,140,.9);
+
+    animation:
+        statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 5px rgba(86,220,140,.5);
+    }
+
+    50% {
+        box-shadow:
+            0 0 13px rgba(86,220,140,1);
+    }
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 155px;
+
+    padding:
+        22px 20px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(255,190,55,.14),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(0,130,255,.14),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(17,32,51,.98),
+            rgba(4,10,19,.99)
+        );
+
+    border:
+        1px solid rgba(231,181,61,.38);
+
+    box-shadow:
+        inset 0 0 45px rgba(0,130,255,.045),
+        0 15px 45px rgba(0,0,0,.28);
+
+    animation:
+        heroBreath 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes heroBreath {
+
+    from {
+        box-shadow:
+            inset 0 0 40px rgba(0,130,255,.04),
+            0 12px 38px rgba(0,0,0,.25);
+    }
+
+    to {
+        box-shadow:
+            inset 0 0 65px rgba(0,130,255,.09),
+            0 15px 50px rgba(0,0,0,.34);
+    }
+}
+
+
+/* hero diagonal shine */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -30%;
+
+    width: 40%;
+    height: 300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.045),
+            transparent
+        );
+
+    transform: rotate(25deg);
+
+    animation:
+        heroShine 7s ease-in-out infinite;
+}
+
+@keyframes heroShine {
+
+    0% {
+        left: -50%;
+    }
+
+    45%,
+    100% {
+        left: 150%;
+    }
+}
+
+
+/* orbital circle */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    right: -120px;
+    top: -120px;
+
+    border:
+        1px solid rgba(255,194,58,.2);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 50px rgba(255,190,50,.04);
+
+    animation:
+        heroOrbit 10s linear infinite;
+}
+
+@keyframes heroOrbit {
+
     from {
         transform: rotate(0deg);
     }
@@ -112,277 +714,79 @@ body::after {
     }
 }
 
-
-/* ================================
-   CONTAINER
-================================ */
-
-.container {
-    width: 100%;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 12px 16px 24px;
-}
-
-
-/* ================================
-   PAGES
-================================ */
-
-.page {
-    display: none;
-    animation: pageIn .35s cubic-bezier(.2,.8,.2,1);
-}
-
-.page.active {
-    display: block;
-}
-
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: translateY(14px) scale(.985);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-
-/* ================================
-   TOP BAR
-================================ */
-
-.topbar {
-    height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 12px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-
-.logo-notfake {
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: -.8px;
-    color: #f3bc42;
-
-    text-shadow:
-        0 0 18px rgba(243,188,66,.18);
-}
-
-.logo-x {
-    color: #667181;
-    font-size: 17px;
-    font-weight: 300;
-}
-
-.logo-rosplat {
-    font-size: 18px;
-    font-weight: 800;
-    color: #f0f2f5;
-    letter-spacing: -.5px;
-}
-
-.logo-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-
-    background: #f3bd42;
-
-    box-shadow:
-        0 0 8px #f3bd42,
-        0 0 18px rgba(243,189,66,.55);
-
-    animation: pulseDot 2s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-    0%,100% {
-        opacity: .65;
-        transform: scale(.85);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-}
-
-.status {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-
-    padding: 7px 11px;
-
-    border-radius: 20px;
-
-    color: #8290a2;
-    font-size: 11px;
-
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(255,255,255,.06);
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #56d88b;
-
-    box-shadow:
-        0 0 8px rgba(86,216,139,.8);
-}
-
-
-/* ================================
-   HERO COMPACT
-================================ */
-
-.hero {
-    position: relative;
-
-    min-height: 148px;
-
-    padding: 24px 22px;
-
-    border-radius: 25px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(16,30,48,.98),
-            rgba(5,12,23,.98)
-        );
-
-    border: 1px solid rgba(226,174,56,.38);
-
-    box-shadow:
-        inset 0 0 40px rgba(0,110,210,.06),
-        0 10px 35px rgba(0,0,0,.25);
-
-    animation: heroGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes heroGlow {
-    from {
-        box-shadow:
-            inset 0 0 40px rgba(0,110,210,.05),
-            0 10px 35px rgba(0,0,0,.25);
-    }
-
-    to {
-        box-shadow:
-            inset 0 0 55px rgba(0,130,240,.08),
-            0 10px 42px rgba(0,0,0,.32);
-    }
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 210px;
-    height: 210px;
-
-    right: -105px;
-    top: -105px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,193,58,.18);
-
-    box-shadow:
-        0 0 35px rgba(255,190,50,.05);
-
-    animation: heroOrbit 8s linear infinite;
-}
-
-@keyframes heroOrbit {
-    from {
-        transform: rotate(0);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .hero-label {
     position: relative;
+    z-index: 2;
 
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 
-    color: #e7b43e;
+    color: #e9b63f;
 
-    font-size: 10px;
-    font-weight: 800;
+    font-size: 9px;
+
+    font-weight: 900;
 
     letter-spacing: 3px;
 }
 
 .hero h1 {
     position: relative;
+    z-index: 2;
 
     margin: 0;
 
-    font-size: 29px;
+    font-size: 28px;
+
     line-height: 1.08;
 
-    letter-spacing: -1px;
+    letter-spacing: -1.1px;
 }
 
 .hero h1 span {
-    color: #f1bd45;
+    color: #f4c14b;
 
     text-shadow:
-        0 0 18px rgba(241,189,69,.15);
+        0 0 20px rgba(244,193,75,.17);
 }
 
 .hero p {
     position: relative;
+    z-index: 2;
 
-    margin: 9px 0 0;
+    margin:
+        9px 0 0;
 
-    max-width: 470px;
+    max-width: 460px;
 
-    color: #8490a0;
+    color: #8693a4;
 
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 12px;
+
+    line-height: 1.45;
 }
 
 
-/* ================================
-   SECTION
-================================ */
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
 .section-title {
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
-    margin: 19px 2px 10px;
+    margin:
+        17px
+        2px
+        9px;
 
     color: #718094;
 
-    font-size: 10px;
-    font-weight: 800;
+    font-size: 9px;
+
+    font-weight: 900;
 
     letter-spacing: 2.5px;
 }
@@ -397,30 +801,31 @@ body::after {
     background:
         linear-gradient(
             90deg,
-            rgba(255,255,255,.08),
+            rgba(255,255,255,.09),
             transparent
         );
 }
 
 
-/* ================================
-   MAIN GRID
-================================ */
+/* =========================================================
+   MAIN CARDS
+========================================================= */
 
 .main-grid {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
-    gap: 10px;
+    gap: 9px;
 }
 
 .main-card {
     position: relative;
 
-    min-height: 145px;
+    min-height: 143px;
 
-    padding: 17px;
+    padding: 16px;
 
     border-radius: 21px;
 
@@ -429,9 +834,50 @@ body::after {
     cursor: pointer;
 
     transition:
-        transform .18s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+        transform .2s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.main-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(255,255,255,.05),
+            transparent 80%
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        cardShine 6s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes cardShine {
+
+    0%,
+    55% {
+        transform:
+            translateX(-120%);
+    }
+
+    75%,
+    100% {
+        transform:
+            translateX(120%);
+    }
 }
 
 .main-card::after {
@@ -439,22 +885,25 @@ body::after {
 
     position: absolute;
 
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
+
+    right: -50px;
+    top: -50px;
+
+    border:
+        1px solid rgba(255,255,255,.09);
 
     border-radius: 50%;
 
-    right: -45px;
-    top: -45px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    animation: cardOrbit 7s linear infinite;
+    animation:
+        cardOrbit 8s linear infinite;
 }
 
 @keyframes cardOrbit {
+
     from {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     to {
@@ -463,121 +912,151 @@ body::after {
 }
 
 .main-card:active {
-    transform: scale(.965);
+    transform:
+        scale(.955);
 }
+
+
+/* manual */
 
 .manual-card {
     background:
         radial-gradient(
-            circle at 15% 10%,
-            rgba(35,145,255,.17),
-            transparent 40%
+            circle at 15% 5%,
+            rgba(30,150,255,.22),
+            transparent 42%
         ),
+
         linear-gradient(
             145deg,
-            #091c32,
-            #050e1b
+            #091d34,
+            #040d19
         );
 
-    border: 1px solid rgba(48,151,255,.34);
+    border:
+        1px solid rgba(55,157,255,.34);
 
     box-shadow:
-        inset 0 0 30px rgba(0,130,255,.035);
+        inset 0 0 35px rgba(0,130,255,.04);
 }
 
-.manual-card:active {
-    border-color: rgba(60,160,255,.75);
+.manual-card:hover {
+    border-color:
+        rgba(65,165,255,.65);
 
     box-shadow:
-        0 0 25px rgba(30,140,255,.12);
+        0 0 28px rgba(0,130,255,.09),
+        inset 0 0 35px rgba(0,130,255,.07);
 }
+
+
+/* media */
 
 .media-card {
     background:
         radial-gradient(
-            circle at 85% 10%,
-            rgba(183,70,255,.16),
-            transparent 40%
+            circle at 85% 5%,
+            rgba(190,70,255,.21),
+            transparent 42%
         ),
+
         linear-gradient(
             145deg,
-            #170d29,
-            #090817
+            #190c2d,
+            #080714
         );
 
-    border: 1px solid rgba(190,80,255,.34);
+    border:
+        1px solid rgba(194,83,255,.34);
 
     box-shadow:
-        inset 0 0 30px rgba(190,70,255,.035);
+        inset 0 0 35px rgba(190,70,255,.04);
 }
 
-.media-card:active {
-    border-color: rgba(205,100,255,.75);
+.media-card:hover {
+    border-color:
+        rgba(205,100,255,.65);
 
     box-shadow:
-        0 0 25px rgba(190,70,255,.12);
+        0 0 28px rgba(190,70,255,.09),
+        inset 0 0 35px rgba(190,70,255,.07);
 }
+
+
+/* =========================================================
+   CARD ICON
+========================================================= */
 
 .card-icon {
     width: 42px;
     height: 42px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 13px;
 
-    font-size: 21px;
+    font-size: 20px;
 
-    margin-bottom: 13px;
+    margin-bottom: 12px;
 
-    transition: transform .3s ease;
+    position: relative;
+
+    transition:
+        transform .35s ease;
 }
 
-.main-card:active .card-icon {
-    transform: rotate(-5deg) scale(1.08);
+.main-card:hover .card-icon {
+    transform:
+        translateY(-2px)
+        rotate(-4deg)
+        scale(1.06);
 }
 
 .manual-card .card-icon {
     background:
         linear-gradient(
             145deg,
-            #174e83,
+            #175187,
             #071d37
         );
 
-    border: 1px solid rgba(61,159,255,.55);
+    border:
+        1px solid rgba(62,160,255,.55);
 
     box-shadow:
-        0 0 17px rgba(40,145,255,.13);
+        0 0 20px rgba(40,145,255,.15);
 }
 
 .media-card .card-icon {
     background:
         linear-gradient(
             145deg,
-            #5c2a86,
-            #1b0b31
+            #5c2b87,
+            #1b0a30
         );
 
-    border: 1px solid rgba(200,100,255,.55);
+    border:
+        1px solid rgba(201,100,255,.55);
 
     box-shadow:
-        0 0 17px rgba(195,75,255,.13);
+        0 0 20px rgba(195,75,255,.15);
 }
 
 .main-card h2 {
     margin: 0;
 
-    font-size: 18px;
+    font-size: 17px;
+
     line-height: 1.1;
 }
 
 .main-card p {
     margin: 5px 0 0;
 
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .manual-card p {
@@ -585,43 +1064,56 @@ body::after {
 }
 
 .media-card p {
-    color: #bd70ff;
+    color: #bf74ff;
 }
+
+
+/* =========================================================
+   CARD BOTTOM
+========================================================= */
 
 .card-bottom {
     position: absolute;
 
-    left: 17px;
-    right: 17px;
-    bottom: 14px;
+    left: 16px;
+    right: 16px;
+    bottom: 13px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 }
 
 .card-count {
-    color: #738092;
+    color: #778597;
 
-    font-size: 10px;
+    font-size: 9px;
 
-    padding: 5px 8px;
+    padding:
+        5px 8px;
 
     border-radius: 20px;
 
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.055);
 }
 
 .arrow {
-    font-size: 21px;
-    color: #8995a5;
+    font-size: 20px;
 
-    transition: transform .25s ease;
+    color: #8a96a6;
+
+    transition:
+        transform .3s ease;
 }
 
-.main-card:active .arrow {
-    transform: translateX(4px);
+.main-card:hover .arrow {
+    transform:
+        translateX(4px);
 }
 
 .manual-card .arrow {
@@ -633,21 +1125,23 @@ body::after {
 }
 
 
-/* ================================
-   NEWBIE
-================================ */
+/* =========================================================
+   NEWBIE CARD
+========================================================= */
 
 .newbie-card {
     position: relative;
 
-    min-height: 72px;
+    min-height: 70px;
 
     display: flex;
+
     align-items: center;
 
-    gap: 13px;
+    gap: 12px;
 
-    padding: 12px 15px;
+    padding:
+        11px 14px;
 
     border-radius: 20px;
 
@@ -658,52 +1152,86 @@ body::after {
     background:
         radial-gradient(
             circle at 85% 50%,
-            rgba(255,178,37,.11),
-            transparent 40%
+            rgba(255,178,37,.14),
+            transparent 42%
         ),
+
         linear-gradient(
             145deg,
-            #1a160e,
-            #0b0c0f
+            #1a160d,
+            #080b0f
         );
 
-    border: 1px solid rgba(230,170,48,.38);
+    border:
+        1px solid rgba(231,175,49,.36);
+
+    box-shadow:
+        inset 0 0 30px rgba(255,175,35,.025);
 
     transition:
-        transform .18s ease,
-        border-color .25s ease;
+        transform .2s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.newbie-card:hover {
+    border-color:
+        rgba(245,191,62,.65);
+
+    box-shadow:
+        0 0 25px rgba(245,185,50,.07);
 }
 
 .newbie-card:active {
-    transform: scale(.975);
-    border-color: rgba(240,186,60,.75);
+    transform:
+        scale(.97);
 }
 
 .newbie-icon {
-    width: 43px;
-    height: 43px;
+    width: 42px;
+    height: 42px;
 
-    flex: 0 0 43px;
+    flex:
+        0 0 42px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 13px;
 
-    font-size: 20px;
+    font-size: 19px;
 
     background:
         linear-gradient(
             145deg,
             #503713,
-            #17120a
+            #151006
         );
 
-    border: 1px solid rgba(239,177,47,.55);
+    border:
+        1px solid rgba(239,177,47,.55);
 
     box-shadow:
-        0 0 18px rgba(239,177,47,.10);
+        0 0 20px rgba(239,177,47,.11);
+
+    animation:
+        rocketFloat 3s ease-in-out infinite;
+}
+
+@keyframes rocketFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-3px);
+    }
 }
 
 .newbie-info {
@@ -713,7 +1241,8 @@ body::after {
 .newbie-info h2 {
     margin: 0;
 
-    font-size: 15px;
+    font-size: 14px;
+
     line-height: 1.15;
 }
 
@@ -722,96 +1251,130 @@ body::after {
 
     color: #827968;
 
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .newbie-arrow {
     margin-left: auto;
 
-    font-size: 23px;
+    font-size: 22px;
 
     color: #eab33b;
+
+    animation:
+        arrowFloat 2s ease-in-out infinite;
+}
+
+@keyframes arrowFloat {
+
+    0%,
+    100% {
+        transform:
+            translateX(0);
+    }
+
+    50% {
+        transform:
+            translateX(3px);
+    }
 }
 
 
-/* ================================
+/* =========================================================
    PAGE HEADER
-================================ */
+========================================================= */
 
 .page-header {
-    height: 58px;
+    height: 56px;
 
     display: flex;
+
     align-items: center;
 
-    gap: 11px;
+    gap: 10px;
 
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 }
 
 .back-btn {
-    width: 39px;
-    height: 39px;
+    width: 38px;
+    height: 38px;
 
     border-radius: 13px;
 
-    border: 1px solid rgba(224,174,60,.3);
+    border:
+        1px solid rgba(224,174,60,.3);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
     color: #e8b63f;
 
-    font-size: 21px;
+    font-size: 20px;
 
     cursor: pointer;
 
-    transition: .2s ease;
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
 
 .back-btn:active {
-    transform: scale(.9);
+    transform:
+        scale(.88);
 }
 
 .page-header h1 {
     margin: 0;
 
-    font-size: 25px;
+    font-size: 24px;
+
     letter-spacing: -.7px;
 }
 
 
-/* ================================
+/* =========================================================
    SEARCH
-================================ */
+========================================================= */
 
 .search-box {
     width: 100%;
-    height: 46px;
+    height: 44px;
 
     border-radius: 15px;
 
-    padding: 0 15px;
+    padding:
+        0 14px;
 
-    background: rgba(255,255,255,.035);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
 
-    border: 1px solid rgba(255,255,255,.07);
+    border:
+        1px solid rgba(255,255,255,.07);
 
     color: white;
 
     outline: none;
 
-    font-size: 14px;
+    font-size: 13px;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 
-    transition: .2s ease;
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
 .search-box:focus {
-    border-color: rgba(229,175,54,.5);
+    border-color:
+        rgba(229,175,54,.55);
 
     box-shadow:
-        0 0 20px rgba(229,175,54,.04);
+        0 0 22px rgba(229,175,54,.06);
 }
 
 .search-box::placeholder {
@@ -819,23 +1382,29 @@ body::after {
 }
 
 
-/* ================================
+/* =========================================================
    MANUAL LIST
-================================ */
+========================================================= */
 
 .manual-list {
     display: flex;
+
     flex-direction: column;
+
     gap: 6px;
 }
 
 .manual-item {
+    position: relative;
+
     display: flex;
+
     align-items: center;
 
-    min-height: 52px;
+    min-height: 50px;
 
-    padding: 7px 10px;
+    padding:
+        6px 9px;
 
     gap: 10px;
 
@@ -844,56 +1413,79 @@ body::after {
     background:
         linear-gradient(
             100deg,
-            rgba(13,33,54,.78),
-            rgba(7,15,27,.82)
+            rgba(13,34,55,.82),
+            rgba(6,14,25,.88)
         );
 
-    border: 1px solid rgba(47,133,210,.18);
+    border:
+        1px solid rgba(47,133,210,.19);
 
     cursor: pointer;
 
+    overflow: hidden;
+
     transition:
-        transform .16s ease,
-        border-color .2s ease,
-        background .2s ease;
+        transform .18s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.manual-item::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: -50px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(75,160,255,.08);
+}
+
+.manual-item:hover {
+    border-color:
+        rgba(70,165,255,.48);
+
+    box-shadow:
+        0 0 20px rgba(0,130,255,.05);
 }
 
 .manual-item:active {
-    transform: scale(.98);
-
-    border-color: rgba(235,181,58,.5);
-
-    background:
-        linear-gradient(
-            100deg,
-            rgba(25,47,69,.9),
-            rgba(10,20,32,.9)
-        );
+    transform:
+        scale(.975);
 }
 
 .manual-number {
-    width: 31px;
-    height: 31px;
+    width: 30px;
+    height: 30px;
 
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 10px;
 
-    background: rgba(236,177,48,.07);
+    background:
+        rgba(236,177,48,.07);
 
-    border: 1px solid rgba(236,177,48,.2);
+    border:
+        1px solid rgba(236,177,48,.2);
 
     color: #dcae40;
 
-    font-size: 10px;
+    font-size: 9px;
 }
 
 .manual-name {
-    font-size: 14px;
+    font-size: 13px;
+
     font-weight: 600;
 }
 
@@ -902,69 +1494,125 @@ body::after {
 
     color: #578bb8;
 
-    font-size: 19px;
+    font-size: 18px;
+
+    transition:
+        transform .2s ease;
+}
+
+.manual-item:hover .manual-arrow {
+    transform:
+        translateX(3px);
 }
 
 
-/* ================================
-   SOURCE PAGE
-================================ */
+/* =========================================================
+   SOURCES
+========================================================= */
 
 .source-list {
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
 }
 
 .source-item {
     position: relative;
 
-    min-height: 70px;
+    min-height: 68px;
 
-    padding: 15px;
+    padding: 13px;
 
     display: flex;
+
     align-items: center;
 
-    gap: 13px;
+    gap: 12px;
 
     border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(30,17,46,.95),
-            rgba(9,8,19,.95)
+            rgba(30,17,46,.96),
+            rgba(8,7,18,.97)
         );
 
-    border: 1px solid rgba(184,82,245,.25);
+    border:
+        1px solid rgba(184,82,245,.25);
 
     cursor: pointer;
 
     overflow: hidden;
 
-    transition: .2s ease;
+    transition:
+        transform .2s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.source-item::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: -80px;
+    top: -50px;
+
+    border:
+        1px solid rgba(203,98,255,.08);
+
+    border-radius: 50%;
+
+    animation:
+        sourceOrbit 10s linear infinite;
+}
+
+@keyframes sourceOrbit {
+
+    from {
+        transform:
+            rotate(0);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+.source-item:hover {
+    border-color:
+        rgba(205,100,255,.55);
+
+    box-shadow:
+        0 0 25px rgba(190,70,255,.07);
 }
 
 .source-item:active {
-    transform: scale(.98);
-
-    border-color: rgba(200,95,255,.65);
+    transform:
+        scale(.975);
 }
 
 .source-icon {
-    width: 42px;
-    height: 42px;
+    width: 41px;
+    height: 41px;
 
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 13px;
 
-    font-size: 20px;
+    font-size: 19px;
 
     background:
         linear-gradient(
@@ -973,7 +1621,11 @@ body::after {
             #190a2c
         );
 
-    border: 1px solid rgba(205,100,255,.4);
+    border:
+        1px solid rgba(205,100,255,.4);
+
+    box-shadow:
+        0 0 18px rgba(195,75,255,.12);
 }
 
 .source-info {
@@ -983,7 +1635,7 @@ body::after {
 .source-info h3 {
     margin: 0;
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .source-info p {
@@ -991,7 +1643,7 @@ body::after {
 
     color: #77788a;
 
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .source-arrow {
@@ -999,40 +1651,101 @@ body::after {
 
     color: #bd69f2;
 
-    font-size: 20px;
+    font-size: 19px;
 }
 
 
-/* ================================
+/* =========================================================
    NEWBIE PAGE
-================================ */
+========================================================= */
 
 .guide-list {
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
 }
 
 .guide-card {
-    padding: 16px;
+    position: relative;
+
+    padding: 15px;
 
     border-radius: 18px;
 
     background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(255,186,45,.08),
+            transparent 35%
+        ),
+
         linear-gradient(
             145deg,
             rgba(28,23,15,.96),
-            rgba(10,11,13,.96)
+            rgba(8,10,13,.97)
         );
 
-    border: 1px solid rgba(225,169,48,.25);
+    border:
+        1px solid rgba(225,169,48,.25);
+
+    overflow: hidden;
+
+    transition:
+        transform .2s ease,
+        border-color .25s ease;
+}
+
+.guide-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 2px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #e6b13e,
+            transparent
+        );
+
+    animation:
+        guideLine 3s ease-in-out infinite;
+}
+
+@keyframes guideLine {
+
+    0%,
+    100% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.guide-card:hover {
+    transform:
+        translateX(2px);
+
+    border-color:
+        rgba(235,180,55,.5);
 }
 
 .guide-number {
     color: #e7b23a;
 
-    font-size: 10px;
-    font-weight: 800;
+    font-size: 9px;
+
+    font-weight: 900;
 
     letter-spacing: 2px;
 
@@ -1042,7 +1755,7 @@ body::after {
 .guide-card h3 {
     margin: 0;
 
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .guide-card p {
@@ -1050,50 +1763,60 @@ body::after {
 
     color: #888174;
 
-    font-size: 12px;
+    font-size: 11px;
+
     line-height: 1.4;
 }
 
 
-/* ================================
+/* =========================================================
    BOTTOM NAV
-================================ */
+========================================================= */
 
 .bottom-nav {
     position: fixed;
 
     left: 50%;
-    bottom: 9px;
+    bottom: 8px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width: calc(100% - 20px);
+    width:
+        calc(100% - 18px);
+
     max-width: 650px;
 
-    height: 67px;
+    height: 64px;
 
     display: grid;
 
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    padding: 5px;
+    padding: 4px;
 
-    border-radius: 22px;
+    border-radius: 21px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(13,24,39,.97),
-            rgba(4,11,20,.98)
+            rgba(13,25,40,.96),
+            rgba(3,10,18,.985)
         );
 
-    border: 1px solid rgba(179,147,77,.27);
+    border:
+        1px solid rgba(179,147,77,.28);
 
     box-shadow:
-        0 5px 35px rgba(0,0,0,.45);
+        0 8px 38px rgba(0,0,0,.5),
+        0 0 30px rgba(0,110,255,.025);
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter:
+        blur(24px);
+
+    -webkit-backdrop-filter:
+        blur(24px);
 
     z-index: 100;
 }
@@ -1103,7 +1826,7 @@ body::after {
 
     background: transparent;
 
-    border-radius: 17px;
+    border-radius: 16px;
 
     color: #5e6a79;
 
@@ -1116,20 +1839,28 @@ body::after {
 
     gap: 2px;
 
-    font-size: 9px;
+    font-size: 8px;
 
     cursor: pointer;
 
-    transition: .2s ease;
+    transition:
+        transform .2s ease,
+        color .2s ease,
+        background .25s ease;
 }
 
 .nav-icon {
-    font-size: 20px;
+    font-size: 19px;
+
     line-height: 1;
+
+    transition:
+        transform .25s ease;
 }
 
 .nav-item:active {
-    transform: scale(.9);
+    transform:
+        scale(.88);
 }
 
 .nav-item.active {
@@ -1138,42 +1869,70 @@ body::after {
     background:
         linear-gradient(
             145deg,
-            rgba(255,194,61,.09),
-            rgba(255,174,30,.02)
+            rgba(255,194,61,.10),
+            rgba(255,174,30,.025)
         );
 
     box-shadow:
-        inset 0 0 20px rgba(255,180,40,.025);
+        inset 0 0 22px rgba(255,180,40,.035);
+}
+
+.nav-item.active .nav-icon {
+    transform:
+        translateY(-1px)
+        scale(1.05);
 }
 
 
-/* ================================
+/* =========================================================
    SMALL PHONES
-================================ */
+========================================================= */
 
 @media (max-width: 380px) {
 
     .container {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    .logo-notfake {
+        font-size: 17px;
+    }
+
+    .logo-community {
+        display: none;
+    }
+
+    .logo-rosplat {
+        font-size: 15px;
+    }
+
+    .status {
+        padding:
+            5px 8px;
+
+        font-size: 8px;
     }
 
     .hero {
-        min-height: 138px;
-        padding: 20px 18px;
+        min-height: 142px;
+
+        padding:
+            20px 17px;
     }
 
     .hero h1 {
-        font-size: 26px;
+        font-size: 25px;
     }
 
     .hero p {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .main-card {
-        min-height: 138px;
-        padding: 15px;
+        min-height: 136px;
+
+        padding: 14px;
     }
 
     .main-card h2 {
@@ -1181,42 +1940,45 @@ body::after {
     }
 
     .card-bottom {
-        left: 15px;
-        right: 15px;
-        bottom: 12px;
+        left: 14px;
+        right: 14px;
     }
 
     .newbie-card {
-        min-height: 68px;
-    }
-
-    .logo-notfake {
-        font-size: 17px;
-    }
-
-    .logo-rosplat {
-        font-size: 16px;
-    }
-
-    .status {
-        padding: 6px 8px;
-        font-size: 9px;
+        min-height: 67px;
     }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
+<!-- BACKGROUND ELEMENTS -->
+
+<div class="bg-light one"></div>
+<div class="bg-light two"></div>
+<div class="bg-light three"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+
+
 <div class="container">
 
-<!-- =================================
+
+<!-- =======================================================
      HOME
-================================= -->
+======================================================= -->
 
 <main id="homePage" class="page active">
+
 
     <div class="topbar">
 
@@ -1224,6 +1986,10 @@ body::after {
 
             <div class="logo-notfake">
                 NotFake
+            </div>
+
+            <div class="logo-community">
+                COMMUNITY
             </div>
 
             <div class="logo-x">
@@ -1238,30 +2004,37 @@ body::after {
 
         </div>
 
+
         <div class="status">
+
             <span class="status-dot"></span>
+
             ONLINE
+
         </div>
 
     </div>
 
 
+
     <section class="hero">
 
         <div class="hero-label">
-            TRADER WORKSPACE
+            NOTFAKE COMMUNITY
         </div>
 
         <h1>
-            Рабочая база <span>команды</span>
+            Рабочая база
+            <span>команды</span>
         </h1>
 
         <p>
-            Всё необходимое для работы —
-            мануалы, источники и обучение.
+            Мануалы, источники и обучение —
+            всё необходимое в одном месте.
         </p>
 
     </section>
+
 
 
     <div class="section-title">
@@ -1269,7 +2042,9 @@ body::after {
     </div>
 
 
+
     <div class="main-grid">
+
 
         <div
             class="main-card manual-card"
@@ -1284,6 +2059,8 @@ body::after {
                 Мануалы
             </h2>
 
+            <p>
+                Рабочие инструкции
             </p>
 
             <div class="card-bottom">
@@ -1301,6 +2078,7 @@ body::after {
         </div>
 
 
+
         <div
             class="main-card media-card"
             onclick="openPage('media')"
@@ -1314,6 +2092,8 @@ body::after {
                 Источники
             </h2>
 
+            <p>
+                Полезные ресурсы
             </p>
 
             <div class="card-bottom">
@@ -1330,12 +2110,15 @@ body::after {
 
         </div>
 
+
     </div>
+
 
 
     <div class="section-title">
         БЫСТРЫЙ СТАРТ
     </div>
+
 
 
     <div
@@ -1365,14 +2148,17 @@ body::after {
 
     </div>
 
+
 </main>
 
 
-<!-- =================================
+
+<!-- =======================================================
      MANUALS
-================================= -->
+======================================================= -->
 
 <main id="manualsPage" class="page">
+
 
     <div class="page-header">
 
@@ -1390,6 +2176,7 @@ body::after {
     </div>
 
 
+
     <input
         id="manualSearch"
         class="search-box"
@@ -1399,19 +2186,23 @@ body::after {
     >
 
 
+
     <div
         id="manualList"
         class="manual-list"
     ></div>
 
+
 </main>
 
 
-<!-- =================================
+
+<!-- =======================================================
      SOURCES
-================================= -->
+======================================================= -->
 
 <main id="mediaPage" class="page">
+
 
     <div class="page-header">
 
@@ -1429,7 +2220,9 @@ body::after {
     </div>
 
 
+
     <div class="source-list">
+
 
         <div class="source-item">
 
@@ -1454,6 +2247,7 @@ body::after {
             </div>
 
         </div>
+
 
 
         <div class="source-item">
@@ -1481,6 +2275,7 @@ body::after {
         </div>
 
 
+
         <div class="source-item">
 
             <div class="source-icon">
@@ -1505,16 +2300,20 @@ body::after {
 
         </div>
 
+
     </div>
+
 
 </main>
 
 
-<!-- =================================
+
+<!-- =======================================================
      NEWBIE
-================================= -->
+======================================================= -->
 
 <main id="newbiePage" class="page">
+
 
     <div class="page-header">
 
@@ -1532,7 +2331,9 @@ body::after {
     </div>
 
 
+
     <div class="guide-list">
+
 
         <div class="guide-card">
 
@@ -1550,6 +2351,7 @@ body::after {
             </p>
 
         </div>
+
 
 
         <div class="guide-card">
@@ -1570,6 +2372,7 @@ body::after {
         </div>
 
 
+
         <div class="guide-card">
 
             <div class="guide-number">
@@ -1587,18 +2390,23 @@ body::after {
 
         </div>
 
+
     </div>
 
+
 </main>
+
 
 </div>
 
 
-<!-- =================================
+
+<!-- =======================================================
      BOTTOM NAV
-================================= -->
+======================================================= -->
 
 <nav class="bottom-nav">
+
 
     <button
         class="nav-item active"
@@ -1615,6 +2423,7 @@ body::after {
         </span>
 
     </button>
+
 
 
     <button
@@ -1634,6 +2443,7 @@ body::after {
     </button>
 
 
+
     <button
         class="nav-item"
         data-page="media"
@@ -1649,6 +2459,7 @@ body::after {
         </span>
 
     </button>
+
 
 
     <button
@@ -1667,14 +2478,16 @@ body::after {
 
     </button>
 
+
 </nav>
+
 
 
 <script>
 
-/* =================================
+/* =========================================================
    TELEGRAM
-================================= */
+========================================================= */
 
 const tg = window.Telegram?.WebApp;
 
@@ -1685,19 +2498,19 @@ if (tg) {
     tg.expand();
 
     if (tg.setHeaderColor) {
-        tg.setHeaderColor("#030811");
+        tg.setHeaderColor("#02060d");
     }
 
     if (tg.setBackgroundColor) {
-        tg.setBackgroundColor("#030811");
+        tg.setBackgroundColor("#02060d");
     }
 
 }
 
 
-/* =================================
+/* =========================================================
    MANUALS
-================================= */
+========================================================= */
 
 const manuals = [
 
@@ -1740,9 +2553,9 @@ const manuals = [
 ];
 
 
-/* =================================
-   RENDER
-================================= */
+/* =========================================================
+   RENDER MANUALS
+========================================================= */
 
 function renderManuals(list = manuals) {
 
@@ -1756,7 +2569,8 @@ function renderManuals(list = manuals) {
         const item =
             document.createElement("div");
 
-        item.className = "manual-item";
+        item.className =
+            "manual-item";
 
         item.innerHTML = `
 
@@ -1781,9 +2595,9 @@ function renderManuals(list = manuals) {
 }
 
 
-/* =================================
+/* =========================================================
    SEARCH
-================================= */
+========================================================= */
 
 function filterManuals() {
 
@@ -1796,7 +2610,9 @@ function filterManuals() {
 
     const filtered =
         manuals.filter(name =>
-            name.toLowerCase().includes(query)
+            name
+                .toLowerCase()
+                .includes(query)
         );
 
     renderManuals(filtered);
@@ -1804,9 +2620,9 @@ function filterManuals() {
 }
 
 
-/* =================================
+/* =========================================================
    NAVIGATION
-================================= */
+========================================================= */
 
 function openPage(page) {
 
@@ -1824,6 +2640,7 @@ function openPage(page) {
             page + "Page"
         );
 
+
     if (target) {
 
         target.classList.add("active");
@@ -1836,6 +2653,7 @@ function openPage(page) {
         .forEach(button => {
 
             button.classList.remove("active");
+
 
             if (
                 button.dataset.page === page
@@ -1856,13 +2674,14 @@ function openPage(page) {
 }
 
 
-/* =================================
+/* =========================================================
    START
-================================= */
+========================================================= */
 
 renderManuals();
 
 </script>
+
 
 </body>
 </html>
