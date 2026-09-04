@@ -2151,6 +2151,245 @@ body:after{
     display:none;
 }
 
+
+/* =====================================================
+   FINAL ALIGNMENT / HEADER
+   RosPlat — logo — × — logo — NotFake
+===================================================== */
+
+.topbar{
+    min-height:78px!important;
+    height:78px!important;
+    margin:2px 0 11px!important;
+    padding:8px 14px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+}
+
+.brand{
+    width:100%!important;
+    height:100%!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:12px!important;
+}
+
+.brand-side{
+    height:100%;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex:0 0 auto;
+}
+
+.brand-side-rp{
+    justify-content:flex-end;
+}
+
+.brand-side-nf{
+    justify-content:flex-start;
+}
+
+.brand-word{
+    width:auto!important;
+    min-width:0!important;
+    margin:0!important;
+    flex:0 0 auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+}
+
+.brand-main{
+    font-size:14px!important;
+    line-height:1!important;
+    font-weight:950!important;
+    letter-spacing:-.35px!important;
+    white-space:nowrap!important;
+}
+
+.brand-logo{
+    width:44px!important;
+    height:44px!important;
+    flex:0 0 44px!important;
+    border-radius:13px!important;
+    display:grid!important;
+    place-items:center!important;
+}
+
+.brand-logo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    padding:2px!important;
+}
+
+.brand-x{
+    width:24px!important;
+    height:24px!important;
+    flex:0 0 24px!important;
+    margin:0 2px!important;
+    border-radius:50%!important;
+    font-size:14px!important;
+    line-height:1!important;
+}
+
+.brand-side-rp .brand-main{
+    color:#fff!important;
+    text-align:right!important;
+    text-shadow:0 0 16px rgba(82,150,255,.18)!important;
+}
+
+.brand-side-nf .brand-main{
+    color:#fff!important;
+    text-align:left!important;
+    text-shadow:0 0 16px rgba(231,185,79,.2)!important;
+}
+
+/* убираем старые правила, которые растягивали названия */
+.brand > .brand-word{
+    display:none!important;
+}
+
+/* аккуратный центр композиции */
+.brand-side-rp .brand-word{
+    order:1;
+}
+.brand-side-rp .brand-logo{
+    order:2;
+}
+.brand-side-nf .brand-logo{
+    order:1;
+}
+.brand-side-nf .brand-word{
+    order:2;
+}
+
+/* =====================================================
+   GENERAL ALIGNMENT
+===================================================== */
+
+.container{
+    width:100%!important;
+    max-width:680px!important;
+    margin:0 auto!important;
+}
+
+.page{
+    width:100%;
+}
+
+.hero,
+.main-grid,
+.info-card,
+.connect-options,
+.table-grid,
+.guide-step,
+.search-box,
+.manual-list{
+    width:100%;
+}
+
+.main-grid{
+    align-items:stretch;
+}
+
+.main-card{
+    min-width:0;
+}
+
+.table-grid{
+    align-items:stretch;
+}
+
+.table-card{
+    min-width:0;
+}
+
+.manual-item,
+.connect-option,
+.guide-step{
+    width:100%;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:430px){
+
+    .topbar{
+        height:72px!important;
+        min-height:72px!important;
+        padding:7px 9px!important;
+    }
+
+    .brand{
+        gap:8px!important;
+    }
+
+    .brand-side{
+        gap:6px!important;
+    }
+
+    .brand-logo{
+        width:40px!important;
+        height:40px!important;
+        flex-basis:40px!important;
+        border-radius:12px!important;
+    }
+
+    .brand-main{
+        font-size:12px!important;
+        letter-spacing:-.3px!important;
+    }
+
+    .brand-x{
+        width:21px!important;
+        height:21px!important;
+        flex-basis:21px!important;
+        margin:0 1px!important;
+        font-size:12px!important;
+    }
+}
+
+@media(max-width:360px){
+
+    .topbar{
+        height:66px!important;
+        min-height:66px!important;
+        padding:6px 7px!important;
+    }
+
+    .brand{
+        gap:6px!important;
+    }
+
+    .brand-side{
+        gap:5px!important;
+    }
+
+    .brand-logo{
+        width:36px!important;
+        height:36px!important;
+        flex-basis:36px!important;
+        border-radius:10px!important;
+    }
+
+    .brand-main{
+        font-size:10px!important;
+    }
+
+    .brand-x{
+        width:19px!important;
+        height:19px!important;
+        flex-basis:19px!important;
+        font-size:11px!important;
+    }
+}
+
 </style>
 
 </head>
@@ -2174,65 +2413,33 @@ body:after{
 
     <div class="brand">
 
-
-        <!-- NOTFAKE LOGO -->
-
-        <div
-            class="brand-logo nf"
-            aria-label="NotFake logo"
-        >
-
-            <img
-                src="https://baxiopantera-spec.github.io/axeo-app/images/notfake.png?v=5"
-                alt="NotFake"
-            >
-
-        </div>
-
-
-        <!-- NOTFAKE TEXT -->
-
-        <div class="brand-word">
-
-            <div class="brand-main">
-                NotFake
+        <div class="brand-side brand-side-rp">
+            <div class="brand-word">
+                <div class="brand-main">RosPlat</div>
             </div>
 
+            <div class="brand-logo rp" aria-label="RosPlat logo">
+                <img
+                    src="https://baxiopantera-spec.github.io/axeo-app/images/rosplat.png?v=5"
+                    alt="RosPlat"
+                >
+            </div>
         </div>
 
+        <div class="brand-x" aria-hidden="true">×</div>
 
-        <!-- X -->
-
-        <div class="brand-x">
-            ×
-        </div>
-
-
-        <!-- ROSPLAT LOGO -->
-
-        <div
-            class="brand-logo rp"
-            aria-label="RosPlat logo"
-        >
-
-            <img
-                src="https://baxiopantera-spec.github.io/axeo-app/images/rosplat.png?v=5"
-                alt="RosPlat"
-            >
-
-        </div>
-
-
-        <!-- ROSPLAT TEXT -->
-
-        <div class="brand-word">
-
-            <div class="brand-main">
-                RosPlat
+        <div class="brand-side brand-side-nf">
+            <div class="brand-logo nf" aria-label="NotFake logo">
+                <img
+                    src="https://baxiopantera-spec.github.io/axeo-app/images/notfake.png?v=5"
+                    alt="NotFake"
+                >
             </div>
 
+            <div class="brand-word">
+                <div class="brand-main">NotFake</div>
+            </div>
         </div>
-
 
     </div>
 
