@@ -30,7 +30,8 @@
     --line:rgba(255,255,255,.075);
 }
 
-html,body{
+html,
+body{
     margin:0;
     padding:0;
     width:100%;
@@ -52,7 +53,7 @@ body{
 }
 
 /* =====================================================
-   FUTURE BACKGROUND
+   BACKGROUND
 ===================================================== */
 
 body:before{
@@ -137,7 +138,7 @@ body:after{
 }
 
 /* =====================================================
-   FLOATING SYSTEM ELEMENTS
+   DECORATION
 ===================================================== */
 
 .future-decoration{
@@ -196,7 +197,7 @@ body:after{
 }
 
 /* =====================================================
-   PAGE
+   PAGES
 ===================================================== */
 
 .page{
@@ -221,23 +222,23 @@ body:after{
 }
 
 /* =====================================================
-   PREMIUM NOTFAKE × ROSPLAT TOP BAR
+   HEADER
 ===================================================== */
 
 .topbar{
-    min-height:58px;
+    min-height:64px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:12px;
-    padding:3px 1px 8px;
+    gap:10px;
+    padding:3px 1px 10px;
 }
 
 .brand{
     position:relative;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
     min-width:0;
 }
 
@@ -263,113 +264,127 @@ body:after{
 .brand-logo{
     position:relative;
 
-    width:34px;
-    height:34px;
+    width:38px;
+    height:38px;
 
-    flex:0 0 34px;
+    flex:0 0 38px;
 
     display:grid;
     place-items:center;
 
     overflow:hidden;
 
-    border:1px solid rgba(231,185,79,.38);
-    border-radius:11px;
+    border-radius:12px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.09),
-            rgba(255,255,255,.025)
-        );
+    background:#08090b;
+
+    border:1px solid rgba(255,255,255,.14);
 
     box-shadow:
-        inset 0 0 16px rgba(231,185,79,.06),
-        0 0 18px rgba(231,185,79,.06);
+        0 0 20px rgba(255,255,255,.04),
+        inset 0 0 15px rgba(255,255,255,.04);
 }
 
 .brand-logo::before{
     content:"";
-
     position:absolute;
+    inset:-2px;
 
-    width:19px;
-    height:19px;
+    border-radius:13px;
 
-    border:1px solid rgba(231,185,79,.45);
+    border:1px solid rgba(231,185,79,.25);
 
-    transform:rotate(45deg);
+    animation:logoPulse 2.8s ease-in-out infinite;
 
-    animation:
-        logoSpin 8s linear infinite;
+    pointer-events:none;
 }
 
-.brand-logo svg{
+.brand-logo::after{
+    content:"";
+    position:absolute;
+
+    width:70px;
+    height:1px;
+
+    left:-20px;
+    top:50%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    opacity:.3;
+
+    transform:rotate(-35deg);
+
+    animation:logoScan 3.5s linear infinite;
+}
+
+.brand-logo img{
     position:relative;
-    z-index:2;
+    z-index:3;
 
-    width:23px;
-    height:23px;
+    width:100%;
+    height:100%;
 
-    filter:
-        drop-shadow(
-            0 0 5px
-            rgba(231,185,79,.35)
-        );
+    object-fit:contain;
+
+    display:block;
+
+    padding:2px;
+
+    border-radius:inherit;
+
+    background:transparent;
 }
 
 .brand-logo.nf{
-    border-color:
-        rgba(231,185,79,.42);
+    border-color:rgba(231,185,79,.48);
+
+    box-shadow:
+        0 0 22px rgba(231,185,79,.10),
+        inset 0 0 18px rgba(231,185,79,.06);
 }
 
 .brand-logo.rp{
-    border-color:
-        rgba(82,150,255,.38);
+    border-color:rgba(82,150,255,.45);
 
     box-shadow:
-        inset 0 0 16px rgba(82,150,255,.06),
-        0 0 18px rgba(82,150,255,.05);
+        0 0 22px rgba(82,150,255,.10),
+        inset 0 0 18px rgba(82,150,255,.06);
 }
 
 .brand-logo.rp::before{
-    border-color:
-        rgba(82,150,255,.4);
+    border-color:rgba(82,150,255,.28);
 }
 
-.brand-word{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    line-height:1;
+@keyframes logoPulse{
+    0%,100%{
+        opacity:.35;
+        transform:scale(.98);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.02);
+    }
 }
 
-.brand-main{
-    color:var(--gold2);
+@keyframes logoScan{
+    0%{
+        transform:
+            translateX(-35px)
+            rotate(-35deg);
+    }
 
-    font-size:16px;
-    font-weight:950;
-
-    letter-spacing:-.65px;
-
-    text-shadow:
-        0 0 15px
-        rgba(231,185,79,.24);
-}
-
-.brand-sub{
-    margin-top:4px;
-
-    color:#e9edf2;
-
-    font-size:10px;
-    font-weight:800;
-
-    letter-spacing:1.45px;
-
-    text-transform:uppercase;
-
-    opacity:.86;
+    100%{
+        transform:
+            translateX(80px)
+            rotate(-35deg);
+    }
 }
 
 .brand-x{
@@ -385,12 +400,12 @@ body:after{
 
     color:#fff;
 
-    font-size:13px;
+    font-size:15px;
     font-weight:900;
 
     border:
         1px solid
-        rgba(255,255,255,.13);
+        rgba(255,255,255,.15);
 
     border-radius:7px;
 
@@ -400,13 +415,15 @@ body:after{
     box-shadow:
         0 0 18px
         rgba(255,255,255,.04);
+
+    text-shadow:
+        0 0 10px
+        rgba(255,255,255,.4);
 }
 
 .brand-x::after{
     content:"";
-
     position:absolute;
-
     inset:-4px;
 
     border:
@@ -415,40 +432,10 @@ body:after{
 
     border-radius:9px;
 
-    animation:
-        xPulse 2.8s ease-in-out infinite;
-}
-
-.brand-status{
-    width:6px;
-    height:6px;
-
-    flex:0 0 6px;
-
-    margin-left:1px;
-
-    border-radius:50%;
-
-    background:#61e39a;
-
-    box-shadow:
-        0 0 8px #61e39a,
-        0 0 17px rgba(97,227,154,.45);
-
-    animation:
-        statusPulse 2s infinite;
-}
-
-@keyframes logoSpin{
-
-    to{
-        transform:rotate(405deg);
-    }
-
+    animation:xPulse 2.8s ease-in-out infinite;
 }
 
 @keyframes xPulse{
-
     0%,100%{
         opacity:.25;
         transform:scale(.92);
@@ -458,11 +445,59 @@ body:after{
         opacity:.8;
         transform:scale(1.08);
     }
+}
 
+.brand-word{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    line-height:1;
+}
+
+.brand-main{
+    color:var(--gold2);
+
+    font-size:14px;
+    font-weight:950;
+
+    letter-spacing:-.5px;
+
+    text-shadow:
+        0 0 15px
+        rgba(231,185,79,.24);
+}
+
+.brand-sub{
+    margin-top:4px;
+
+    color:#aeb6c1;
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+}
+
+.brand-status{
+    width:6px;
+    height:6px;
+
+    flex:0 0 6px;
+
+    border-radius:50%;
+
+    background:#61e39a;
+
+    box-shadow:
+        0 0 8px #61e39a,
+        0 0 17px rgba(97,227,154,.45);
+
+    animation:statusPulse 2s infinite;
 }
 
 @keyframes statusPulse{
-
     0%,100%{
         opacity:.5;
         transform:scale(.8);
@@ -472,16 +507,14 @@ body:after{
         opacity:1;
         transform:scale(1.2);
     }
-
 }
 
 .status{
     display:flex;
     align-items:center;
+    gap:6px;
 
-    gap:7px;
-
-    padding:6px 10px;
+    padding:6px 9px;
 
     border:
         1px solid
@@ -494,57 +527,9 @@ body:after{
 
     color:#788290;
 
-    font-size:9px;
+    font-size:8px;
 
-    letter-spacing:1px;
-}
-
-@media(max-width:430px){
-
-    .brand{
-        gap:6px;
-    }
-
-    .brand-logo{
-        width:30px;
-        height:30px;
-        flex-basis:30px;
-        border-radius:9px;
-    }
-
-    .brand-logo svg{
-        width:20px;
-        height:20px;
-    }
-
-    .brand-main{
-        font-size:14px;
-    }
-
-    .brand-sub{
-        font-size:8px;
-        letter-spacing:1.1px;
-    }
-
-    .brand-x{
-        width:19px;
-        height:19px;
-        flex-basis:19px;
-        font-size:11px;
-    }
-
-    .brand-status{
-        width:5px;
-        height:5px;
-        flex-basis:5px;
-    }
-
-    .status{
-        padding:5px 7px;
-        font-size:8px;
-        gap:5px;
-    }
-
+    letter-spacing:.8px;
 }
 
 /* =====================================================
@@ -598,8 +583,7 @@ body:after{
 
     transform:rotate(35deg);
 
-    animation:
-        heroShape 7s linear infinite;
+    animation:heroShape 7s linear infinite;
 }
 
 .hero:after{
@@ -623,20 +607,16 @@ body:after{
 
     transform:rotate(-28deg);
 
-    animation:
-        heroScan 4s ease-in-out infinite;
+    animation:heroScan 4s ease-in-out infinite;
 }
 
 @keyframes heroShape{
-
     to{
         transform:rotate(395deg);
     }
-
 }
 
 @keyframes heroScan{
-
     0%,100%{
         opacity:.1;
         transform:
@@ -650,7 +630,6 @@ body:after{
             translateX(-30px)
             rotate(-28deg);
     }
-
 }
 
 .hero-label{
@@ -810,16 +789,13 @@ body:after{
 
     border-radius:50%;
 
-    animation:
-        cardOrbit 6s linear infinite;
+    animation:cardOrbit 6s linear infinite;
 }
 
 @keyframes cardOrbit{
-
     to{
         transform:rotate(360deg);
     }
-
 }
 
 .card-icon{
@@ -1085,145 +1061,163 @@ body:after{
 }
 
 /* =====================================================
-   EMPTY
+   CONNECT
 ===================================================== */
 
-.empty{
-    padding:35px 15px;
-
-    text-align:center;
-
-    color:#58616d;
-
-    font-size:11px;
+.connect-options{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
 }
 
-/* =====================================================
-   BOTTOM NAVIGATION
-===================================================== */
+.connect-option{
+    position:relative;
 
-.bottom-nav{
-    position:fixed;
+    display:flex;
+    align-items:center;
 
-    left:50%;
+    width:100%;
+    min-height:82px;
 
-    bottom:12px;
+    padding:15px;
 
-    transform:translateX(-50%);
-
-    width:
-        min(
-            calc(100% - 22px),
-            620px
-        );
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:5px;
-
-    padding:6px;
-
-    z-index:100;
+    gap:13px;
 
     border:
         1px solid
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.075);
 
-    border-radius:19px;
+    border-radius:18px;
 
     background:
-        rgba(8,10,13,.88);
+        linear-gradient(
+            145deg,
+            rgba(16,20,26,.98),
+            rgba(7,9,12,.98)
+        );
 
-    backdrop-filter:
-        blur(20px);
-
-    -webkit-backdrop-filter:
-        blur(20px);
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.5);
-}
-
-.nav-item{
-    position:relative;
-
-    min-height:52px;
-
-    border:0;
-
-    outline:0;
-
-    border-radius:14px;
-
-    background:transparent;
-
-    color:#59636f;
+    color:#fff;
 
     cursor:pointer;
 
-    display:flex;
+    text-align:left;
 
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:4px;
-
-    font-family:inherit;
+    transition:
+        .2s ease;
 }
 
-.nav-item .nav-icon{
-    font-size:17px;
+.connect-option:hover{
+    border-color:
+        rgba(231,185,79,.28);
 
-    line-height:1;
+    transform:translateY(-1px);
 }
 
-.nav-item span:last-child{
-    font-size:8px;
-
-    font-weight:800;
-
-    letter-spacing:.5px;
+.connect-option:active{
+    transform:scale(.985);
 }
 
-.nav-item.active{
-    color:var(--gold2);
+.connect-option.selected{
+    border-color:
+        rgba(231,185,79,.65);
 
     background:
-        rgba(231,185,79,.07);
+        linear-gradient(
+            145deg,
+            rgba(231,185,79,.10),
+            rgba(16,20,26,.98)
+        );
 
     box-shadow:
-        inset 0 0 20px
-        rgba(231,185,79,.035);
+        0 0 25px
+        rgba(231,185,79,.08),
+        inset 0 0 25px
+        rgba(231,185,79,.025);
 }
 
-.nav-item.active:before{
-    content:"";
+.connect-icon{
+    width:45px;
+    height:45px;
 
-    position:absolute;
+    flex:0 0 45px;
 
-    top:4px;
+    display:grid;
+    place-items:center;
 
-    width:20px;
-    height:2px;
+    border-radius:13px;
 
-    border-radius:10px;
+    color:var(--gold2);
 
-    background:var(--gold);
+    font-size:20px;
 
-    box-shadow:
+    background:
+        rgba(231,185,79,.08);
+
+    border:
+        1px solid
+        rgba(231,185,79,.2);
+}
+
+.connect-info{
+    min-width:0;
+    flex:1;
+}
+
+.connect-info strong{
+    display:block;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.connect-info span{
+    color:#68717d;
+
+    font-size:10px;
+
+    line-height:1.35;
+}
+
+.connect-check{
+    color:#58616c;
+    font-size:18px;
+}
+
+.connect-option.selected .connect-check{
+    color:#61e39a;
+    text-shadow:
         0 0 10px
-        var(--gold);
+        rgba(97,227,154,.5);
+}
+
+.role-message{
+    display:none;
+
+    margin-top:10px;
+
+    padding:12px 14px;
+
+    border-radius:14px;
+
+    color:#9da6b2;
+
+    font-size:10px;
+
+    background:
+        rgba(97,227,154,.045);
+
+    border:
+        1px solid
+        rgba(97,227,154,.12);
+}
+
+.role-message.show{
+    display:block;
 }
 
 /* =====================================================
-   TABLES / INFO
+   INFO
 ===================================================== */
 
 .info-card{
@@ -1366,14 +1360,195 @@ body:after{
 }
 
 /* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+    padding:35px 15px;
+
+    text-align:center;
+
+    color:#58616d;
+
+    font-size:11px;
+}
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+    position:fixed;
+
+    left:50%;
+
+    bottom:12px;
+
+    transform:translateX(-50%);
+
+    width:
+        min(
+            calc(100% - 22px),
+            620px
+        );
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:5px;
+
+    padding:6px;
+
+    z-index:100;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:19px;
+
+    background:
+        rgba(8,10,13,.88);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 15px 45px
+        rgba(0,0,0,.5);
+}
+
+.nav-item{
+    position:relative;
+
+    min-height:52px;
+
+    border:0;
+
+    outline:0;
+
+    border-radius:14px;
+
+    background:transparent;
+
+    color:#59636f;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    font-family:inherit;
+}
+
+.nav-item .nav-icon{
+    font-size:17px;
+
+    line-height:1;
+}
+
+.nav-item span:last-child{
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+}
+
+.nav-item.active{
+    color:var(--gold2);
+
+    background:
+        rgba(231,185,79,.07);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(231,185,79,.035);
+}
+
+.nav-item.active:before{
+    content:"";
+
+    position:absolute;
+
+    top:4px;
+
+    width:20px;
+    height:2px;
+
+    border-radius:10px;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 10px
+        var(--gold);
+}
+
+/* =====================================================
    RESPONSIVE
 ===================================================== */
 
-@media(max-width:370px){
+@media(max-width:430px){
 
     .container{
         padding-left:10px;
         padding-right:10px;
+    }
+
+    .topbar{
+        gap:6px;
+    }
+
+    .brand{
+        gap:5px;
+    }
+
+    .brand-logo{
+        width:31px;
+        height:31px;
+        flex-basis:31px;
+        border-radius:9px;
+    }
+
+    .brand-main{
+        font-size:12px;
+    }
+
+    .brand-sub{
+        font-size:7px;
+        letter-spacing:1.15px;
+    }
+
+    .brand-x{
+        width:18px;
+        height:18px;
+        flex-basis:18px;
+        font-size:11px;
+    }
+
+    .brand-status{
+        width:5px;
+        height:5px;
+        flex-basis:5px;
+    }
+
+    .status{
+        padding:5px 7px;
+        font-size:7px;
+        gap:4px;
     }
 
     .hero{
@@ -1392,14 +1567,30 @@ body:after{
         padding:12px;
     }
 
+}
+
+@media(max-width:370px){
+
     .status{
         display:none;
     }
 
     .brand-main{
+        font-size:12px;
+    }
+
+    .main-card h3{
         font-size:13px;
     }
 
+}
+
+/* =====================================================
+   HIDE BROKEN SVG HEADER
+===================================================== */
+
+.brand-logo svg{
+    display:none;
 }
 
 </style>
@@ -1410,621 +1601,621 @@ body:after{
 <div class="future-decoration tech-line one"></div>
 <div class="future-decoration tech-line two"></div>
 
-
 <div class="container">
 
-    <!-- =================================================
-         HEADER
-    ================================================= -->
+<!-- =================================================
+     HEADER
+================================================= -->
 
-    <div class="topbar">
+<div class="topbar">
 
-        <div class="brand">
+    <div class="brand">
 
-            <!-- NOTFAKE -->
-            <div
-                class="brand-logo nf"
-                aria-label="NotFake logo"
+        <!-- NOTFAKE -->
+        <div
+            class="brand-logo nf"
+            aria-label="NotFake logo"
+        >
+            <img
+                src="images/notfake.png"
+                alt="NotFake"
             >
+        </div>
 
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
+        <div class="brand-x">×</div>
 
-                    <path
-                        d="
-                            M5 18V6
-                            h3.1
-                            l7.8 7.7
-                            V6
-                            H19
-                            v12
-                            h-3.1
-                            L8.1 10.3
-                            V18
-                            H5Z
-                        "
-                        fill="none"
-                        stroke="#f1d27b"
-                        stroke-width="1.7"
-                        stroke-linejoin="round"
-                    />
-
-                    <path
-                        d="M6 20h12"
-                        stroke="#fff"
-                        stroke-opacity=".45"
-                        stroke-width="1"
-                    />
-
-                </svg>
-
-            </div>
-
-
-            <div class="brand-word">
-
-                <div class="brand-main">
-                    NotFake
-                </div>
-
-                <div class="brand-sub">
-                    Community
-                </div>
-
-            </div>
-
-
-            <!-- X -->
-
-            <div class="brand-x">
-                ×
-            </div>
-
-
-            <!-- ROSPLAT -->
-
-            <div
-                class="brand-logo rp"
-                aria-label="RosPlat logo"
+        <!-- ROSPLAT -->
+        <div
+            class="brand-logo rp"
+            aria-label="RosPlat logo"
+        >
+            <img
+                src="images/rosplat.png"
+                alt="RosPlat"
             >
+        </div>
 
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
+        <div class="brand-word">
 
-                    <path
-                        d="
-                            M4 6.5
-                            h8.8
-                            c4.3 0 6.5 1.8 6.5 4.8
-                            0 3-2.2 4.8-6.5 4.8
-                            H9.2
-                            V20
-                            H4
-                            V6.5Z
-                        "
-                        fill="none"
-                        stroke="#fff"
-                        stroke-width="1.55"
-                        stroke-linejoin="round"
-                    />
-
-                    <path
-                        d="
-                            M9.2 10.1
-                            h3.6
-                            c1.4 0 2.1.4 2.1 1.2
-                            s-.7 1.2-2.1 1.2
-                            H9.2
-                        "
-                        fill="none"
-                        stroke="#5f9cff"
-                        stroke-width="1.55"
-                        stroke-linecap="round"
-                    />
-
-                </svg>
-
+            <div class="brand-main">
+                NotFake × RosPlat
             </div>
 
-
-            <div class="brand-word">
-
-                <div
-                    class="brand-main"
-                    style="
-                        color:#eef2f7;
-                        text-shadow:
-                        0 0 15px
-                        rgba(82,150,255,.16)
-                    "
-                >
-                    RosPlat
-                </div>
-
-                <div class="brand-sub">
-                    Network
-                </div>
-
+            <div class="brand-sub">
+                PRIVATE NETWORK
             </div>
 
+        </div>
 
-            <div class="brand-status"></div>
+        <div class="brand-status"></div>
+
+    </div>
+
+    <div class="status">
+        <span>●</span>
+        SYSTEM ONLINE
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     HOME
+================================================= -->
+
+<section
+    id="homePage"
+    class="page active"
+>
+
+    <div class="hero">
+
+        <div class="hero-label">
+            PRIVATE PROCESSING NETWORK
+        </div>
+
+        <h1>
+            NotFake
+            <span>×</span>
+            RosPlat
+        </h1>
+
+        <p>
+            Закрытая рабочая экосистема.
+            Мануалы, инструменты и база
+            для участников сети.
+        </p>
+
+    </div>
+
+
+    <div class="section-title">
+        QUICK ACCESS
+    </div>
+
+
+    <div class="main-grid">
+
+        <!-- МАНУАЛЫ -->
+        <div
+            class="main-card"
+            onclick="openPage('manuals')"
+        >
+
+            <div class="card-icon">
+                ◈
+            </div>
+
+            <h3>
+                Мануалы
+            </h3>
+
+            <p>
+                Рабочие инструкции
+                и банковские направления
+            </p>
 
         </div>
 
 
-        <div class="status">
+        <!-- ПОДКЛЮЧИТЬСЯ -->
+        <div
+            class="main-card"
+            onclick="openPage('connect')"
+        >
 
-            <span>●</span>
+            <div class="card-icon">
+                ⇄
+            </div>
 
-            SYSTEM ONLINE
+            <h3>
+                Подключиться
+            </h3>
+
+            <p>
+                Выбор рабочего
+                типа подключения
+            </p>
+
+        </div>
+
+
+        <!-- НОВИЧКАМ -->
+        <div
+            class="main-card"
+            onclick="openPage('guide')"
+        >
+
+            <div class="card-icon">
+                ◉
+            </div>
+
+            <h3>
+                Новичкам
+            </h3>
+
+            <p>
+                Быстрый старт
+                внутри системы
+            </p>
+
+        </div>
+
+
+        <!-- МЕДИА -->
+        <div
+            class="main-card"
+            onclick="openPage('media')"
+        >
+
+            <div class="card-icon">
+                ⌁
+            </div>
+
+            <h3>
+                Медиа
+            </h3>
+
+            <p>
+                Источники и полезные
+                материалы
+            </p>
 
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         HOME
-    ================================================= -->
+    <div class="section-title">
+        NETWORK
+    </div>
 
-    <section
-        id="homePage"
-        class="page active"
-    >
 
-        <div class="hero">
+    <div class="info-card">
 
-            <div class="hero-label">
-                PRIVATE PROCESSING NETWORK
+        <h3>
+            Система активна
+        </h3>
+
+        <p>
+            Интерфейс синхронизирован
+            с рабочей структурой
+            NotFake × RosPlat.
+            Используйте меню для
+            быстрого доступа.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     MANUALS
+================================================= -->
+
+<section
+    id="manualsPage"
+    class="page"
+>
+
+    <div class="section-title">
+        BANKING MANUALS
+    </div>
+
+    <div class="search-box">
+
+        <div class="search-icon">
+            ⌕
+        </div>
+
+        <input
+            id="manualSearch"
+            type="text"
+            placeholder="Поиск банка..."
+            oninput="filterManuals()"
+        >
+
+    </div>
+
+    <div
+        id="manualList"
+        class="manual-list"
+    ></div>
+
+</section>
+
+
+<!-- =================================================
+     CONNECT
+================================================= -->
+
+<section
+    id="connectPage"
+    class="page"
+>
+
+    <div class="section-title">
+        CONNECTION
+    </div>
+
+    <div class="info-card">
+
+        <h3>
+            Подключиться
+        </h3>
+
+        <p>
+            Выберите необходимый
+            тип рабочего подключения.
+        </p>
+
+    </div>
+
+
+    <div class="connect-options">
+
+        <button
+            class="connect-option"
+            onclick="selectRole(this,'ТимЛид')"
+        >
+
+            <div class="connect-icon">
+                ◈
             </div>
 
-            <h1>
-                NotFake
-                <span>×</span>
-                RosPlat
-            </h1>
-
-            <p>
-                Закрытая рабочая экосистема.
-                Мануалы, инструменты и база
-                для участников сети.
-            </p>
-
-        </div>
-
-
-        <div class="section-title">
-            QUICK ACCESS
-        </div>
-
-
-        <div class="main-grid">
-
-            <div
-                class="main-card"
-                onclick="openPage('manuals')"
-            >
-
-                <div class="card-icon">
-                    ◈
-                </div>
-
-                <h3>
-                    Мануалы
-                </h3>
-
-                <p>
-                    Рабочие инструкции
-                    и банковские направления
-                </p>
-
-            </div>
-
-
-            <div
-                class="main-card"
-                onclick="openPage('tables')"
-            >
-
-                <div class="card-icon">
-                    ▦
-                </div>
-
-                <h3>
-                    Таблицы
-                </h3>
-
-                <p>
-                    Рабочие данные
-                    и внутренние инструменты
-                </p>
-
-            </div>
-
-
-            <div
-                class="main-card"
-                onclick="openPage('guide')"
-            >
-
-                <div class="card-icon">
-                    ◉
-                </div>
-
-                <h3>
-                    Новичкам
-                </h3>
-
-                <p>
-                    Быстрый старт
-                    внутри системы
-                </p>
-
-            </div>
-
-
-            <div
-                class="main-card"
-                onclick="openPage('media')"
-            >
-
-                <div class="card-icon">
-                    ⌁
-                </div>
-
-                <h3>
-                    Медиа
-                </h3>
-
-                <p>
-                    Источники и полезные
-                    материалы
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="section-title">
-            NETWORK
-        </div>
-
-
-        <div class="info-card">
-
-            <h3>
-                Система активна
-            </h3>
-
-            <p>
-                Интерфейс синхронизирован
-                с рабочей структурой NotFake × RosPlat.
-                Используйте нижнюю навигацию
-                для быстрого доступа.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         MANUALS
-    ================================================= -->
-
-    <section
-        id="manualsPage"
-        class="page"
-    >
-
-        <div class="section-title">
-            BANKING MANUALS
-        </div>
-
-
-        <div class="search-box">
-
-            <div class="search-icon">
-                ⌕
-            </div>
-
-            <input
-                id="manualSearch"
-                type="text"
-                placeholder="Поиск банка..."
-                oninput="filterManuals()"
-            >
-
-        </div>
-
-
-        <div
-            id="manualList"
-            class="manual-list"
-        ></div>
-
-    </section>
-
-
-    <!-- =================================================
-         TABLES
-    ================================================= -->
-
-    <section
-        id="tablesPage"
-        class="page"
-    >
-
-        <div class="section-title">
-            WORKSPACE
-        </div>
-
-
-        <div class="info-card">
-
-            <h3>
-                Рабочие таблицы
-            </h3>
-
-            <p>
-                Быстрый доступ к внутренним
-                инструментам и рабочим разделам.
-            </p>
-
-        </div>
-
-
-        <div class="table-grid">
-
-            <div class="table-card">
+            <div class="connect-info">
 
                 <strong>
-                    PROCESSING
+                    ТимЛид
                 </strong>
 
                 <span>
-                    Основная рабочая таблица
+                    Подключение рабочего
+                    интерфейса тимлида.
                 </span>
 
             </div>
 
+            <div class="connect-check">
+                →
+            </div>
 
-            <div class="table-card">
+        </button>
+
+
+        <button
+            class="connect-option"
+            onclick="selectRole(this,'Трейдер')"
+        >
+
+            <div class="connect-icon">
+                ◇
+            </div>
+
+            <div class="connect-info">
 
                 <strong>
-                    STATISTICS
+                    Трейдер
                 </strong>
 
                 <span>
-                    Статистика и показатели
+                    Подключение рабочего
+                    интерфейса трейдера.
                 </span>
 
             </div>
 
-
-            <div class="table-card">
-
-                <strong>
-                    FARM
-                </strong>
-
-                <span>
-                    Рабочие направления
-                </span>
-
+            <div class="connect-check">
+                →
             </div>
 
+        </button>
 
-            <div class="table-card">
-
-                <strong>
-                    CONTROL
-                </strong>
-
-                <span>
-                    Контроль рабочих процессов
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
+    </div>
 
 
-    <!-- =================================================
-         GUIDE
-    ================================================= -->
+    <div
+        id="roleMessage"
+        class="role-message"
+    ></div>
 
-    <section
-        id="guidePage"
-        class="page"
-    >
-
-        <div class="section-title">
-            QUICK START
-        </div>
+</section>
 
 
-        <div class="guide-step">
+<!-- =================================================
+     TABLES
+================================================= -->
 
-            <div class="guide-num">
-                01
-            </div>
+<section
+    id="tablesPage"
+    class="page"
+>
 
-            <div>
+    <div class="section-title">
+        WORKSPACE
+    </div>
 
-                <strong>
-                    Изучи мануалы
-                </strong>
 
-                <span>
-                    Выбери необходимое направление
-                    и внимательно ознакомься
-                    с рабочей инструкцией.
-                </span>
+    <div class="info-card">
 
-            </div>
+        <h3>
+            Рабочие таблицы
+        </h3>
+
+        <p>
+            Быстрый доступ к внутренним
+            инструментам и рабочим разделам.
+        </p>
+
+    </div>
+
+
+    <div class="table-grid">
+
+        <div class="table-card">
+
+            <strong>
+                PROCESSING
+            </strong>
+
+            <span>
+                Основная рабочая таблица
+            </span>
 
         </div>
 
 
-        <div class="guide-step">
+        <div class="table-card">
 
-            <div class="guide-num">
-                02
-            </div>
+            <strong>
+                STATISTICS
+            </strong>
 
-            <div>
-
-                <strong>
-                    Проверь таблицы
-                </strong>
-
-                <span>
-                    Используй рабочие таблицы
-                    для актуальной информации
-                    и контроля процессов.
-                </span>
-
-            </div>
+            <span>
+                Статистика и показатели
+            </span>
 
         </div>
 
 
-        <div class="guide-step">
+        <div class="table-card">
 
-            <div class="guide-num">
-                03
-            </div>
+            <strong>
+                FARM
+            </strong>
 
-            <div>
-
-                <strong>
-                    Соблюдай структуру
-                </strong>
-
-                <span>
-                    Следуй установленным правилам
-                    команды и не пропускай важные
-                    этапы работы.
-                </span>
-
-            </div>
+            <span>
+                Рабочие направления
+            </span>
 
         </div>
 
 
-        <div class="guide-step">
+        <div class="table-card">
 
-            <div class="guide-num">
-                04
-            </div>
+            <strong>
+                CONTROL
+            </strong>
 
-            <div>
-
-                <strong>
-                    Используй базу
-                </strong>
-
-                <span>
-                    Все основные материалы
-                    находятся внутри приложения.
-                </span>
-
-            </div>
+            <span>
+                Контроль рабочих процессов
+            </span>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =================================================
-         MEDIA
-    ================================================= -->
+<!-- =================================================
+     GUIDE
+================================================= -->
 
-    <section
-        id="mediaPage"
-        class="page"
-    >
+<section
+    id="guidePage"
+    class="page"
+>
 
-        <div class="section-title">
-            MEDIA SOURCES
+    <div class="section-title">
+        QUICK START
+    </div>
+
+
+    <div class="guide-step">
+
+        <div class="guide-num">
+            01
         </div>
 
+        <div>
 
-        <div class="info-card">
+            <strong>
+                Изучи мануалы
+            </strong>
 
-            <h3>
-                Полезные источники
-            </h3>
-
-            <p>
-                Здесь можно разместить ссылки
-                на актуальные источники,
-                документы и материалы команды.
-            </p>
-
-        </div>
-
-
-        <div class="guide-step">
-
-            <div class="guide-num">
-                ↗
-            </div>
-
-            <div>
-
-                <strong>
-                    Источник #01
-                </strong>
-
-                <span>
-                    Добавьте сюда необходимую
-                    ссылку или материал.
-                </span>
-
-            </div>
+            <span>
+                Выбери необходимое направление
+                и внимательно ознакомься
+                с рабочей инструкцией.
+            </span>
 
         </div>
 
+    </div>
 
-        <div class="guide-step">
 
-            <div class="guide-num">
-                ↗
-            </div>
+    <div class="guide-step">
 
-            <div>
+        <div class="guide-num">
+            02
+        </div>
 
-                <strong>
-                    Источник #02
-                </strong>
+        <div>
 
-                <span>
-                    Дополнительный полезный
-                    источник информации.
-                </span>
+            <strong>
+                Проверь таблицы
+            </strong>
 
-            </div>
+            <span>
+                Используй рабочие таблицы
+                для актуальной информации
+                и контроля процессов.
+            </span>
 
         </div>
 
-    </section>
+    </div>
+
+
+    <div class="guide-step">
+
+        <div class="guide-num">
+            03
+        </div>
+
+        <div>
+
+            <strong>
+                Соблюдай структуру
+            </strong>
+
+            <span>
+                Следуй установленным правилам
+                команды и не пропускай важные
+                этапы работы.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="guide-step">
+
+        <div class="guide-num">
+            04
+        </div>
+
+        <div>
+
+            <strong>
+                Используй базу
+            </strong>
+
+            <span>
+                Все основные материалы
+                находятся внутри приложения.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     MEDIA
+================================================= -->
+
+<section
+    id="mediaPage"
+    class="page"
+>
+
+    <div class="section-title">
+        MEDIA SOURCES
+    </div>
+
+
+    <div class="info-card">
+
+        <h3>
+            Полезные источники
+        </h3>
+
+        <p>
+            Здесь можно разместить ссылки
+            на актуальные источники,
+            документы и материалы команды.
+        </p>
+
+    </div>
+
+
+    <div class="guide-step">
+
+        <div class="guide-num">
+            ↗
+        </div>
+
+        <div>
+
+            <strong>
+                Источник #01
+            </strong>
+
+            <span>
+                Добавьте сюда необходимую
+                ссылку или материал.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="guide-step">
+
+        <div class="guide-num">
+            ↗
+        </div>
+
+        <div>
+
+            <strong>
+                Источник #02
+            </strong>
+
+            <span>
+                Дополнительный полезный
+                источник информации.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
 
 </div>
 
 
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
+<!-- =================================================
+     BOTTOM NAVIGATION
+================================================= -->
 
 <nav class="bottom-nav">
 
@@ -2064,16 +2255,16 @@ body:after{
 
     <button
         class="nav-item"
-        data-page="tables"
-        onclick="openPage('tables')"
+        data-page="connect"
+        onclick="openPage('connect')"
     >
 
         <div class="nav-icon">
-            ▦
+            ⇄
         </div>
 
         <span>
-            Таблицы
+            Подключиться
         </span>
 
     </button>
@@ -2377,7 +2568,7 @@ const manuals = [
 
 
 /* =====================================================
-   SPECIAL SVG LOGOS
+   BANK LOGOS
 ===================================================== */
 
 function getLogo(bank){
@@ -2547,17 +2738,13 @@ function getLogo(bank){
 
 
 /* =====================================================
-   RENDER
+   RENDER MANUALS
 ===================================================== */
 
-function renderManuals(
-    list = manuals
-){
+function renderManuals(list = manuals){
 
     const container =
-        document.getElementById(
-            "manualList"
-        );
+        document.getElementById("manualList");
 
     if(!container){
         return;
@@ -2578,63 +2765,56 @@ function renderManuals(
     }
 
 
-    list.forEach(
-        (bank,index)=>{
+    list.forEach(bank => {
 
-            const item =
-                document.createElement(
-                    "div"
-                );
+        const item =
+            document.createElement("div");
 
-            item.className =
-                "manual-item";
+        item.className =
+            "manual-item";
 
-            item.style.setProperty(
-                "--accent",
-                bank.color
-            );
+        item.style.setProperty(
+            "--accent",
+            bank.color
+        );
 
-            item.innerHTML = `
+        item.innerHTML = `
 
-                <div
-                    class="bank-logo"
-                    style="
-                        --accent:${bank.color};
-                        --logo-bg:${bank.bg};
-                    "
-                >
+            <div
+                class="bank-logo"
+                style="
+                    --accent:${bank.color};
+                    --logo-bg:${bank.bg};
+                "
+            >
 
-                    ${getLogo(bank)}
+                ${getLogo(bank)}
 
-                </div>
+            </div>
 
 
-                <div class="manual-name">
+            <div class="manual-name">
 
-                    <strong>
-                        ${bank.name}
-                    </strong>
+                <strong>
+                    ${bank.name}
+                </strong>
 
-                    <span>
-                        ${bank.sub}
-                    </span>
+                <span>
+                    ${bank.sub}
+                </span>
 
-                </div>
-
-
-                <div class="manual-arrow">
-                    →
-                </div>
-
-            `;
+            </div>
 
 
-            container.appendChild(
-                item
-            );
+            <div class="manual-arrow">
+                →
+            </div>
 
-        }
-    );
+        `;
+
+        container.appendChild(item);
+
+    });
 
 }
 
@@ -2661,23 +2841,64 @@ function filterManuals(){
 
 
     const filtered =
-        manuals.filter(
-            bank =>
+        manuals.filter(bank =>
 
-                bank.name
-                    .toLowerCase()
-                    .includes(query)
+            bank.name
+                .toLowerCase()
+                .includes(query)
 
-                ||
+            ||
 
-                bank.sub
-                    .toLowerCase()
-                    .includes(query)
+            bank.sub
+                .toLowerCase()
+                .includes(query)
 
         );
 
 
     renderManuals(filtered);
+
+}
+
+
+/* =====================================================
+   CONNECT ROLE
+===================================================== */
+
+function selectRole(button, role){
+
+    document
+        .querySelectorAll(".connect-option")
+        .forEach(item => {
+
+            item.classList.remove(
+                "selected"
+            );
+
+        });
+
+
+    button.classList.add(
+        "selected"
+    );
+
+
+    const message =
+        document.getElementById(
+            "roleMessage"
+        );
+
+
+    if(message){
+
+        message.textContent =
+            "Выбрано: " + role;
+
+        message.classList.add(
+            "show"
+        );
+
+    }
 
 }
 
@@ -2690,15 +2911,13 @@ function openPage(page){
 
     document
         .querySelectorAll(".page")
-        .forEach(
-            element => {
+        .forEach(element => {
 
-                element.classList.remove(
-                    "active"
-                );
+            element.classList.remove(
+                "active"
+            );
 
-            }
-        );
+        });
 
 
     const target =
@@ -2718,35 +2937,29 @@ function openPage(page){
 
     document
         .querySelectorAll(".nav-item")
-        .forEach(
-            button => {
+        .forEach(button => {
 
-                button.classList.remove(
+            button.classList.remove(
+                "active"
+            );
+
+
+            if(
+                button.dataset.page === page
+            ){
+
+                button.classList.add(
                     "active"
                 );
 
-
-                if(
-                    button.dataset.page ===
-                    page
-                ){
-
-                    button.classList.add(
-                        "active"
-                    );
-
-                }
-
             }
-        );
+
+        });
 
 
     window.scrollTo({
-
         top:0,
-
         behavior:"smooth"
-
     });
 
 }
