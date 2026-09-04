@@ -9,7 +9,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 >
 
-<title>Trader Workspace</title>
+<title>NotFake × RosPlat</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
@@ -26,9 +26,7 @@ body {
     padding: 0;
     width: 100%;
     min-height: 100%;
-    background:
-        radial-gradient(circle at 50% -10%, #13243b 0%, transparent 38%),
-        #030914;
+    background: #030811;
     color: #fff;
     font-family:
         -apple-system,
@@ -41,435 +39,99 @@ body {
 
 body {
     overflow-x: hidden;
-    padding-bottom: 105px;
+    padding-bottom: 92px;
 }
 
-/* =========================================
+/* ================================
    BACKGROUND
-========================================= */
+================================ */
 
 body::before {
     content: "";
     position: fixed;
-    inset: 0;
+    inset: -30%;
     pointer-events: none;
+
     background:
-        radial-gradient(circle at 85% 20%, rgba(255, 190, 60, .08), transparent 24%),
-        radial-gradient(circle at 15% 55%, rgba(0, 140, 255, .06), transparent 25%),
-        radial-gradient(circle at 85% 70%, rgba(180, 70, 255, .05), transparent 25%);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 125, 255, .10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(255, 190, 50, .08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 70% 80%,
+            rgba(150, 60, 255, .07),
+            transparent 25%
+        );
+
+    animation: backgroundMove 12s ease-in-out infinite alternate;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    top: 15%;
+    right: -150px;
+
+    border: 1px solid rgba(255, 193, 55, .08);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 70px rgba(255, 190, 50, .04);
+
+    animation: orbit 14s linear infinite;
+    pointer-events: none;
     z-index: -1;
 }
 
+@keyframes backgroundMove {
+    from {
+        transform: translate3d(-2%, -2%, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(2%, 2%, 0) scale(1.05);
+    }
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ================================
+   CONTAINER
+================================ */
+
 .container {
     width: 100%;
-    max-width: 720px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: 20px 24px 30px;
+    padding: 12px 16px 24px;
 }
 
-/* =========================================
-   HEADER
-========================================= */
 
-.brand-header {
-    height: 105px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 17px;
-    position: relative;
-}
-
-.brand-header::before {
-    content: "";
-    position: absolute;
-    left: 3px;
-    top: 34px;
-    width: 31px;
-    height: 31px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 190, 55, .35);
-    box-shadow:
-        0 0 18px rgba(255, 185, 40, .15),
-        inset 0 0 12px rgba(255, 185, 40, .12);
-}
-
-.brand-header::after {
-    content: "";
-    position: absolute;
-    left: 13px;
-    top: 44px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: #ffc63d;
-    box-shadow:
-        0 0 10px #ffc63d,
-        0 0 22px rgba(255, 198, 61, .6);
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.notfake {
-    font-weight: 900;
-    font-size: 23px;
-    letter-spacing: -1.2px;
-    color: #f3b936;
-    text-shadow:
-        0 0 12px rgba(243, 185, 54, .35);
-}
-
-.cross {
-    font-size: 25px;
-    font-weight: 200;
-    color: #e6ae34;
-}
-
-.rosplat {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.rp {
-    font-size: 37px;
-    line-height: 1;
-    font-weight: 900;
-    letter-spacing: -4px;
-    background: linear-gradient(
-        145deg,
-        #ffffff 15%,
-        #d9d9d9 45%,
-        #d89a27 75%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.rosplat-name {
-    font-size: 19px;
-    color: #d9a943;
-    letter-spacing: -.5px;
-}
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero {
-    position: relative;
-    min-height: 275px;
-    border-radius: 31px;
-    padding: 42px 34px;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(18, 31, 48, .95),
-            rgba(5, 14, 27, .98)
-        );
-
-    border: 1px solid rgba(220, 164, 49, .55);
-
-    box-shadow:
-        inset 0 0 50px rgba(0, 80, 140, .08),
-        0 0 35px rgba(0, 0, 0, .35);
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 310px;
-    height: 310px;
-    right: -115px;
-    top: -100px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 191, 54, .35);
-    box-shadow:
-        0 0 30px rgba(255, 184, 50, .08);
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    right: 92px;
-    top: 94px;
-    border-radius: 50%;
-    background: #ffd15a;
-    box-shadow:
-        0 0 12px #ffd15a,
-        0 0 30px #ffae00;
-}
-
-.hero-label {
-    color: #eab842;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    margin: 0;
-    font-size: 39px;
-    line-height: 1.08;
-    letter-spacing: -1.5px;
-    font-weight: 700;
-    max-width: 570px;
-}
-
-.hero h1 span {
-    color: #eab43a;
-}
-
-.hero p {
-    margin: 23px 0 0;
-    color: #aab4c2;
-    font-size: 18px;
-    line-height: 1.55;
-    max-width: 500px;
-}
-
-/* =========================================
-   SECTION TITLE
-========================================= */
-
-.section-title {
-    margin: 42px 0 18px;
-    color: #dcae43;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 4px;
-}
-
-/* =========================================
-   MAIN CARDS
-========================================= */
-
-.main-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.main-card {
-    position: relative;
-    min-height: 255px;
-    padding: 26px 24px;
-    border-radius: 27px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: .25s ease;
-}
-
-.main-card:active {
-    transform: scale(.97);
-}
-
-.manual-card {
-    background:
-        radial-gradient(circle at 20% 15%, rgba(35, 138, 255, .18), transparent 35%),
-        linear-gradient(145deg, #071b32, #06101f);
-
-    border: 1px solid rgba(48, 151, 255, .48);
-
-    box-shadow:
-        inset 0 0 35px rgba(0, 130, 255, .06),
-        0 0 25px rgba(0, 100, 255, .05);
-}
-
-.media-card {
-    background:
-        radial-gradient(circle at 80% 15%, rgba(187, 75, 255, .18), transparent 35%),
-        linear-gradient(145deg, #160b29, #090a19);
-
-    border: 1px solid rgba(193, 82, 255, .48);
-
-    box-shadow:
-        inset 0 0 35px rgba(190, 70, 255, .06),
-        0 0 25px rgba(180, 60, 255, .05);
-}
-
-.card-icon {
-    width: 66px;
-    height: 66px;
-    border-radius: 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 32px;
-
-    margin-bottom: 28px;
-}
-
-.manual-card .card-icon {
-    background:
-        linear-gradient(145deg, #164f89, #071d39);
-    border: 1px solid #3299ff;
-    box-shadow:
-        0 0 20px rgba(43, 150, 255, .2);
-}
-
-.media-card .card-icon {
-    background:
-        linear-gradient(145deg, #642d92, #1b0b32);
-    border: 1px solid #ca6aff;
-    box-shadow:
-        0 0 20px rgba(196, 79, 255, .2);
-}
-
-.main-card h2 {
-    margin: 0;
-    font-size: 23px;
-    line-height: 1.15;
-}
-
-.main-card p {
-    margin: 9px 0 0;
-    font-size: 15px;
-    color: #8f9bab;
-}
-
-.manual-card p {
-    color: #3fa5ff;
-}
-
-.media-card p {
-    color: #bd72ff;
-}
-
-.card-count {
-    position: absolute;
-    left: 24px;
-    bottom: 25px;
-
-    padding: 8px 13px;
-    border-radius: 30px;
-
-    font-size: 13px;
-    color: #aeb7c5;
-
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.06);
-}
-
-.arrow {
-    position: absolute;
-    right: 22px;
-    bottom: 22px;
-
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    font-size: 29px;
-    font-weight: 200;
-}
-
-.manual-card .arrow {
-    border: 1px solid rgba(50,155,255,.65);
-    background: rgba(0, 105, 190, .12);
-    color: #55adff;
-}
-
-.media-card .arrow {
-    border: 1px solid rgba(200,90,255,.65);
-    background: rgba(160, 50, 220, .12);
-    color: #c66dff;
-}
-
-/* =========================================
-   NEWBIE CARD
-========================================= */
-
-.newbie-card {
-    position: relative;
-    min-height: 145px;
-    border-radius: 27px;
-    padding: 27px 28px;
-
-    display: flex;
-    align-items: center;
-    gap: 22px;
-
-    overflow: hidden;
-    cursor: pointer;
-
-    background:
-        radial-gradient(circle at 85% 70%, rgba(255, 174, 37, .13), transparent 35%),
-        linear-gradient(145deg, #1c1710, #0c0d10);
-
-    border: 1px solid rgba(230, 170, 48, .55);
-
-    box-shadow:
-        0 0 25px rgba(255, 175, 40, .05);
-
-    transition: .25s ease;
-}
-
-.newbie-card:active {
-    transform: scale(.98);
-}
-
-.newbie-icon {
-    flex: 0 0 66px;
-    height: 66px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 18px;
-
-    font-size: 31px;
-
-    background:
-        linear-gradient(145deg, #553914, #17130d);
-
-    border: 1px solid #e9ae32;
-
-    box-shadow:
-        0 0 22px rgba(240, 171, 38, .2);
-}
-
-.newbie-info h2 {
-    margin: 0;
-    font-size: 20px;
-}
-
-.newbie-info p {
-    margin: 8px 0 0;
-    color: #a69d8c;
-    font-size: 15px;
-}
-
-.newbie-arrow {
-    margin-left: auto;
-    font-size: 30px;
-    color: #efb536;
-}
-
-/* =========================================
+/* ================================
    PAGES
-========================================= */
+================================ */
 
 .page {
     display: none;
-    animation: pageIn .3s ease;
+    animation: pageIn .35s cubic-bezier(.2,.8,.2,1);
 }
 
 .page.active {
@@ -479,117 +141,739 @@ body::before {
 @keyframes pageIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(14px) scale(.985);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
-/* =========================================
-   PAGE HEADER
-========================================= */
 
-.page-header {
+/* ================================
+   TOP BAR
+================================ */
+
+.topbar {
+    height: 58px;
+
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 23px;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.logo-notfake {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -.8px;
+    color: #f3bc42;
+
+    text-shadow:
+        0 0 18px rgba(243,188,66,.18);
+}
+
+.logo-x {
+    color: #667181;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.logo-rosplat {
+    font-size: 18px;
+    font-weight: 800;
+    color: #f0f2f5;
+    letter-spacing: -.5px;
+}
+
+.logo-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+
+    background: #f3bd42;
+
+    box-shadow:
+        0 0 8px #f3bd42,
+        0 0 18px rgba(243,189,66,.55);
+
+    animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+    0%,100% {
+        opacity: .65;
+        transform: scale(.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    color: #8290a2;
+    font-size: 11px;
+
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #56d88b;
+
+    box-shadow:
+        0 0 8px rgba(86,216,139,.8);
+}
+
+
+/* ================================
+   HERO COMPACT
+================================ */
+
+.hero {
+    position: relative;
+
+    min-height: 148px;
+
+    padding: 24px 22px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16,30,48,.98),
+            rgba(5,12,23,.98)
+        );
+
+    border: 1px solid rgba(226,174,56,.38);
+
+    box-shadow:
+        inset 0 0 40px rgba(0,110,210,.06),
+        0 10px 35px rgba(0,0,0,.25);
+
+    animation: heroGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    from {
+        box-shadow:
+            inset 0 0 40px rgba(0,110,210,.05),
+            0 10px 35px rgba(0,0,0,.25);
+    }
+
+    to {
+        box-shadow:
+            inset 0 0 55px rgba(0,130,240,.08),
+            0 10px 42px rgba(0,0,0,.32);
+    }
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 210px;
+    height: 210px;
+
+    right: -105px;
+    top: -105px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,193,58,.18);
+
+    box-shadow:
+        0 0 35px rgba(255,190,50,.05);
+
+    animation: heroOrbit 8s linear infinite;
+}
+
+@keyframes heroOrbit {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-label {
+    position: relative;
+
+    margin-bottom: 9px;
+
+    color: #e7b43e;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    position: relative;
+
+    margin: 0;
+
+    font-size: 29px;
+    line-height: 1.08;
+
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    color: #f1bd45;
+
+    text-shadow:
+        0 0 18px rgba(241,189,69,.15);
+}
+
+.hero p {
+    position: relative;
+
+    margin: 9px 0 0;
+
+    max-width: 470px;
+
+    color: #8490a0;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+
+/* ================================
+   SECTION
+================================ */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 19px 2px 10px;
+
+    color: #718094;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+}
+
+.section-title::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08),
+            transparent
+        );
+}
+
+
+/* ================================
+   MAIN GRID
+================================ */
+
+.main-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.main-card {
+    position: relative;
+
+    min-height: 145px;
+
+    padding: 17px;
+
+    border-radius: 21px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform .18s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.main-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    right: -45px;
+    top: -45px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    animation: cardOrbit 7s linear infinite;
+}
+
+@keyframes cardOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.main-card:active {
+    transform: scale(.965);
+}
+
+.manual-card {
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(35,145,255,.17),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #091c32,
+            #050e1b
+        );
+
+    border: 1px solid rgba(48,151,255,.34);
+
+    box-shadow:
+        inset 0 0 30px rgba(0,130,255,.035);
+}
+
+.manual-card:active {
+    border-color: rgba(60,160,255,.75);
+
+    box-shadow:
+        0 0 25px rgba(30,140,255,.12);
+}
+
+.media-card {
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(183,70,255,.16),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #170d29,
+            #090817
+        );
+
+    border: 1px solid rgba(190,80,255,.34);
+
+    box-shadow:
+        inset 0 0 30px rgba(190,70,255,.035);
+}
+
+.media-card:active {
+    border-color: rgba(205,100,255,.75);
+
+    box-shadow:
+        0 0 25px rgba(190,70,255,.12);
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-size: 21px;
+
+    margin-bottom: 13px;
+
+    transition: transform .3s ease;
+}
+
+.main-card:active .card-icon {
+    transform: rotate(-5deg) scale(1.08);
+}
+
+.manual-card .card-icon {
+    background:
+        linear-gradient(
+            145deg,
+            #174e83,
+            #071d37
+        );
+
+    border: 1px solid rgba(61,159,255,.55);
+
+    box-shadow:
+        0 0 17px rgba(40,145,255,.13);
+}
+
+.media-card .card-icon {
+    background:
+        linear-gradient(
+            145deg,
+            #5c2a86,
+            #1b0b31
+        );
+
+    border: 1px solid rgba(200,100,255,.55);
+
+    box-shadow:
+        0 0 17px rgba(195,75,255,.13);
+}
+
+.main-card h2 {
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.main-card p {
+    margin: 5px 0 0;
+
+    font-size: 12px;
+}
+
+.manual-card p {
+    color: #55aaff;
+}
+
+.media-card p {
+    color: #bd70ff;
+}
+
+.card-bottom {
+    position: absolute;
+
+    left: 17px;
+    right: 17px;
+    bottom: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-count {
+    color: #738092;
+
+    font-size: 10px;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.05);
+}
+
+.arrow {
+    font-size: 21px;
+    color: #8995a5;
+
+    transition: transform .25s ease;
+}
+
+.main-card:active .arrow {
+    transform: translateX(4px);
+}
+
+.manual-card .arrow {
+    color: #50a8ff;
+}
+
+.media-card .arrow {
+    color: #c16cff;
+}
+
+
+/* ================================
+   NEWBIE
+================================ */
+
+.newbie-card {
+    position: relative;
+
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 15px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(255,178,37,.11),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #1a160e,
+            #0b0c0f
+        );
+
+    border: 1px solid rgba(230,170,48,.38);
+
+    transition:
+        transform .18s ease,
+        border-color .25s ease;
+}
+
+.newbie-card:active {
+    transform: scale(.975);
+    border-color: rgba(240,186,60,.75);
+}
+
+.newbie-icon {
+    width: 43px;
+    height: 43px;
+
+    flex: 0 0 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #503713,
+            #17120a
+        );
+
+    border: 1px solid rgba(239,177,47,.55);
+
+    box-shadow:
+        0 0 18px rgba(239,177,47,.10);
+}
+
+.newbie-info {
+    min-width: 0;
+}
+
+.newbie-info h2 {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.15;
+}
+
+.newbie-info p {
+    margin: 4px 0 0;
+
+    color: #827968;
+
+    font-size: 11px;
+}
+
+.newbie-arrow {
+    margin-left: auto;
+
+    font-size: 23px;
+
+    color: #eab33b;
+}
+
+
+/* ================================
+   PAGE HEADER
+================================ */
+
+.page-header {
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 9px;
 }
 
 .back-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
+    width: 39px;
+    height: 39px;
 
-    border: 1px solid rgba(224,174,60,.35);
+    border-radius: 13px;
+
+    border: 1px solid rgba(224,174,60,.3);
+
     background: rgba(255,255,255,.025);
 
     color: #e8b63f;
-    font-size: 23px;
+
+    font-size: 21px;
 
     cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.back-btn:active {
+    transform: scale(.9);
 }
 
 .page-header h1 {
     margin: 0;
-    font-size: 28px;
+
+    font-size: 25px;
+    letter-spacing: -.7px;
 }
 
-/* =========================================
+
+/* ================================
    SEARCH
-========================================= */
+================================ */
 
 .search-box {
     width: 100%;
-    height: 52px;
+    height: 46px;
 
-    border-radius: 17px;
+    border-radius: 15px;
 
-    padding: 0 18px;
+    padding: 0 15px;
 
     background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.09);
+
+    border: 1px solid rgba(255,255,255,.07);
 
     color: white;
+
     outline: none;
 
-    font-size: 15px;
+    font-size: 14px;
 
-    margin-bottom: 17px;
-}
+    margin-bottom: 10px;
 
-.search-box::placeholder {
-    color: #657082;
+    transition: .2s ease;
 }
 
 .search-box:focus {
-    border-color: rgba(229,175,54,.55);
+    border-color: rgba(229,175,54,.5);
+
+    box-shadow:
+        0 0 20px rgba(229,175,54,.04);
 }
 
-/* =========================================
+.search-box::placeholder {
+    color: #596678;
+}
+
+
+/* ================================
    MANUAL LIST
-========================================= */
+================================ */
 
 .manual-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 
 .manual-item {
     display: flex;
     align-items: center;
-    gap: 15px;
 
-    min-height: 66px;
+    min-height: 52px;
 
-    padding: 12px 15px;
+    padding: 7px 10px;
 
-    border-radius: 18px;
+    gap: 10px;
+
+    border-radius: 15px;
 
     background:
         linear-gradient(
             100deg,
-            rgba(13, 33, 54, .85),
-            rgba(8, 17, 30, .85)
+            rgba(13,33,54,.78),
+            rgba(7,15,27,.82)
         );
 
-    border: 1px solid rgba(47, 133, 210, .25);
+    border: 1px solid rgba(47,133,210,.18);
 
-    transition: .2s ease;
+    cursor: pointer;
+
+    transition:
+        transform .16s ease,
+        border-color .2s ease,
+        background .2s ease;
 }
 
 .manual-item:active {
-    transform: scale(.985);
-    border-color: rgba(234,182,58,.5);
+    transform: scale(.98);
+
+    border-color: rgba(235,181,58,.5);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(25,47,69,.9),
+            rgba(10,20,32,.9)
+        );
 }
 
 .manual-number {
-    width: 38px;
-    height: 38px;
+    width: 31px;
+    height: 31px;
 
     flex-shrink: 0;
 
@@ -597,114 +881,242 @@ body::before {
     align-items: center;
     justify-content: center;
 
-    border-radius: 12px;
+    border-radius: 10px;
 
-    background: rgba(236,177,48,.08);
-    border: 1px solid rgba(236,177,48,.25);
+    background: rgba(236,177,48,.07);
 
-    color: #e8b33d;
-    font-size: 13px;
+    border: 1px solid rgba(236,177,48,.2);
+
+    color: #dcae40;
+
+    font-size: 10px;
 }
 
 .manual-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 }
 
 .manual-arrow {
     margin-left: auto;
-    color: #5c9dd0;
-    font-size: 22px;
+
+    color: #578bb8;
+
+    font-size: 19px;
 }
 
-/* =========================================
-   MEDIA PAGE
-========================================= */
 
-.media-source {
-    padding: 20px;
-    border-radius: 20px;
+/* ================================
+   SOURCE PAGE
+================================ */
+
+.source-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.source-item {
+    position: relative;
+
+    min-height: 70px;
+
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(29, 17, 45, .95),
-            rgba(10, 9, 20, .95)
+            rgba(30,17,46,.95),
+            rgba(9,8,19,.95)
         );
 
-    border: 1px solid rgba(184,82,245,.3);
+    border: 1px solid rgba(184,82,245,.25);
 
-    margin-bottom: 12px;
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: .2s ease;
 }
 
-.media-source h3 {
+.source-item:active {
+    transform: scale(.98);
+
+    border-color: rgba(200,95,255,.65);
+}
+
+.source-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #522775,
+            #190a2c
+        );
+
+    border: 1px solid rgba(205,100,255,.4);
+}
+
+.source-info {
+    min-width: 0;
+}
+
+.source-info h3 {
     margin: 0;
-    font-size: 17px;
-}
 
-.media-source p {
-    margin: 7px 0 0;
-    color: #858697;
     font-size: 14px;
 }
 
-/* =========================================
-   BOTTOM NAV
-========================================= */
+.source-info p {
+    margin: 4px 0 0;
 
-.bottom-nav {
-    position: fixed;
-    left: 50%;
-    bottom: 14px;
-    transform: translateX(-50%);
+    color: #77788a;
 
-    width: calc(100% - 34px);
-    max-width: 670px;
+    font-size: 11px;
+}
 
-    height: 82px;
+.source-arrow {
+    margin-left: auto;
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    color: #bd69f2;
 
-    padding: 7px;
+    font-size: 20px;
+}
 
-    border-radius: 27px;
+
+/* ================================
+   NEWBIE PAGE
+================================ */
+
+.guide-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.guide-card {
+    padding: 16px;
+
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(13, 24, 39, .96),
-            rgba(4, 12, 22, .98)
+            rgba(28,23,15,.96),
+            rgba(10,11,13,.96)
         );
 
-    border: 1px solid rgba(179, 147, 77, .35);
+    border: 1px solid rgba(225,169,48,.25);
+}
+
+.guide-number {
+    color: #e7b23a;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+.guide-card h3 {
+    margin: 0;
+
+    font-size: 15px;
+}
+
+.guide-card p {
+    margin: 5px 0 0;
+
+    color: #888174;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* ================================
+   BOTTOM NAV
+================================ */
+
+.bottom-nav {
+    position: fixed;
+
+    left: 50%;
+    bottom: 9px;
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 20px);
+    max-width: 650px;
+
+    height: 67px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    padding: 5px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13,24,39,.97),
+            rgba(4,11,20,.98)
+        );
+
+    border: 1px solid rgba(179,147,77,.27);
 
     box-shadow:
-        0 -5px 30px rgba(0,0,0,.3),
-        0 0 30px rgba(0,0,0,.35);
+        0 5px 35px rgba(0,0,0,.45);
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 
     z-index: 100;
 }
 
 .nav-item {
     border: none;
+
     background: transparent;
 
-    border-radius: 20px;
+    border-radius: 17px;
 
-    color: #667180;
+    color: #5e6a79;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
-    gap: 4px;
+    gap: 2px;
 
-    font-size: 12px;
+    font-size: 9px;
 
     cursor: pointer;
 
@@ -712,203 +1124,174 @@ body::before {
 }
 
 .nav-icon {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1;
 }
 
+.nav-item:active {
+    transform: scale(.9);
+}
+
 .nav-item.active {
-    color: #f4bf3d;
+    color: #f3bd42;
 
     background:
         linear-gradient(
             145deg,
             rgba(255,194,61,.09),
-            rgba(255,174,30,.025)
+            rgba(255,174,30,.02)
         );
 
     box-shadow:
-        inset 0 0 25px rgba(255,180,40,.035),
-        0 0 15px rgba(255,180,40,.04);
+        inset 0 0 20px rgba(255,180,40,.025);
 }
 
-/* =========================================
-   MOBILE
-========================================= */
 
-@media (max-width: 430px) {
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media (max-width: 380px) {
 
     .container {
-        padding: 12px 17px 25px;
-    }
-
-    .brand-header {
-        height: 92px;
-    }
-
-    .notfake {
-        font-size: 19px;
-    }
-
-    .rp {
-        font-size: 31px;
-    }
-
-    .rosplat-name {
-        font-size: 16px;
-    }
-
-    .cross {
-        font-size: 21px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     .hero {
-        min-height: 260px;
-        padding: 35px 28px;
-        border-radius: 27px;
+        min-height: 138px;
+        padding: 20px 18px;
     }
 
     .hero h1 {
-        font-size: 33px;
+        font-size: 26px;
     }
 
     .hero p {
-        font-size: 16px;
-    }
-
-    .section-title {
-        margin-top: 34px;
-    }
-
-    .main-grid {
-        gap: 12px;
-    }
-
-    .main-card {
-        min-height: 235px;
-        padding: 21px 18px;
-        border-radius: 23px;
-    }
-
-    .main-card h2 {
-        font-size: 20px;
-    }
-
-    .card-count {
-        left: 18px;
-        bottom: 20px;
         font-size: 12px;
     }
 
-    .arrow {
+    .main-card {
+        min-height: 138px;
+        padding: 15px;
+    }
+
+    .main-card h2 {
+        font-size: 16px;
+    }
+
+    .card-bottom {
+        left: 15px;
         right: 15px;
-        bottom: 17px;
+        bottom: 12px;
     }
 
     .newbie-card {
-        padding: 22px 20px;
-        min-height: 125px;
+        min-height: 68px;
     }
 
-    .newbie-info h2 {
+    .logo-notfake {
         font-size: 17px;
     }
 
-    .newbie-info p {
-        font-size: 13px;
+    .logo-rosplat {
+        font-size: 16px;
     }
 
-    .bottom-nav {
-        width: calc(100% - 22px);
-        bottom: 9px;
+    .status {
+        padding: 6px 8px;
+        font-size: 9px;
     }
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="container">
 
-    <!-- =========================
-         HOME PAGE
-    ========================== -->
+<!-- =================================
+     HOME
+================================= -->
 
-    <main id="homePage" class="page active">
+<main id="homePage" class="page active">
 
-        <div class="brand-header">
+    <div class="topbar">
 
-            <div class="brand">
+        <div class="logo">
 
-                <div class="notfake">
-                    NotFake
-                </div>
-
-                <div class="cross">
-                    ×
-                </div>
-
-                <div class="rosplat">
-
-                    <div class="rp">
-                        RP
-                    </div>
-
-                    <div class="rosplat-name">
-                        RosPlat
-                    </div>
-
-                </div>
-
+            <div class="logo-notfake">
+                NotFake
             </div>
+
+            <div class="logo-x">
+                ×
+            </div>
+
+            <div class="logo-rosplat">
+                RosPlat
+            </div>
+
+            <div class="logo-dot"></div>
 
         </div>
 
+        <div class="status">
+            <span class="status-dot"></span>
+            ONLINE
+        </div>
 
-        <section class="hero">
+    </div>
 
-            <div class="hero-label">
-                TRADER WORKSPACE
+
+    <section class="hero">
+
+        <div class="hero-label">
+            TRADER WORKSPACE
+        </div>
+
+        <h1>
+            Рабочая база <span>команды</span>
+        </h1>
+
+        <p>
+            Всё необходимое для работы —
+            мануалы, источники и обучение.
+        </p>
+
+    </section>
+
+
+    <div class="section-title">
+        РАЗДЕЛЫ
+    </div>
+
+
+    <div class="main-grid">
+
+        <div
+            class="main-card manual-card"
+            onclick="openPage('manuals')"
+        >
+
+            <div class="card-icon">
+                📖
             </div>
 
-            <h1>
-                Рабочая база <span>команды</span>
-            </h1>
+            <h2>
+                Мануалы
+            </h2>
 
             <p>
-                Мануалы, медиа и советы новичкам
-                собраны в одном месте.
+                Команды бота
             </p>
 
-        </section>
-
-
-        <div class="section-title">
-            РАБОЧИЕ РАЗДЕЛЫ
-        </div>
-
-
-        <div class="main-grid">
-
-            <div
-                class="main-card manual-card"
-                onclick="openPage('manuals')"
-            >
-
-                <div class="card-icon">
-                    📖
-                </div>
-
-                <h2>
-                    Мануалы
-                </h2>
-
-                <p>
-                    Команды бота
-                </p>
+            <div class="card-bottom">
 
                 <div class="card-count">
-                    36 команд
+                    35 разделов
                 </div>
 
                 <div class="arrow">
@@ -917,216 +1300,252 @@ body::before {
 
             </div>
 
-
-            <div
-                class="main-card media-card"
-                onclick="openPage('media')"
-            >
-
-                <div class="card-icon">
-                    ▣
-                </div>
-
-                <h2>
-                    Медиа источники
-                </h2>
-
-                <p>
-                    Полезные материалы
-                </p>
-
-                <div class="card-count">
-                    Источники
-                </div>
-
-                <div class="arrow">
-                    →
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="section-title">
-            БЫСТРЫЙ СТАРТ
         </div>
 
 
         <div
-            class="newbie-card"
-            onclick="openPage('newbie')"
+            class="main-card media-card"
+            onclick="openPage('media')"
         >
 
-            <div class="newbie-icon">
-                🚀
+            <div class="card-icon">
+                🔗
             </div>
 
-            <div class="newbie-info">
+            <h2>
+                Источники
+            </h2>
 
-                <h2>
-                    Руководство для новичка
-                </h2>
+            <p>
+                Полезные ссылки
+            </p>
+
+            <div class="card-bottom">
+
+                <div class="card-count">
+                    Полезное
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        БЫСТРЫЙ СТАРТ
+    </div>
+
+
+    <div
+        class="newbie-card"
+        onclick="openPage('newbie')"
+    >
+
+        <div class="newbie-icon">
+            🚀
+        </div>
+
+        <div class="newbie-info">
+
+            <h2>
+                Руководство для новичка
+            </h2>
+
+            <p>
+                Основы и пошаговый старт
+            </p>
+
+        </div>
+
+        <div class="newbie-arrow">
+            →
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =================================
+     MANUALS
+================================= -->
+
+<main id="manualsPage" class="page">
+
+    <div class="page-header">
+
+        <button
+            class="back-btn"
+            onclick="openPage('home')"
+        >
+            ←
+        </button>
+
+        <h1>
+            Мануалы
+        </h1>
+
+    </div>
+
+
+    <input
+        id="manualSearch"
+        class="search-box"
+        type="text"
+        placeholder="Поиск банка..."
+        oninput="filterManuals()"
+    >
+
+
+    <div
+        id="manualList"
+        class="manual-list"
+    ></div>
+
+</main>
+
+
+<!-- =================================
+     SOURCES
+================================= -->
+
+<main id="mediaPage" class="page">
+
+    <div class="page-header">
+
+        <button
+            class="back-btn"
+            onclick="openPage('home')"
+        >
+            ←
+        </button>
+
+        <h1>
+            Источники
+        </h1>
+
+    </div>
+
+
+    <div class="source-list">
+
+        <div class="source-item">
+
+            <div class="source-icon">
+                🔗
+            </div>
+
+            <div class="source-info">
+
+                <h3>
+                    Полезные ссылки
+                </h3>
 
                 <p>
-                    Пошаговый старт работы
+                    Рабочие ресурсы команды
                 </p>
 
             </div>
 
-            <div class="newbie-arrow">
+            <div class="source-arrow">
                 →
             </div>
 
         </div>
 
-    </main>
 
+        <div class="source-item">
 
-    <!-- =========================
-         MANUALS
-    ========================== -->
+            <div class="source-icon">
+                📚
+            </div>
 
-    <main id="manualsPage" class="page">
+            <div class="source-info">
 
-        <div class="page-header">
+                <h3>
+                    Материалы
+                </h3>
 
-            <button
-                class="back-btn"
-                onclick="openPage('home')"
-            >
-                ←
-            </button>
+                <p>
+                    Полезная информация
+                </p>
 
-            <h1>
-                Мануалы
-            </h1>
+            </div>
+
+            <div class="source-arrow">
+                →
+            </div>
 
         </div>
 
 
-        <input
-            id="manualSearch"
-            class="search-box"
-            type="text"
-            placeholder="Поиск банка..."
-            oninput="filterManuals()"
+        <div class="source-item">
+
+            <div class="source-icon">
+                🌐
+            </div>
+
+            <div class="source-info">
+
+                <h3>
+                    Рабочие ресурсы
+                </h3>
+
+                <p>
+                    Внешние сервисы и платформы
+                </p>
+
+            </div>
+
+            <div class="source-arrow">
+                →
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =================================
+     NEWBIE
+================================= -->
+
+<main id="newbiePage" class="page">
+
+    <div class="page-header">
+
+        <button
+            class="back-btn"
+            onclick="openPage('home')"
         >
+            ←
+        </button>
+
+        <h1>
+            Новичку
+        </h1>
+
+    </div>
 
 
-        <div id="manualList" class="manual-list">
+    <div class="guide-list">
 
-            <!-- Список создаётся JavaScript -->
+        <div class="guide-card">
 
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         MEDIA
-    ========================== -->
-
-    <main id="mediaPage" class="page">
-
-        <div class="page-header">
-
-            <button
-                class="back-btn"
-                onclick="openPage('home')"
-            >
-                ←
-            </button>
-
-            <h1>
-                Медиа
-            </h1>
-
-        </div>
-
-
-        <div class="media-source">
+            <div class="guide-number">
+                STEP 01
+            </div>
 
             <h3>
-                📚 Полезные материалы
-            </h3>
-
-            <p>
-                Здесь будут размещаться полезные
-                материалы для команды.
-            </p>
-
-        </div>
-
-
-        <div class="media-source">
-
-            <h3>
-                🎥 Видео
-            </h3>
-
-            <p>
-                Обучающие и рабочие материалы.
-            </p>
-
-        </div>
-
-
-        <div class="media-source">
-
-            <h3>
-                🔗 Источники
-            </h3>
-
-            <p>
-                Полезные ссылки и ресурсы команды.
-            </p>
-
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         NEWBIE
-    ========================== -->
-
-    <main id="newbiePage" class="page">
-
-        <div class="page-header">
-
-            <button
-                class="back-btn"
-                onclick="openPage('home')"
-            >
-                ←
-            </button>
-
-            <h1>
-                Новичку
-            </h1>
-
-        </div>
-
-
-        <div class="media-source">
-
-            <h3>
-                🚀 Добро пожаловать
-            </h3>
-
-            <p>
-                Здесь будет пошаговое руководство
-                для новых участников команды.
-            </p>
-
-        </div>
-
-
-        <div class="media-source">
-
-            <h3>
-                01. Основы
+                Основы
             </h3>
 
             <p>
@@ -1137,27 +1556,51 @@ body::before {
         </div>
 
 
-        <div class="media-source">
+        <div class="guide-card">
+
+            <div class="guide-number">
+                STEP 02
+            </div>
 
             <h3>
-                02. Мануалы
+                Мануалы
             </h3>
 
             <p>
                 Изучение необходимых рабочих
-                материалов.
+                материалов и команд.
             </p>
 
         </div>
 
-    </main>
+
+        <div class="guide-card">
+
+            <div class="guide-number">
+                STEP 03
+            </div>
+
+            <h3>
+                Начало работы
+            </h3>
+
+            <p>
+                Пошаговая инструкция для
+                нового участника команды.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
 
 </div>
 
 
-<!-- =========================
+<!-- =================================
      BOTTOM NAV
-========================= -->
+================================= -->
 
 <nav class="bottom-nav">
 
@@ -1185,7 +1628,7 @@ body::before {
     >
 
         <span class="nav-icon">
-            ♧
+            ▤
         </span>
 
         <span>
@@ -1202,11 +1645,11 @@ body::before {
     >
 
         <span class="nav-icon">
-            ▣
+            ↗
         </span>
 
         <span>
-            Медиа
+            Источники
         </span>
 
     </button>
@@ -1233,108 +1676,77 @@ body::before {
 
 <script>
 
-/* =========================================
+/* =================================
    TELEGRAM
-========================================= */
+================================= */
 
 const tg = window.Telegram?.WebApp;
 
 if (tg) {
+
     tg.ready();
+
     tg.expand();
 
     if (tg.setHeaderColor) {
-        tg.setHeaderColor("#030914");
+        tg.setHeaderColor("#030811");
     }
 
     if (tg.setBackgroundColor) {
-        tg.setBackgroundColor("#030914");
+        tg.setBackgroundColor("#030811");
     }
+
 }
 
 
-/* =========================================
-   MANUAL NAMES
-========================================= */
+/* =================================
+   MANUALS
+================================= */
 
 const manuals = [
 
     "Цупис",
-
     "СберКА",
-
     "Яндекс ГУ",
-
     "Т-Банк Ферма\\Агро",
-
     "РокетБанк",
-
     "АльфаКА",
-
     "ОзонКА",
-
     "Т-Банк КА",
-
     "Отп КА",
-
     "МобКом",
-
     "МКБ",
-
     "РСХБ",
-
     "Юмани",
-
     "СберБанк",
-
     "ОзонФиз",
-
     "ОТП Ферма",
-
     "Райффайзен",
-
     "ОзонГУ",
-
     "АльфаБанк",
-
     "Т-Банк",
-
     "ОТП",
-
     "ПСБ",
-
     "WB",
-
     "АкБарс",
-
     "Альфа Ферма",
-
     "НовикомБанк",
-
     "ВБРР",
-
     "Ренессанс КА",
-
     "Газпром",
-
     "ВТБ",
-
     "Яндекс Физ",
-
     "ЦифраБанк",
-
     "Юнистрим",
-
     "АБР",
-
     "Авангард"
 
 ];
 
 
-/* =========================================
-   RENDER MANUALS
-========================================= */
+/* =================================
+   RENDER
+================================= */
 
 function renderManuals(list = manuals) {
 
@@ -1353,7 +1765,7 @@ function renderManuals(list = manuals) {
         item.innerHTML = `
 
             <div class="manual-number">
-                ${String(index + 1).padStart(2, "0")}
+                ${String(index + 1).padStart(2,"0")}
             </div>
 
             <div class="manual-name">
@@ -1373,9 +1785,9 @@ function renderManuals(list = manuals) {
 }
 
 
-/* =========================================
+/* =================================
    SEARCH
-========================================= */
+================================= */
 
 function filterManuals() {
 
@@ -1396,9 +1808,9 @@ function filterManuals() {
 }
 
 
-/* =========================================
-   PAGE NAVIGATION
-========================================= */
+/* =================================
+   NAVIGATION
+================================= */
 
 function openPage(page) {
 
@@ -1412,10 +1824,14 @@ function openPage(page) {
 
 
     const target =
-        document.getElementById(page + "Page");
+        document.getElementById(
+            page + "Page"
+        );
 
     if (target) {
+
         target.classList.add("active");
+
     }
 
 
@@ -1444,9 +1860,9 @@ function openPage(page) {
 }
 
 
-/* =========================================
+/* =================================
    START
-========================================= */
+================================= */
 
 renderManuals();
 
