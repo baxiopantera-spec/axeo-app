@@ -2393,238 +2393,207 @@ body:after{
 
 
 /* =====================================================
-   PHOTO / FUTURISTIC UI REBUILD
-   Cards use local images from /images/
-===================================================== */
+   PHOTO CARD LAYER — CLEAN OVERRIDE
+   ===================================================== */
 
 .topbar{
-    height:82px!important;
-    min-height:82px!important;
-    margin:2px 0 10px!important;
-    padding:8px 13px!important;
-    border-radius:23px!important;
-    background:
-        linear-gradient(90deg,rgba(4,7,10,.98),rgba(11,15,20,.94),rgba(4,7,10,.98))!important;
-    border:1px solid rgba(231,185,79,.30)!important;
-    box-shadow:
-        0 16px 42px rgba(0,0,0,.45),
-        inset 0 0 35px rgba(255,255,255,.018),
-        0 0 28px rgba(231,185,79,.035)!important;
+  height:78px!important;
+  min-height:78px!important;
+  padding:8px 12px!important;
+  margin:2px 0 10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
 }
 
 .brand{
-    display:flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    gap:11px!important;
-    width:100%!important;
+  width:100%!important;
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  flex-wrap:nowrap!important;
 }
 
 .brand-side{
-    display:flex!important;
-    align-items:center!important;
-    gap:8px!important;
-    flex:0 0 auto!important;
-    min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  height:auto!important;
+  white-space:nowrap!important;
 }
 
-.brand-side-rp .brand-main{
-    color:#f7f7f7!important;
-    text-shadow:0 0 18px rgba(82,150,255,.20)!important;
-}
+.brand-side-rp{justify-content:flex-end!important}
+.brand-side-nf{justify-content:flex-start!important}
 
-.brand-side-nf .brand-main{
-    color:#f7f7f7!important;
-    text-shadow:0 0 18px rgba(231,185,79,.20)!important;
-}
-
-.brand-logo{
-    width:46px!important;
-    height:46px!important;
-    flex:0 0 46px!important;
-    border-radius:14px!important;
-    background:rgba(2,4,6,.95)!important;
+.brand-word{
+  width:auto!important;
+  min-width:0!important;
+  margin:0!important;
+  flex:0 0 auto!important;
+  display:flex!important;
+  align-items:center!important;
 }
 
 .brand-main{
-    font-size:14px!important;
-    font-weight:950!important;
-    letter-spacing:-.35px!important;
+  font-size:14px!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  letter-spacing:-.35px!important;
+}
+
+.brand-logo{
+  width:44px!important;
+  height:44px!important;
+  flex:0 0 44px!important;
+  border-radius:13px!important;
+}
+
+.brand-logo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  padding:2px!important;
 }
 
 .brand-x{
-    width:26px!important;
-    height:26px!important;
-    flex:0 0 26px!important;
-    margin:0 2px!important;
-    border-radius:50%!important;
-    font-size:16px!important;
-    color:#ffd979!important;
-    border:1px solid rgba(231,185,79,.38)!important;
-    background:rgba(231,185,79,.07)!important;
-    box-shadow:0 0 22px rgba(231,185,79,.15)!important;
+  width:24px!important;
+  height:24px!important;
+  flex:0 0 24px!important;
+  margin:0!important;
+  border-radius:50%!important;
+  font-size:14px!important;
 }
 
-/* HERO PHOTO */
+/* exact order: RosPlat — logo — × — logo — NotFake */
+.brand-side-rp .brand-word{order:1!important}
+.brand-side-rp .brand-logo{order:2!important}
+.brand-side-nf .brand-logo{order:1!important}
+.brand-side-nf .brand-word{order:2!important}
+
+/* HERO */
 .hero{
-    min-height:142px!important;
-    padding:19px 18px!important;
-    border-radius:22px!important;
-    background-image:
-        linear-gradient(90deg,rgba(4,7,10,.94) 0%,rgba(4,7,10,.74) 38%,rgba(4,7,10,.28) 72%,rgba(4,7,10,.70) 100%),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.58)),
-        url("images/private-forum.jpg")!important;
-    background-size:cover!important;
-    background-position:center!important;
-    border-color:rgba(231,185,79,.30)!important;
-    box-shadow:0 16px 42px rgba(0,0,0,.35),inset 0 0 60px rgba(0,0,0,.25)!important;
+  min-height:142px!important;
+  padding:19px 18px!important;
+  overflow:hidden!important;
+  background-image:
+    linear-gradient(90deg,rgba(4,7,10,.94) 0%,rgba(4,7,10,.70) 40%,rgba(4,7,10,.30) 72%,rgba(4,7,10,.70) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.62)),
+    url("images/private-forum.jpg")!important;
+  background-size:cover!important;
+  background-position:center!important;
 }
 
-.hero-label{
-    color:#f1c95c!important;
-    text-shadow:0 0 12px rgba(231,185,79,.25);
+.hero > *{
+  position:relative!important;
+  z-index:2!important;
 }
 
-.hero h1{
-    font-size:26px!important;
-    text-shadow:0 3px 18px rgba(0,0,0,.65);
-}
-
-.hero p{
-    color:#b6bec8!important;
-    max-width:460px!important;
-    text-shadow:0 2px 12px rgba(0,0,0,.8);
-}
-
-/* PHOTO CARDS */
+/* QUICK ACCESS */
 .main-card{
-    min-height:128px!important;
-    padding:14px!important;
-    isolation:isolate;
-    background-color:#080b0f!important;
-    background-size:cover!important;
-    background-position:center!important;
-    border-radius:20px!important;
-    border-color:rgba(255,255,255,.12)!important;
-    box-shadow:0 14px 34px rgba(0,0,0,.30),inset 0 0 45px rgba(0,0,0,.28)!important;
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  min-height:120px!important;
+  padding:14px!important;
+  background-color:#080b0f!important;
+  background-size:cover!important;
+  background-position:center!important;
 }
 
 .main-card:nth-child(1){
-    --accent:#e7b94f;
-    background-image:
-        linear-gradient(90deg,rgba(4,5,6,.90),rgba(4,5,6,.56) 55%,rgba(4,5,6,.74)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.58)),
-        url("images/manuals.jpg")!important;
+  --accent:#e7b94f;
+  background-image:
+    linear-gradient(90deg,rgba(4,5,6,.88),rgba(4,5,6,.48) 58%,rgba(4,5,6,.72)),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62)),
+    url("images/manuals.jpg")!important;
 }
-
 .main-card:nth-child(2){
-    --accent:#62a7ff;
-    background-image:
-        linear-gradient(90deg,rgba(3,7,11,.91),rgba(3,7,11,.52) 55%,rgba(3,7,11,.72)),
-        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.58)),
-        url("images/connect.jpg")!important;
+  --accent:#62a7ff;
+  background-image:
+    linear-gradient(90deg,rgba(3,7,11,.90),rgba(3,7,11,.46) 58%,rgba(3,7,11,.72)),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62)),
+    url("images/connect.jpg")!important;
 }
-
 .main-card:nth-child(3){
-    --accent:#b66cff;
-    background-image:
-        linear-gradient(90deg,rgba(6,5,12,.91),rgba(6,5,12,.52) 55%,rgba(6,5,12,.74)),
-        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.60)),
-        url("images/guide.jpg")!important;
+  --accent:#b66cff;
+  background-image:
+    linear-gradient(90deg,rgba(6,5,12,.90),rgba(6,5,12,.46) 58%,rgba(6,5,12,.74)),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.64)),
+    url("images/guide.jpg")!important;
 }
-
 .main-card:nth-child(4){
-    --accent:#ff6577;
-    background-image:
-        linear-gradient(90deg,rgba(10,4,7,.91),rgba(10,4,7,.52) 55%,rgba(10,4,7,.74)),
-        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.60)),
-        url("images/media.jpg")!important;
+  --accent:#ff6577;
+  background-image:
+    linear-gradient(90deg,rgba(10,4,7,.90),rgba(10,4,7,.46) 58%,rgba(10,4,7,.74)),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.64)),
+    url("images/media.jpg")!important;
 }
 
-.main-card:after{
-    z-index:-1;
-}
-
+.main-card .card-scan,
 .main-card .card-icon,
 .main-card h3,
 .main-card p{
-    position:relative;
-    z-index:3;
+  position:relative!important;
+  z-index:3!important;
 }
 
 .main-card h3{
-    font-size:15px!important;
-    text-shadow:0 2px 12px rgba(0,0,0,.85);
+  font-size:14px!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.85)!important;
 }
 
 .main-card p{
-    color:#c0c7d0!important;
-    text-shadow:0 2px 10px rgba(0,0,0,.9);
+  color:#c2c9d2!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.9)!important;
 }
 
-.card-icon{
-    box-shadow:0 0 24px color-mix(in srgb,var(--accent) 18%,transparent),inset 0 0 18px rgba(0,0,0,.15)!important;
-}
-
-/* PHOTO DEPTH / HOVER */
-.main-card:focus-visible,
-.main-card:hover{
-    background-position:center 48%!important;
-}
-
-.main-card:hover{
-    transform:translateY(-3px) scale(1.005)!important;
+/* Keep decorative circles behind content */
+.main-card:before,
+.main-card:after{
+  z-index:0!important;
+  pointer-events:none!important;
 }
 
 /* NETWORK */
 .info-card{
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 10% 50%,rgba(82,150,255,.10),transparent 24%),
-        linear-gradient(135deg,rgba(12,17,23,.96),rgba(5,8,11,.98))!important;
+  position:relative!important;
+  overflow:hidden!important;
 }
 
-.info-card:after{
-    content:"ONLINE";
-    position:absolute;
-    right:14px;
-    top:50%;
-    transform:translateY(-50%);
-    padding:7px 10px;
-    border:1px solid rgba(97,227,154,.22);
-    border-radius:10px;
-    color:#61e39a;
-    font-size:8px;
-    font-weight:900;
-    letter-spacing:2px;
-    background:rgba(97,227,154,.035);
-    box-shadow:0 0 18px rgba(97,227,154,.07);
-}
-
+/* MOBILE */
 @media(max-width:430px){
-    .topbar{height:72px!important;min-height:72px!important;padding:7px 8px!important}
-    .brand{gap:7px!important}
-    .brand-side{gap:6px!important}
-    .brand-logo{width:39px!important;height:39px!important;flex-basis:39px!important;border-radius:12px!important}
-    .brand-main{font-size:11px!important}
-    .brand-x{width:21px!important;height:21px!important;flex-basis:21px!important;font-size:13px!important}
-    .hero{min-height:132px!important;padding:17px 15px!important}
-    .hero h1{font-size:23px!important}
-    .main-card{min-height:118px!important;padding:12px!important}
-    .main-card h3{font-size:13px!important}
-    .main-card p{font-size:9px!important}
-    .info-card:after{right:10px;font-size:7px;padding:6px 8px}
+  .topbar{
+    height:72px!important;
+    min-height:72px!important;
+    padding:7px 8px!important;
+  }
+  .brand{gap:7px!important}
+  .brand-side{gap:5px!important}
+  .brand-logo{width:39px!important;height:39px!important;flex-basis:39px!important;border-radius:12px!important}
+  .brand-main{font-size:11px!important}
+  .brand-x{width:21px!important;height:21px!important;flex-basis:21px!important;font-size:12px!important}
+  .hero{min-height:132px!important;padding:17px 15px!important}
+  .hero h1{font-size:23px!important}
+  .main-grid{gap:7px!important}
+  .main-card{min-height:112px!important;padding:12px!important}
+  .main-card h3{font-size:13px!important}
+  .main-card p{font-size:9px!important}
 }
 
 @media(max-width:360px){
-    .brand{gap:5px!important}
-    .brand-side{gap:4px!important}
-    .brand-logo{width:35px!important;height:35px!important;flex-basis:35px!important;border-radius:10px!important}
-    .brand-main{font-size:9px!important}
-    .brand-x{width:18px!important;height:18px!important;flex-basis:18px!important;font-size:11px!important}
-    .hero{min-height:124px!important}
-    .hero h1{font-size:21px!important}
+  .topbar{height:66px!important;min-height:66px!important;padding:6px!important}
+  .brand{gap:5px!important}
+  .brand-side{gap:4px!important}
+  .brand-logo{width:35px!important;height:35px!important;flex-basis:35px!important;border-radius:10px!important}
+  .brand-main{font-size:9px!important}
+  .brand-x{width:18px!important;height:18px!important;flex-basis:18px!important;font-size:10px!important}
+  .hero{min-height:124px!important}
+  .hero h1{font-size:21px!important}
 }
 
 </style>
