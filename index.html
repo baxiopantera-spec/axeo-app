@@ -2865,6 +2865,710 @@ body:after{
   .main-card{height:108px!important;min-height:108px!important}
 }
 
+
+/* =========================================================
+   FINAL CLEAN RESPONSIVE LAYOUT
+   No overlaps / larger brand header / compact cards
+========================================================= */
+
+/* ---------- GLOBAL ---------- */
+
+html{
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    overflow-x:hidden!important;
+    padding-bottom:82px!important;
+}
+
+.container{
+    width:100%!important;
+    max-width:680px!important;
+    margin:0 auto!important;
+    padding:10px 14px 16px!important;
+}
+
+/* ---------- HEADER ---------- */
+
+.topbar{
+    position:relative!important;
+    width:100%!important;
+    height:108px!important;
+    min-height:108px!important;
+    margin:2px 0 14px!important;
+    padding:12px 16px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:25px!important;
+    overflow:hidden!important;
+}
+
+.brand{
+    width:100%!important;
+    height:100%!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 58px 28px 58px minmax(0,1fr)!important;
+    align-items:center!important;
+    column-gap:12px!important;
+    margin:0!important;
+}
+
+.brand-side{
+    display:flex!important;
+    align-items:center!important;
+    gap:9px!important;
+    min-width:0!important;
+    height:100%!important;
+    margin:0!important;
+}
+
+.brand-side-rp{
+    justify-content:flex-end!important;
+}
+
+.brand-side-nf{
+    justify-content:flex-start!important;
+}
+
+.brand-side-rp .brand-word{
+    order:1!important;
+}
+
+.brand-side-rp .brand-logo{
+    order:2!important;
+}
+
+.brand-side-nf .brand-logo{
+    order:1!important;
+}
+
+.brand-side-nf .brand-word{
+    order:2!important;
+}
+
+.brand-logo{
+    width:58px!important;
+    height:58px!important;
+    min-width:58px!important;
+    flex:0 0 58px!important;
+    border-radius:16px!important;
+    overflow:hidden!important;
+}
+
+.brand-logo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    padding:2px!important;
+    display:block!important;
+}
+
+.brand-word{
+    width:auto!important;
+    min-width:0!important;
+    margin:0!important;
+    flex:0 1 auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+}
+
+.brand-main{
+    margin:0!important;
+    font-size:20px!important;
+    line-height:1!important;
+    font-weight:950!important;
+    letter-spacing:-.65px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+}
+
+.brand-side-rp .brand-main{
+    text-align:right!important;
+    color:#f6fbff!important;
+    text-shadow:0 0 18px rgba(82,150,255,.24)!important;
+}
+
+.brand-side-nf .brand-main{
+    text-align:left!important;
+    color:#fff8eb!important;
+    text-shadow:0 0 18px rgba(231,185,79,.24)!important;
+}
+
+.brand-x{
+    position:relative!important;
+    width:28px!important;
+    height:28px!important;
+    min-width:28px!important;
+    flex:0 0 28px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    margin:0!important;
+    border:1px solid rgba(231,185,79,.40)!important;
+    border-radius:50%!important;
+    background:rgba(231,185,79,.08)!important;
+    color:#fff!important;
+    font-size:17px!important;
+    font-weight:700!important;
+    line-height:1!important;
+    z-index:5!important;
+}
+
+.brand-x:before{
+    inset:-5px!important;
+    border-radius:50%!important;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+    width:100%!important;
+    height:118px!important;
+    min-height:118px!important;
+    padding:16px 18px!important;
+    border-radius:21px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+}
+
+.hero:before,
+.hero:after{
+    display:none!important;
+}
+
+.hero > *{
+    position:relative!important;
+    z-index:2!important;
+}
+
+.hero-label{
+    font-size:8px!important;
+    letter-spacing:2.5px!important;
+    line-height:1!important;
+}
+
+.hero h1{
+    margin:7px 0 0!important;
+    font-size:25px!important;
+    line-height:1!important;
+    letter-spacing:-.9px!important;
+}
+
+.hero p{
+    margin:8px 0 0!important;
+    max-width:500px!important;
+    font-size:10.5px!important;
+    line-height:1.28!important;
+    color:#c8ced6!important;
+}
+
+/* ---------- SECTION HEADERS ---------- */
+
+.section-title{
+    width:100%!important;
+    margin:12px 2px 7px!important;
+    font-size:8px!important;
+    line-height:1!important;
+    letter-spacing:2.3px!important;
+}
+
+/* ---------- QUICK ACCESS ---------- */
+
+.main-grid{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-rows:96px!important;
+    gap:8px!important;
+    align-items:stretch!important;
+}
+
+.main-card{
+    position:relative!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:96px!important;
+    height:96px!important;
+    padding:12px!important;
+    border-radius:18px!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+    box-sizing:border-box!important;
+}
+
+/* remove every old decorative card layer */
+.main-card:after{
+    display:none!important;
+    content:none!important;
+}
+
+.main-card .card-scan,
+.main-card .card-icon{
+    display:none!important;
+}
+
+/* one clean background layer */
+.main-card:before{
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
+    width:auto!important;
+    height:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:0!important;
+    border:0!important;
+    border-radius:inherit!important;
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.08) 0%,
+        rgba(0,0,0,.14) 45%,
+        rgba(0,0,0,.40) 100%
+    )!important;
+    box-shadow:none!important;
+    transform:none!important;
+    animation:none!important;
+    pointer-events:none!important;
+}
+
+/* keep the photos visible */
+.main-card:nth-child(1){
+    --accent:#e7b94f;
+    background-image:url("images/manuals.jpg?v=clean3")!important;
+    background-size:cover!important;
+    background-position:center center!important;
+}
+
+.main-card:nth-child(2){
+    --accent:#62a7ff;
+    background-image:url("images/connect.jpg?v=clean3")!important;
+    background-size:cover!important;
+    background-position:center center!important;
+}
+
+.main-card:nth-child(3){
+    --accent:#b66cff;
+    background-image:url("images/guide.jpg?v=clean3")!important;
+    background-size:cover!important;
+    background-position:center center!important;
+}
+
+.main-card:nth-child(4){
+    --accent:#ff6577;
+    background-image:url("images/media.jpg?v=clean3")!important;
+    background-size:cover!important;
+    background-position:center center!important;
+}
+
+/* subtle readability gradient */
+.main-card > h3,
+.main-card > p{
+    position:absolute!important;
+    left:12px!important;
+    z-index:3!important;
+    margin:0!important;
+    max-width:calc(100% - 72px)!important;
+    color:#fff!important;
+}
+
+.main-card > h3{
+    bottom:30px!important;
+    font-size:14px!important;
+    line-height:1.05!important;
+    font-weight:900!important;
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.90),
+        0 0 2px rgba(0,0,0,.70)!important;
+}
+
+.main-card > p{
+    bottom:11px!important;
+    font-size:8.5px!important;
+    line-height:1.15!important;
+    color:#e2e7ed!important;
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.95),
+        0 0 2px rgba(0,0,0,.75)!important;
+}
+
+/* one arrow only */
+.main-card:hover:before,
+.main-card:active:before{
+    transform:none!important;
+}
+
+.main-card:hover{
+    transform:translateY(-2px)!important;
+}
+
+.main-card:active{
+    transform:scale(.985)!important;
+}
+
+.main-card .main-arrow{
+    display:none!important;
+}
+
+/* Arrow is represented by a clean single pseudo element. */
+.main-card:after{
+    content:"→"!important;
+    display:flex!important;
+    position:absolute!important;
+    right:11px!important;
+    bottom:11px!important;
+    width:40px!important;
+    height:40px!important;
+    z-index:4!important;
+    align-items:center!important;
+    justify-content:center!important;
+    box-sizing:border-box!important;
+    border:1px solid color-mix(in srgb,var(--accent) 72%,white 8%)!important;
+    border-radius:50%!important;
+    background:rgba(4,7,10,.24)!important;
+    color:#fff!important;
+    font-size:20px!important;
+    font-weight:400!important;
+    line-height:1!important;
+    padding:0 0 2px 2px!important;
+    text-shadow:0 0 9px color-mix(in srgb,var(--accent) 42%,transparent)!important;
+    box-shadow:
+        0 0 16px color-mix(in srgb,var(--accent) 10%,transparent),
+        inset 0 0 10px rgba(255,255,255,.025)!important;
+    transform:none!important;
+    animation:none!important;
+    pointer-events:none!important;
+}
+
+/* ---------- NETWORK ---------- */
+
+#homePage > .info-card{
+    width:100%!important;
+    height:70px!important;
+    min-height:70px!important;
+    margin-bottom:0!important;
+    padding:11px 13px!important;
+    overflow:hidden!important;
+}
+
+#homePage > .info-card h3{
+    margin:0 0 4px!important;
+    font-size:12px!important;
+    line-height:1!important;
+}
+
+#homePage > .info-card p{
+    margin:0!important;
+    font-size:8.5px!important;
+    line-height:1.25!important;
+}
+
+/* ---------- OTHER PAGES ---------- */
+
+.search-box,
+.manual-list,
+.connect-options,
+.table-grid,
+.guide-step{
+    width:100%!important;
+}
+
+.manual-list{
+    gap:6px!important;
+}
+
+.manual-item{
+    min-height:52px!important;
+    height:52px!important;
+    padding:7px 10px!important;
+    gap:9px!important;
+    border-radius:13px!important;
+}
+
+.bank-logo{
+    width:34px!important;
+    height:34px!important;
+    flex:0 0 34px!important;
+    border-radius:10px!important;
+}
+
+.connect-options{
+    gap:7px!important;
+}
+
+.connect-option{
+    min-height:70px!important;
+    height:70px!important;
+    padding:11px 12px!important;
+    gap:10px!important;
+    border-radius:15px!important;
+}
+
+.connect-icon{
+    width:38px!important;
+    height:38px!important;
+    flex:0 0 38px!important;
+    border-radius:11px!important;
+    font-size:17px!important;
+}
+
+.connect-info strong{
+    font-size:12px!important;
+    margin-bottom:3px!important;
+}
+
+.connect-info span{
+    font-size:8.5px!important;
+}
+
+.table-grid{
+    gap:7px!important;
+}
+
+.table-card{
+    min-width:0!important;
+    padding:11px!important;
+    border-radius:13px!important;
+}
+
+.guide-step{
+    gap:9px!important;
+    padding:10px!important;
+    margin-bottom:6px!important;
+    border-radius:13px!important;
+}
+
+.guide-num{
+    width:26px!important;
+    height:26px!important;
+    flex:0 0 26px!important;
+    border-radius:8px!important;
+}
+
+/* ---------- BOTTOM NAV ---------- */
+
+.bottom-nav{
+    bottom:8px!important;
+    width:min(calc(100% - 18px),620px)!important;
+    padding:5px!important;
+    gap:4px!important;
+    border-radius:17px!important;
+}
+
+.nav-item{
+    min-height:48px!important;
+    height:48px!important;
+    border-radius:12px!important;
+    gap:3px!important;
+}
+
+.nav-item .nav-icon{
+    font-size:15px!important;
+}
+
+.nav-item span:last-child{
+    font-size:7px!important;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:430px){
+
+    body{
+        padding-bottom:78px!important;
+    }
+
+    .container{
+        padding:
+            8px
+            10px
+            12px!important;
+    }
+
+    .topbar{
+        height:96px!important;
+        min-height:96px!important;
+        margin-bottom:10px!important;
+        padding:10px 9px!important;
+        border-radius:21px!important;
+    }
+
+    .brand{
+        grid-template-columns:
+            minmax(0,1fr)
+            46px
+            22px
+            46px
+            minmax(0,1fr)!important;
+        column-gap:7px!important;
+    }
+
+    .brand-side{
+        gap:6px!important;
+    }
+
+    .brand-logo{
+        width:46px!important;
+        height:46px!important;
+        min-width:46px!important;
+        flex-basis:46px!important;
+        border-radius:13px!important;
+    }
+
+    .brand-main{
+        font-size:14px!important;
+        letter-spacing:-.35px!important;
+    }
+
+    .brand-x{
+        width:22px!important;
+        height:22px!important;
+        min-width:22px!important;
+        flex-basis:22px!important;
+        font-size:13px!important;
+    }
+
+    .hero{
+        height:118px!important;
+        min-height:118px!important;
+        padding:16px 14px!important;
+    }
+
+    .hero-label{
+        font-size:7px!important;
+        letter-spacing:2px!important;
+    }
+
+    .hero h1{
+        font-size:22px!important;
+        margin-top:7px!important;
+    }
+
+    .hero p{
+        font-size:9.5px!important;
+        line-height:1.28!important;
+        max-width:94%!important;
+    }
+
+    .section-title{
+        margin-top:11px!important;
+        margin-bottom:7px!important;
+    }
+
+    .main-grid{
+        grid-auto-rows:96px!important;
+        gap:7px!important;
+    }
+
+    .main-card{
+        min-height:96px!important;
+        height:96px!important;
+        padding:11px!important;
+        border-radius:17px!important;
+    }
+
+    .main-card > h3{
+        left:11px!important;
+        bottom:29px!important;
+        font-size:12.5px!important;
+    }
+
+    .main-card > p{
+        left:11px!important;
+        bottom:10px!important;
+        font-size:8px!important;
+        line-height:1.12!important;
+    }
+
+    .main-card:after{
+        right:9px!important;
+        bottom:9px!important;
+        width:38px!important;
+        height:38px!important;
+        font-size:19px!important;
+    }
+
+    #homePage > .info-card{
+        height:70px!important;
+        min-height:70px!important;
+        padding:10px 12px!important;
+    }
+
+}
+
+@media(max-width:360px){
+
+    .topbar{
+        height:90px!important;
+        min-height:90px!important;
+    }
+
+    .brand{
+        grid-template-columns:
+            minmax(0,1fr)
+            40px
+            20px
+            40px
+            minmax(0,1fr)!important;
+        column-gap:5px!important;
+    }
+
+    .brand-logo{
+        width:40px!important;
+        height:40px!important;
+        min-width:40px!important;
+        flex-basis:40px!important;
+    }
+
+    .brand-main{
+        font-size:11.5px!important;
+    }
+
+    .brand-x{
+        width:20px!important;
+        height:20px!important;
+        min-width:20px!important;
+        flex-basis:20px!important;
+        font-size:12px!important;
+    }
+
+    .hero{
+        height:112px!important;
+        min-height:112px!important;
+    }
+
+    .hero h1{
+        font-size:20px!important;
+    }
+
+    .main-grid{
+        grid-auto-rows:92px!important;
+    }
+
+    .main-card{
+        min-height:92px!important;
+        height:92px!important;
+    }
+}
+
+/* prevent long Russian strings from forcing horizontal overflow */
+.brand-main,
+.hero h1,
+.hero p,
+.main-card h3,
+.main-card p,
+.info-card h3,
+.info-card p,
+.manual-name strong,
+.manual-name span,
+.connect-info strong,
+.connect-info span{
+    overflow-wrap:anywhere!important;
+}
+
 </style>
 
 </head>
