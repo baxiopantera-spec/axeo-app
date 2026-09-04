@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 
 <meta
@@ -10,2646 +9,1161 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 >
 
-<title>AXEO App</title>
+<title>Trader Workspace</title>
 
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
 
-:root {
-
-    --bg: #050505;
-    --bg-soft: #0b0b0b;
-    --card: #101010;
-
-    --gold: #d6ad5b;
-    --gold-light: #f6d98f;
-    --gold-bright: #ffe8aa;
-    --gold-dark: #9d7835;
-
-    --white: #ffffff;
-    --text: #eeeeee;
-    --muted: #888888;
-    --muted-light: #aaaaaa;
-
-    --border: rgba(214,173,91,.20);
-    --border-strong: rgba(214,173,91,.42);
-
-    --radius: 22px;
-}
-
-
-/* =========================
-   RESET
-========================= */
-
 * {
-
     box-sizing: border-box;
-
     -webkit-tap-highlight-color: transparent;
-
 }
 
 html,
 body {
-
     margin: 0;
     padding: 0;
-
     width: 100%;
     min-height: 100%;
-
-    background: var(--bg);
-    color: var(--white);
-
+    background:
+        radial-gradient(circle at 50% -10%, #13243b 0%, transparent 38%),
+        #030914;
+    color: #fff;
     font-family:
         -apple-system,
         BlinkMacSystemFont,
-        "SF Pro Display",
         "Segoe UI",
+        Roboto,
         Arial,
         sans-serif;
-
 }
 
 body {
-
     overflow-x: hidden;
-
+    padding-bottom: 105px;
 }
 
-button {
-
-    font-family: inherit;
-
-}
-
-
-/* =========================
+/* =========================================
    BACKGROUND
-========================= */
+========================================= */
 
 body::before {
-
     content: "";
-
     position: fixed;
-
-    width: 520px;
-    height: 520px;
-
-    top: -300px;
-    right: -250px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(214,173,91,.18) 0%,
-            rgba(214,173,91,.08) 28%,
-            transparent 70%
-        );
-
-    filter: blur(12px);
-
-    pointer-events: none;
-
-    animation:
-        backgroundGlow 8s ease-in-out infinite;
-
-}
-
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    width: 500px;
-    height: 500px;
-
-    bottom: -300px;
-    left: -260px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(214,173,91,.11),
-            transparent 68%
-        );
-
-    filter: blur(18px);
-
-    pointer-events: none;
-
-    animation:
-        backgroundGlow 10s ease-in-out infinite reverse;
-
-}
-
-
-@keyframes backgroundGlow {
-
-    0% {
-
-        transform: scale(.9);
-        opacity: .55;
-
-    }
-
-    50% {
-
-        transform: scale(1.12);
-        opacity: 1;
-
-    }
-
-    100% {
-
-        transform: scale(.9);
-        opacity: .55;
-
-    }
-
-}
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-.particles {
-
-    position: fixed;
-
     inset: 0;
-
-    overflow: hidden;
-
     pointer-events: none;
-
-    z-index: 0;
-
+    background:
+        radial-gradient(circle at 85% 20%, rgba(255, 190, 60, .08), transparent 24%),
+        radial-gradient(circle at 15% 55%, rgba(0, 140, 255, .06), transparent 25%),
+        radial-gradient(circle at 85% 70%, rgba(180, 70, 255, .05), transparent 25%);
+    z-index: -1;
 }
 
-
-.particle {
-
-    position: absolute;
-
-    width: 3px;
-    height: 3px;
-
-    border-radius: 50%;
-
-    background: var(--gold-light);
-
-    box-shadow:
-        0 0 6px rgba(246,217,143,.9),
-        0 0 15px rgba(214,173,91,.45);
-
-    opacity: 0;
-
-    animation:
-        particleFloat linear infinite;
-
-}
-
-
-@keyframes particleFloat {
-
-    0% {
-
-        transform:
-            translateY(30px)
-            scale(.5);
-
-        opacity: 0;
-
-    }
-
-    15% {
-
-        opacity: .8;
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-35vh)
-            translateX(15px)
-            scale(1);
-
-    }
-
-    85% {
-
-        opacity: .5;
-
-    }
-
-    100% {
-
-        transform:
-            translateY(-75vh)
-            translateX(-20px)
-            scale(.3);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================
-   APP
-========================= */
-
-.app {
-
-    position: relative;
-
-    z-index: 2;
-
+.container {
     width: 100%;
-
-    max-width: 520px;
-
-    min-height: 100vh;
-
+    max-width: 720px;
     margin: 0 auto;
-
-    padding:
-        22px
-        16px
-        110px;
-
+    padding: 20px 24px 30px;
 }
 
+/* =========================================
+   HEADER
+========================================= */
 
-/* =========================
-   TOP
-========================= */
-
-.top {
-    position: relative;
-
+.brand-header {
+    height: 105px;
     display: flex;
-
     align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 28px;
-
-    min-height: 32px;
-
-    animation:
-        topAppear .7s ease both;
+    justify-content: center;
+    gap: 17px;
+    position: relative;
 }
 
-
-@keyframes topAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(-10px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
+.brand-header::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 34px;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 190, 55, .35);
+    box-shadow:
+        0 0 18px rgba(255, 185, 40, .15),
+        inset 0 0 12px rgba(255, 185, 40, .12);
 }
 
+.brand-header::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 44px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ffc63d;
+    box-shadow:
+        0 0 10px #ffc63d,
+        0 0 22px rgba(255, 198, 61, .6);
+}
 
 .brand {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
 }
 
-.brand img {
-    width: 250px;
-    height: auto;
-
-    display: block;
-
-    filter:
-        drop-shadow(0 0 7px rgba(214,173,91,.55))
-        drop-shadow(0 0 18px rgba(214,173,91,.25));
-}
-.brand span {
-
-    color: var(--gold);
-
+.notfake {
+    font-weight: 900;
+    font-size: 23px;
+    letter-spacing: -1.2px;
+    color: #f3b936;
     text-shadow:
-        0 0 8px rgba(214,173,91,.8),
-        0 0 22px rgba(214,173,91,.35);
-
+        0 0 12px rgba(243, 185, 54, .35);
 }
 
-
-.status {
-
-    position: relative;
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: var(--gold-bright);
-
-    box-shadow:
-        0 0 7px rgba(246,217,143,.9),
-        0 0 18px rgba(214,173,91,.65),
-        0 0 35px rgba(214,173,91,.25);
-
-    animation:
-        statusPulse 2.2s ease-in-out infinite;
-
+.cross {
+    font-size: 25px;
+    font-weight: 200;
+    color: #e6ae34;
 }
 
-
-.status::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -6px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(214,173,91,.35);
-
-    animation:
-        statusRing 2.2s ease-out infinite;
-
+.rosplat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-
-@keyframes statusPulse {
-
-    0%,
-    100% {
-
-        transform: scale(.85);
-        opacity: .75;
-
-    }
-
-    50% {
-
-        transform: scale(1.2);
-        opacity: 1;
-
-    }
-
+.rp {
+    font-size: 37px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -4px;
+    background: linear-gradient(
+        145deg,
+        #ffffff 15%,
+        #d9d9d9 45%,
+        #d89a27 75%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-
-@keyframes statusRing {
-
-    0% {
-
-        transform: scale(.5);
-        opacity: .7;
-
-    }
-
-    100% {
-
-        transform: scale(1.8);
-        opacity: 0;
-
-    }
-
+.rosplat-name {
+    font-size: 19px;
+    color: #d9a943;
+    letter-spacing: -.5px;
 }
 
-
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero {
-
     position: relative;
-
+    min-height: 275px;
+    border-radius: 31px;
+    padding: 42px 34px;
     overflow: hidden;
 
-    padding:
-        34px
-        24px
-        38px;
-
-    border-radius: 30px;
-
     background:
-        radial-gradient(
-            circle at 85% 5%,
-            rgba(214,173,91,.25),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 15% 100%,
-            rgba(214,173,91,.08),
-            transparent 38%
-        ),
         linear-gradient(
-            145deg,
-            #191510,
-            #0e0e0e 55%,
-            #080808
+            135deg,
+            rgba(18, 31, 48, .95),
+            rgba(5, 14, 27, .98)
         );
 
-    border:
-        1px solid
-        var(--border-strong);
+    border: 1px solid rgba(220, 164, 49, .55);
 
     box-shadow:
-        0 20px 65px rgba(0,0,0,.45),
-        0 0 40px rgba(214,173,91,.08),
-        inset 0 1px 0 rgba(255,255,255,.045);
-
-    margin-bottom: 24px;
-
-    animation:
-        heroAppear .8s cubic-bezier(.2,.8,.2,1) both;
-
+        inset 0 0 50px rgba(0, 80, 140, .08),
+        0 0 35px rgba(0, 0, 0, .35);
 }
-
-
-@keyframes heroAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(18px)
-            scale(.97);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
 
 .hero::before {
-
     content: "";
-
     position: absolute;
-
-    width: 230px;
-    height: 230px;
-
-    right: -90px;
+    width: 310px;
+    height: 310px;
+    right: -115px;
     top: -100px;
-
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(246,217,143,.25),
-            rgba(214,173,91,.08) 35%,
-            transparent 70%
-        );
-
-    filter: blur(5px);
-
-    animation:
-        heroGlow 5s ease-in-out infinite;
-
+    border: 1px solid rgba(255, 191, 54, .35);
+    box-shadow:
+        0 0 30px rgba(255, 184, 50, .08);
 }
-
-
-@keyframes heroGlow {
-
-    0% {
-
-        transform:
-            translate(0,0)
-            scale(.85);
-
-        opacity: .55;
-
-    }
-
-    50% {
-
-        transform:
-            translate(-35px,35px)
-            scale(1.15);
-
-        opacity: 1;
-
-    }
-
-    100% {
-
-        transform:
-            translate(0,0)
-            scale(.85);
-
-        opacity: .55;
-
-    }
-
-}
-
 
 .hero::after {
-
     content: "";
-
     position: absolute;
-
-    width: 210px;
-    height: 210px;
-
-    right: -90px;
-    top: -95px;
-
+    width: 7px;
+    height: 7px;
+    right: 92px;
+    top: 94px;
     border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(246,217,143,.20);
-
+    background: #ffd15a;
     box-shadow:
-        0 0 30px rgba(214,173,91,.12),
-        inset 0 0 30px rgba(214,173,91,.04);
-
-    animation:
-        orbitRotate 16s linear infinite;
-
+        0 0 12px #ffd15a,
+        0 0 30px #ffae00;
 }
 
-
-@keyframes orbitRotate {
-
-    from {
-
-        transform:
-            rotate(0deg);
-
-    }
-
-    to {
-
-        transform:
-            rotate(360deg);
-
-    }
-
-}
-
-
-.hero-small {
-
-    position: relative;
-
-    z-index: 3;
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 2.4px;
-
-    margin-bottom: 12px;
-
-    text-shadow:
-        0 0 12px rgba(214,173,91,.35);
-
-}
-
-
-.hero-title {
-
-    position: relative;
-
-    z-index: 3;
-
-    font-size: 30px;
-
-    font-weight: 800;
-
-    letter-spacing: -1.4px;
-
-    line-height: 1.08;
-
-    margin-bottom: 11px;
-
-}
-
-
-.hero-text {
-
-    position: relative;
-
-    z-index: 3;
-
-    color: var(--muted-light);
-
+.hero-label {
+    color: #eab842;
     font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
 
+.hero h1 {
+    margin: 0;
+    font-size: 39px;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    max-width: 570px;
+}
+
+.hero h1 span {
+    color: #eab43a;
+}
+
+.hero p {
+    margin: 23px 0 0;
+    color: #aab4c2;
+    font-size: 18px;
     line-height: 1.55;
-
-    max-width: 285px;
-
+    max-width: 500px;
 }
 
-
-/* =========================
-   HERO LIGHT
-========================= */
-
-.hero-light {
-
-    position: absolute;
-
-    left: -30%;
-
-    top: 0;
-
-    width: 25%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,232,170,.12),
-            rgba(255,232,170,.25),
-            transparent
-        );
-
-    transform:
-        skewX(-18deg);
-
-    filter: blur(8px);
-
-    animation:
-        lightSweep 6s ease-in-out infinite;
-
-    pointer-events: none;
-
-}
-
-
-@keyframes lightSweep {
-
-    0% {
-
-        left: -40%;
-
-    }
-
-    45%,
-    100% {
-
-        left: 130%;
-
-    }
-
-}
-
-
-/* =========================
+/* =========================================
    SECTION TITLE
-========================= */
+========================================= */
 
 .section-title {
-
-    margin:
-        25px
-        4px
-        12px;
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.8px;
-
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 12px rgba(214,173,91,.18);
-
+    margin: 42px 0 18px;
+    color: #dcae43;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
 }
 
+/* =========================================
+   MAIN CARDS
+========================================= */
 
-/* =========================
-   GRID
-========================= */
-
-.grid {
-
+.main-grid {
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 11px;
-
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 
-
-/* =========================
-   TILE
-========================= */
-
-.tile {
-
+.main-card {
     position: relative;
-
-    min-height: 150px;
-
-    padding: 18px;
-
-    border-radius: var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #0d0d0d
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-    color: var(--white);
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        transform .25s cubic-bezier(.2,.8,.2,1),
-        border-color .25s ease,
-        box-shadow .25s ease;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.025);
-
+    min-height: 255px;
+    padding: 26px 24px;
+    border-radius: 27px;
     overflow: hidden;
-
-    animation:
-        tileAppear .65s cubic-bezier(.2,.8,.2,1) both;
-
+    cursor: pointer;
+    transition: .25s ease;
 }
 
-
-.tile:nth-child(1) {
-
-    animation-delay: .15s;
-
+.main-card:active {
+    transform: scale(.97);
 }
 
-
-.tile:nth-child(2) {
-
-    animation-delay: .25s;
-
-}
-
-
-@keyframes tileAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(22px)
-            scale(.94);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-.tile::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 140px;
-    height: 140px;
-
-    right: -75px;
-    bottom: -80px;
-
-    border-radius: 50%;
-
+.manual-card {
     background:
-        radial-gradient(
-            circle,
-            rgba(214,173,91,.15),
-            transparent 70%
-        );
+        radial-gradient(circle at 20% 15%, rgba(35, 138, 255, .18), transparent 35%),
+        linear-gradient(145deg, #071b32, #06101f);
 
-    filter: blur(4px);
-
-}
-
-
-.tile:active {
-
-    transform:
-        scale(.965);
-
-    border-color:
-        var(--gold);
+    border: 1px solid rgba(48, 151, 255, .48);
 
     box-shadow:
-        0 0 30px
-        rgba(214,173,91,.18);
-
+        inset 0 0 35px rgba(0, 130, 255, .06),
+        0 0 25px rgba(0, 100, 255, .05);
 }
 
+.media-card {
+    background:
+        radial-gradient(circle at 80% 15%, rgba(187, 75, 255, .18), transparent 35%),
+        linear-gradient(145deg, #160b29, #090a19);
 
-.tile-icon {
+    border: 1px solid rgba(193, 82, 255, .48);
 
-    width: 43px;
-    height: 43px;
+    box-shadow:
+        inset 0 0 35px rgba(190, 70, 255, .06),
+        0 0 25px rgba(180, 60, 255, .05);
+}
+
+.card-icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 18px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    border-radius: 14px;
+    font-size: 32px;
 
+    margin-bottom: 28px;
+}
+
+.manual-card .card-icon {
     background:
-        linear-gradient(
-            145deg,
-            rgba(214,173,91,.20),
-            rgba(214,173,91,.04)
-        );
-
-    border:
-        1px solid
-        rgba(214,173,91,.28);
-
-    color: var(--gold-light);
-
-    font-size: 20px;
-
-    margin-bottom: 24px;
-
+        linear-gradient(145deg, #164f89, #071d39);
+    border: 1px solid #3299ff;
     box-shadow:
-        0 0 20px rgba(214,173,91,.08);
-
-    animation:
-        iconPulse 3s ease-in-out infinite;
-
+        0 0 20px rgba(43, 150, 255, .2);
 }
 
-
-@keyframes iconPulse {
-
-    0%,
-    100% {
-
-        box-shadow:
-            0 0 15px rgba(214,173,91,.05);
-
-    }
-
-    50% {
-
-        box-shadow:
-            0 0 25px rgba(214,173,91,.16);
-
-    }
-
+.media-card .card-icon {
+    background:
+        linear-gradient(145deg, #642d92, #1b0b32);
+    border: 1px solid #ca6aff;
+    box-shadow:
+        0 0 20px rgba(196, 79, 255, .2);
 }
 
-
-.tile-title {
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    margin-bottom: 5px;
-
+.main-card h2 {
+    margin: 0;
+    font-size: 23px;
+    line-height: 1.15;
 }
 
-
-.tile-info {
-
-    color: var(--muted);
-
-    font-size: 11px;
-
+.main-card p {
+    margin: 9px 0 0;
+    font-size: 15px;
+    color: #8f9bab;
 }
 
+.manual-card p {
+    color: #3fa5ff;
+}
+
+.media-card p {
+    color: #bd72ff;
+}
+
+.card-count {
+    position: absolute;
+    left: 24px;
+    bottom: 25px;
+
+    padding: 8px 13px;
+    border-radius: 30px;
+
+    font-size: 13px;
+    color: #aeb7c5;
+
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.06);
+}
 
 .arrow {
-
     position: absolute;
-
-    right: 16px;
-    bottom: 15px;
-
-    color: var(--gold-dark);
-
-    font-size: 18px;
-
-}
-
-
-/* =========================
-   BIG CARD
-========================= */
-
-.big-card {
-
-    position: relative;
-
-    width: 100%;
-
-    padding: 19px;
-
-    border-radius: var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            #15130f,
-            #101010
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-    color: var(--white);
-
-    text-align: left;
-
-    cursor: pointer;
-
-    overflow: hidden;
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-
-    animation:
-        bigCardAppear .7s .35s
-        cubic-bezier(.2,.8,.2,1)
-        both;
-
-}
-
-
-@keyframes bigCardAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(.96);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-.big-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 170px;
-    height: 170px;
-
-    right: -90px;
-    top: -90px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(214,173,91,.18),
-            transparent 68%
-        );
-
-    animation:
-        bigGlow 4s ease-in-out infinite;
-
-}
-
-
-@keyframes bigGlow {
-
-    0%,
-    100% {
-
-        transform: scale(.8);
-        opacity: .5;
-
-    }
-
-    50% {
-
-        transform: scale(1.25);
-        opacity: 1;
-
-    }
-
-}
-
-
-.big-card:active {
-
-    transform:
-        scale(.98);
-
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 30px
-        rgba(214,173,91,.15);
-
-}
-
-
-.big-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-}
-
-
-.big-icon {
+    right: 22px;
+    bottom: 22px;
 
     width: 48px;
     height: 48px;
 
-    flex-shrink: 0;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    border-radius: 15px;
+    border-radius: 50%;
+    font-size: 29px;
+    font-weight: 200;
+}
+
+.manual-card .arrow {
+    border: 1px solid rgba(50,155,255,.65);
+    background: rgba(0, 105, 190, .12);
+    color: #55adff;
+}
+
+.media-card .arrow {
+    border: 1px solid rgba(200,90,255,.65);
+    background: rgba(160, 50, 220, .12);
+    color: #c66dff;
+}
+
+/* =========================================
+   NEWBIE CARD
+========================================= */
+
+.newbie-card {
+    position: relative;
+    min-height: 145px;
+    border-radius: 27px;
+    padding: 27px 28px;
+
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    overflow: hidden;
+    cursor: pointer;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(214,173,91,.20),
-            rgba(214,173,91,.04)
-        );
+        radial-gradient(circle at 85% 70%, rgba(255, 174, 37, .13), transparent 35%),
+        linear-gradient(145deg, #1c1710, #0c0d10);
 
-    border:
-        1px solid
-        rgba(214,173,91,.27);
+    border: 1px solid rgba(230, 170, 48, .55);
 
-    color: var(--gold-light);
+    box-shadow:
+        0 0 25px rgba(255, 175, 40, .05);
 
-    font-size: 17px;
-
-    font-weight: 700;
-
+    transition: .25s ease;
 }
 
-
-.big-title {
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    margin-bottom: 5px;
-
+.newbie-card:active {
+    transform: scale(.98);
 }
 
+.newbie-icon {
+    flex: 0 0 66px;
+    height: 66px;
 
-.big-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    color: var(--muted);
+    border-radius: 18px;
 
-    font-size: 11px;
+    font-size: 31px;
 
+    background:
+        linear-gradient(145deg, #553914, #17130d);
+
+    border: 1px solid #e9ae32;
+
+    box-shadow:
+        0 0 22px rgba(240, 171, 38, .2);
 }
 
+.newbie-info h2 {
+    margin: 0;
+    font-size: 20px;
+}
 
-.big-arrow {
+.newbie-info p {
+    margin: 8px 0 0;
+    color: #a69d8c;
+    font-size: 15px;
+}
 
+.newbie-arrow {
     margin-left: auto;
-
-    color: var(--gold);
-
-    font-size: 21px;
-
+    font-size: 30px;
+    color: #efb536;
 }
 
-
-/* =========================
+/* =========================================
    PAGES
-========================= */
+========================================= */
 
 .page {
-
     display: none;
-
-    animation:
-        pageIn .35s
-        cubic-bezier(.2,.8,.2,1);
-
+    animation: pageIn .3s ease;
 }
-
 
 .page.active {
-
     display: block;
-
 }
 
-
 @keyframes pageIn {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(12px)
-            scale(.985);
-
+        transform: translateY(10px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
+        transform: translateY(0);
     }
-
 }
 
+/* =========================================
+   PAGE HEADER
+========================================= */
 
-/* =========================
-   BACK BUTTON
-========================= */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 23px;
+}
 
-.back-button {
+.back-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
 
+    border: 1px solid rgba(224,174,60,.35);
+    background: rgba(255,255,255,.025);
+
+    color: #e8b63f;
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-box {
     width: 100%;
-
-    margin-bottom: 12px;
-
-    padding: 13px 16px;
+    height: 52px;
 
     border-radius: 17px;
 
-    border:
-        1px solid
-        rgba(214,173,91,.16);
+    padding: 0 18px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(214,173,91,.08),
-            rgba(214,173,91,.025)
-        );
-
-    color:
-        var(--gold-light);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        .2s ease;
-
-}
-
-
-.back-button:active {
-
-    transform:
-        scale(.98);
-
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 25px
-        rgba(214,173,91,.12);
-
-}
-
-
-/* =========================
-   BANK CARDS
-========================= */
-
-.bank-card {
-
-    position: relative;
-
-    width: 100%;
-
-    margin-bottom: 10px;
-
-    padding: 17px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #141414,
-            #0f0f0f
-        );
-
-    border:
-        1px solid
-        var(--border);
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.09);
 
     color: white;
+    outline: none;
 
-    cursor: pointer;
+    font-size: 15px;
 
-    text-align: left;
-
-    transition:
-        .2s ease;
-
-    overflow: hidden;
-
+    margin-bottom: 17px;
 }
 
+.search-box::placeholder {
+    color: #657082;
+}
 
-.bank-card::after {
+.search-box:focus {
+    border-color: rgba(229,175,54,.55);
+}
 
-    content: "";
+/* =========================================
+   MANUAL LIST
+========================================= */
 
-    position: absolute;
+.manual-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-    width: 100px;
-    height: 100px;
+.manual-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-    right: -60px;
-    top: -60px;
+    min-height: 66px;
 
-    border-radius: 50%;
+    padding: 12px 15px;
+
+    border-radius: 18px;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(214,173,91,.12),
-            transparent 70%
+        linear-gradient(
+            100deg,
+            rgba(13, 33, 54, .85),
+            rgba(8, 17, 30, .85)
         );
 
+    border: 1px solid rgba(47, 133, 210, .25);
+
+    transition: .2s ease;
 }
 
-
-.bank-card:active {
-
-    transform:
-        scale(.985);
-
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 25px
-        rgba(214,173,91,.1);
-
+.manual-item:active {
+    transform: scale(.985);
+    border-color: rgba(234,182,58,.5);
 }
 
-
-.bank-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-}
-
-
-.bank-icon {
-
-    width: 45px;
-    height: 45px;
+.manual-number {
+    width: 38px;
+    height: 38px;
 
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
-    background:
-        #191612;
+    background: rgba(236,177,48,.08);
+    border: 1px solid rgba(236,177,48,.25);
 
-    border:
-        1px solid
-        rgba(214,173,91,.22);
-
-    color:
-        var(--gold-light);
-
-    font-size: 17px;
-
-    font-weight: 800;
-
-    box-shadow:
-        0 0 15px
-        rgba(214,173,91,.04);
-
-}
-
-
-.bank-name {
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    margin-bottom: 4px;
-
-}
-
-
-.bank-description {
-
-    color:
-        var(--muted);
-
-    font-size: 11px;
-
-}
-
-
-.bank-arrow {
-
-    margin-left: auto;
-
-    color:
-        var(--gold-dark);
-
-    font-size: 20px;
-
-}
-
-
-/* =========================
-   SECTION CARDS
-========================= */
-
-.section-card {
-
-    position: relative;
-
-    width: 100%;
-
-    min-height: 76px;
-
-    margin-bottom: 10px;
-
-    padding: 17px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #15130f,
-            #0f0f0f
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-    color: white;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    overflow: hidden;
-
-    transition:
-        transform .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
-
-}
-
-
-.section-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-    height: 130px;
-
-    right: -75px;
-    top: -65px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(214,173,91,.15),
-            transparent 70%
-        );
-
-    filter:
-        blur(3px);
-
-}
-
-
-.section-card:active {
-
-    transform:
-        scale(.975);
-
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 30px
-        rgba(214,173,91,.16);
-
-}
-
-
-.section-icon {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: 43px;
-    height: 43px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(214,173,91,.20),
-            rgba(214,173,91,.04)
-        );
-
-    border:
-        1px solid
-        rgba(214,173,91,.27);
-
-    color:
-        var(--gold-light);
-
-    font-size: 18px;
-
-    box-shadow:
-        0 0 20px
-        rgba(214,173,91,.07);
-
-}
-
-
-.section-content {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.section-name {
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    margin-bottom: 4px;
-
-}
-
-
-.section-description {
-
-    color:
-        var(--muted);
-
-    font-size: 11px;
-
-}
-
-
-.section-arrow {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin-left: auto;
-
-    color:
-        var(--gold);
-
-    font-size: 20px;
-
-}
-
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty {
-
-    padding:
-        28px 22px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #141414,
-            #0f0f0f
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-    text-align: center;
-
-    color:
-        var(--muted);
-
+    color: #e8b33d;
     font-size: 13px;
-
-    line-height: 1.5;
-
 }
 
+.manual-name {
+    font-size: 16px;
+    font-weight: 600;
+}
 
-/* =========================
-   GUIDE
-========================= */
+.manual-arrow {
+    margin-left: auto;
+    color: #5c9dd0;
+    font-size: 22px;
+}
 
-.step {
+/* =========================================
+   MEDIA PAGE
+========================================= */
 
-    position: relative;
-
-    padding: 19px;
-
-    margin-bottom: 10px;
-
+.media-source {
+    padding: 20px;
     border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            #15130f,
-            #101010
+            rgba(29, 17, 45, .95),
+            rgba(10, 9, 20, .95)
         );
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid rgba(184,82,245,.3);
 
+    margin-bottom: 12px;
 }
 
-
-.step-number {
-
-    color:
-        var(--gold);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-
-    margin-bottom: 8px;
-
+.media-source h3 {
+    margin: 0;
+    font-size: 17px;
 }
 
-
-.step-title {
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    margin-bottom: 5px;
-
+.media-source p {
+    margin: 7px 0 0;
+    color: #858697;
+    font-size: 14px;
 }
 
+/* =========================================
+   BOTTOM NAV
+========================================= */
 
-.step-text {
-
-    color:
-        var(--muted);
-
-    font-size: 12px;
-
-    line-height: 1.5;
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.navigation {
-
+.bottom-nav {
     position: fixed;
-
     left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
 
-    bottom: 11px;
+    width: calc(100% - 34px);
+    max-width: 670px;
 
-    transform:
-        translateX(-50%);
-
-    width:
-        calc(100% - 24px);
-
-    max-width: 496px;
-
-    padding: 8px;
+    height: 82px;
 
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    padding: 7px;
+
+    border-radius: 27px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13, 24, 39, .96),
+            rgba(4, 12, 22, .98)
+        );
+
+    border: 1px solid rgba(179, 147, 77, .35);
+
+    box-shadow:
+        0 -5px 30px rgba(0,0,0,.3),
+        0 0 30px rgba(0,0,0,.35);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    z-index: 100;
+}
+
+.nav-item {
+    border: none;
+    background: transparent;
+
+    border-radius: 20px;
+
+    color: #667180;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     gap: 4px;
 
-    background:
-        rgba(10,10,10,.90);
-
-    border:
-        1px solid
-        rgba(214,173,91,.22);
-
-    border-radius: 22px;
-
-    backdrop-filter:
-        blur(22px);
-
-    -webkit-backdrop-filter:
-        blur(22px);
-
-    box-shadow:
-        0 10px 40px
-        rgba(0,0,0,.6),
-        0 0 30px
-        rgba(214,173,91,.05);
-
-    z-index: 100;
-
-}
-
-
-.nav-button {
-
-    border: 0;
-
-    background:
-        transparent;
-
-    color:
-        #666666;
-
-    padding:
-        9px 3px;
-
-    border-radius: 15px;
-
-    font-size: 9px;
+    font-size: 12px;
 
     cursor: pointer;
 
-    transition:
-        .2s ease;
-
+    transition: .2s ease;
 }
-
-
-.nav-button.active {
-
-    color:
-        var(--gold-light);
-
-    background:
-        rgba(214,173,91,.10);
-
-    box-shadow:
-        inset 0 0 0 1px
-        rgba(214,173,91,.10),
-        0 0 20px
-        rgba(214,173,91,.05);
-
-}
-
-
-.nav-button:active {
-
-    transform:
-        scale(.92);
-
-}
-
 
 .nav-icon {
-
-    display: block;
-
-    font-size: 17px;
-
-    margin-bottom: 4px;
-
+    font-size: 24px;
+    line-height: 1;
 }
 
+.nav-item.active {
+    color: #f4bf3d;
 
-/* =========================
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,194,61,.09),
+            rgba(255,174,30,.025)
+        );
+
+    box-shadow:
+        inset 0 0 25px rgba(255,180,40,.035),
+        0 0 15px rgba(255,180,40,.04);
+}
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 430px) {
 
-    .grid {
-
-        grid-template-columns:
-            1fr;
-
+    .container {
+        padding: 12px 17px 25px;
     }
 
-    .tile {
+    .brand-header {
+        height: 92px;
+    }
 
+    .notfake {
+        font-size: 19px;
+    }
+
+    .rp {
+        font-size: 31px;
+    }
+
+    .rosplat-name {
+        font-size: 16px;
+    }
+
+    .cross {
+        font-size: 21px;
+    }
+
+    .hero {
+        min-height: 260px;
+        padding: 35px 28px;
+        border-radius: 27px;
+    }
+
+    .hero h1 {
+        font-size: 33px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section-title {
+        margin-top: 34px;
+    }
+
+    .main-grid {
+        gap: 12px;
+    }
+
+    .main-card {
+        min-height: 235px;
+        padding: 21px 18px;
+        border-radius: 23px;
+    }
+
+    .main-card h2 {
+        font-size: 20px;
+    }
+
+    .card-count {
+        left: 18px;
+        bottom: 20px;
+        font-size: 12px;
+    }
+
+    .arrow {
+        right: 15px;
+        bottom: 17px;
+    }
+
+    .newbie-card {
+        padding: 22px 20px;
         min-height: 125px;
-
     }
 
-}
-
-
-/* =========================
-   REDUCE MOTION
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .01ms !important;
-
+    .newbie-info h2 {
+        font-size: 17px;
     }
 
+    .newbie-info p {
+        font-size: 13px;
+    }
+
+    .bottom-nav {
+        width: calc(100% - 22px);
+        bottom: 9px;
+    }
 }
 
 </style>
-
 </head>
-
 
 <body>
 
+<div class="container">
 
-<!-- =========================
-     PARTICLES
-========================= -->
+    <!-- =========================
+         HOME PAGE
+    ========================== -->
 
-<div class="particles">
+    <main id="homePage" class="page active">
 
-    <span class="particle"
-        style="left:8%; bottom:8%; animation-duration:9s; animation-delay:0s;">
-    </span>
+        <div class="brand-header">
 
-    <span class="particle"
-        style="left:18%; bottom:15%; animation-duration:12s; animation-delay:2s;">
-    </span>
+            <div class="brand">
 
-    <span class="particle"
-        style="left:32%; bottom:5%; animation-duration:10s; animation-delay:4s;">
-    </span>
+                <div class="notfake">
+                    NotFake
+                </div>
 
-    <span class="particle"
-        style="left:47%; bottom:12%; animation-duration:14s; animation-delay:1s;">
-    </span>
+                <div class="cross">
+                    ×
+                </div>
 
-    <span class="particle"
-        style="left:63%; bottom:7%; animation-duration:11s; animation-delay:3s;">
-    </span>
+                <div class="rosplat">
 
-    <span class="particle"
-        style="left:78%; bottom:18%; animation-duration:13s; animation-delay:5s;">
-    </span>
+                    <div class="rp">
+                        RP
+                    </div>
 
-    <span class="particle"
-        style="left:90%; bottom:4%; animation-duration:10s; animation-delay:2s;">
-    </span>
+                    <div class="rosplat-name">
+                        RosPlat
+                    </div>
 
-    <span class="particle"
-        style="left:55%; bottom:20%; animation-duration:15s; animation-delay:6s;">
-    </span>
+                </div>
 
-</div>
+            </div>
 
-
-<div class="app">
-
-
-<!-- =========================
-     HOME
-========================= -->
-
-<div id="home" class="page active">
-
-
-    <div class="top">
-
-        <div class="brand">
-            <img src="logo.png" alt="AXEO">
         </div>
 
-        <div class="status"></div>
 
-    </div>
+        <section class="hero">
+
+            <div class="hero-label">
+                TRADER WORKSPACE
+            </div>
+
+            <h1>
+                Рабочая база <span>команды</span>
+            </h1>
+
+            <p>
+                Мануалы, медиа и советы новичкам
+                собраны в одном месте.
+            </p>
+
+        </section>
 
 
-    <div class="hero">
-
-        <div class="hero-light"></div>
-
-        <div class="hero-small">
-            TRADER WORKSPACE
+        <div class="section-title">
+            РАБОЧИЕ РАЗДЕЛЫ
         </div>
 
-        <div class="hero-title">
-            Рабочая база команды
+
+        <div class="main-grid">
+
+            <div
+                class="main-card manual-card"
+                onclick="openPage('manuals')"
+            >
+
+                <div class="card-icon">
+                    📖
+                </div>
+
+                <h2>
+                    Мануалы
+                </h2>
+
+                <p>
+                    Команды бота
+                </p>
+
+                <div class="card-count">
+                    36 команд
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
+
+            <div
+                class="main-card media-card"
+                onclick="openPage('media')"
+            >
+
+                <div class="card-icon">
+                    ▣
+                </div>
+
+                <h2>
+                    Медиа источники
+                </h2>
+
+                <p>
+                    Полезные материалы
+                </p>
+
+                <div class="card-count">
+                    Источники
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="hero-text">
-            Мануалы, таблицы и советы новичкам
-            собраны в одном месте.
+
+        <div class="section-title">
+            БЫСТРЫЙ СТАРТ
         </div>
 
-    </div>
 
-
-    <div class="section-title">
-        Рабочие разделы
-    </div>
-
-
-    <div class="grid">
-
-
-        <button
-            class="tile"
-            onclick="openPage('manuals')"
+        <div
+            class="newbie-card"
+            onclick="openPage('newbie')"
         >
 
-            <div class="tile-icon">
-                ◈
+            <div class="newbie-icon">
+                🚀
             </div>
 
-            <div class="tile-title">
-                Мануалы
-            </div>
+            <div class="newbie-info">
 
-            <div class="tile-info">
-                5 банков
-            </div>
-
-            <div class="arrow">
-                →
-            </div>
-
-        </button>
-
-
-        <button
-            class="tile"
-            onclick="openPage('tables')"
-        >
-
-            <div class="tile-icon">
-                ▦
-            </div>
-
-            <div class="tile-title">
-                Таблицы
-            </div>
-
-            <div class="tile-info">
-                Рабочие данные
-            </div>
-
-            <div class="arrow">
-                →
-            </div>
-
-        </button>
-
-
-    </div>
-
-
-    <div class="section-title">
-        Быстрый старт
-    </div>
-
-
-    <button
-        class="big-card"
-        onclick="openPage('guide')"
-    >
-
-        <div class="big-content">
-
-            <div class="big-icon">
-                ◎
-            </div>
-
-            <div>
-
-                <div class="big-title">
+                <h2>
                     Руководство для новичка
-                </div>
+                </h2>
 
-                <div class="big-text">
+                <p>
                     Пошаговый старт работы
-                </div>
+                </p>
 
             </div>
 
-            <div class="big-arrow">
+            <div class="newbie-arrow">
                 →
             </div>
 
         </div>
 
-    </button>
+    </main>
 
+
+    <!-- =========================
+         MANUALS
+    ========================== -->
+
+    <main id="manualsPage" class="page">
+
+        <div class="page-header">
+
+            <button
+                class="back-btn"
+                onclick="openPage('home')"
+            >
+                ←
+            </button>
+
+            <h1>
+                Мануалы
+            </h1>
+
+        </div>
+
+
+        <input
+            id="manualSearch"
+            class="search-box"
+            type="text"
+            placeholder="Поиск банка..."
+            oninput="filterManuals()"
+        >
+
+
+        <div id="manualList" class="manual-list">
+
+            <!-- Список создаётся JavaScript -->
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         MEDIA
+    ========================== -->
+
+    <main id="mediaPage" class="page">
+
+        <div class="page-header">
+
+            <button
+                class="back-btn"
+                onclick="openPage('home')"
+            >
+                ←
+            </button>
+
+            <h1>
+                Медиа
+            </h1>
+
+        </div>
+
+
+        <div class="media-source">
+
+            <h3>
+                📚 Полезные материалы
+            </h3>
+
+            <p>
+                Здесь будут размещаться полезные
+                материалы для команды.
+            </p>
+
+        </div>
+
+
+        <div class="media-source">
+
+            <h3>
+                🎥 Видео
+            </h3>
+
+            <p>
+                Обучающие и рабочие материалы.
+            </p>
+
+        </div>
+
+
+        <div class="media-source">
+
+            <h3>
+                🔗 Источники
+            </h3>
+
+            <p>
+                Полезные ссылки и ресурсы команды.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         NEWBIE
+    ========================== -->
+
+    <main id="newbiePage" class="page">
+
+        <div class="page-header">
+
+            <button
+                class="back-btn"
+                onclick="openPage('home')"
+            >
+                ←
+            </button>
+
+            <h1>
+                Новичку
+            </h1>
+
+        </div>
+
+
+        <div class="media-source">
+
+            <h3>
+                🚀 Добро пожаловать
+            </h3>
+
+            <p>
+                Здесь будет пошаговое руководство
+                для новых участников команды.
+            </p>
+
+        </div>
+
+
+        <div class="media-source">
+
+            <h3>
+                01. Основы
+            </h3>
+
+            <p>
+                Основная информация и структура
+                рабочего процесса.
+            </p>
+
+        </div>
+
+
+        <div class="media-source">
+
+            <h3>
+                02. Мануалы
+            </h3>
+
+            <p>
+                Изучение необходимых рабочих
+                материалов.
+            </p>
+
+        </div>
+
+    </main>
 
 </div>
 
 
 <!-- =========================
-     MANUALS
+     BOTTOM NAV
 ========================= -->
 
-<div id="manuals" class="page">
-
-
-    <div class="top">
-
-        <div class="brand">
-            <img src="logo.png" alt="AXEO">
-        </div>
-
-        <div class="status"></div>
-
-    </div>
-
-
-    <div class="hero">
-
-        <div class="hero-light"></div>
-
-        <div class="hero-small">
-            DOCUMENTATION
-        </div>
-
-        <div class="hero-title">
-            Мануалы
-        </div>
-
-        <div class="hero-text">
-            Инструкции и рабочие материалы
-            по банкам.
-        </div>
-
-    </div>
-
-
-    <div class="section-title">
-        Банки · 5 материалов
-    </div>
-
-
-    <!-- АЛЬФА -->
+<nav class="bottom-nav">
 
     <button
-        class="bank-card"
-        onclick="openBank('alpha')"
-    >
-
-        <div class="bank-content">
-
-            <div class="bank-icon">
-                A
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    Альфа-Банк
-                </div>
-
-                <div class="bank-description">
-                    Мануалы по работе
-                </div>
-
-            </div>
-
-            <div class="bank-arrow">
-                →
-            </div>
-
-        </div>
-
-    </button>
-
-
-    <!-- Т-БАНК -->
-
-    <button
-        class="bank-card"
-        onclick="openBank('tbank')"
-    >
-
-        <div class="bank-content">
-
-            <div class="bank-icon">
-                Т
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    Т-Банк
-                </div>
-
-                <div class="bank-description">
-                    Мануалы по работе
-                </div>
-
-            </div>
-
-            <div class="bank-arrow">
-                →
-            </div>
-
-        </div>
-
-    </button>
-
-
-    <!-- СБЕР -->
-
-    <button
-        class="bank-card"
-        onclick="openBank('sber')"
-    >
-
-        <div class="bank-content">
-
-            <div class="bank-icon">
-                С
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    Сбербанк
-                </div>
-
-                <div class="bank-description">
-                    Мануалы по работе
-                </div>
-
-            </div>
-
-            <div class="bank-arrow">
-                →
-            </div>
-
-        </div>
-
-    </button>
-
-
-    <!-- ОЗОН -->
-
-    <button
-        class="bank-card"
-        onclick="openBank('ozon')"
-    >
-
-        <div class="bank-content">
-
-            <div class="bank-icon">
-                O
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    Озон Банк
-                </div>
-
-                <div class="bank-description">
-                    ГУ · ФИЗ
-                </div>
-
-            </div>
-
-            <div class="bank-arrow">
-                →
-            </div>
-
-        </div>
-
-    </button>
-
-
-    <!-- УРАЛСИБ -->
-
-    <button
-        class="bank-card"
-        onclick="openBank('uralsib')"
-    >
-
-        <div class="bank-content">
-
-            <div class="bank-icon">
-                У
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    Уралсиб
-                </div>
-
-                <div class="bank-description">
-                    Мануалы по работе
-                </div>
-
-            </div>
-
-            <div class="bank-arrow">
-                →
-            </div>
-
-        </div>
-
-    </button>
-
-
-</div>
-
-
-<!-- =========================
-     BANK MENU
-========================= -->
-
-<div id="bankMenu" class="page">
-
-
-    <div class="top">
-
-        <div class="brand">
-            <img src="logo.png" alt="AXEO">
-        </div>
-
-        <div class="status"></div>
-
-    </div>
-
-
-    <button
-        class="back-button"
-        onclick="openPage('manuals')"
-    >
-        ← Назад к банкам
-    </button>
-
-
-    <div class="hero">
-
-        <div class="hero-light"></div>
-
-        <div class="hero-small" id="bankMenuSmall">
-            BANK DOCUMENTATION
-        </div>
-
-        <div class="hero-title" id="bankMenuTitle">
-            Банк
-        </div>
-
-        <div class="hero-text" id="bankMenuText">
-            Выберите нужный раздел.
-        </div>
-
-    </div>
-
-
-    <div class="section-title">
-        Разделы
-    </div>
-
-
-    <div id="bankMenuItems"></div>
-
-
-</div>
-
-
-<!-- =========================
-     OZON FIZ
-========================= -->
-
-<div id="ozonFiz" class="page">
-
-
-    <div class="top">
-
-        <div class="brand">
-           <img src="logo.png" alt="AXEO">
-        </div>
-
-        <div class="status"></div>
-
-    </div>
-
-
-    <button
-        class="back-button"
-        onclick="openPage('bankMenu')"
-    >
-        ← Назад к Озон Банку
-    </button>
-
-
-    <div class="hero">
-
-        <div class="hero-light"></div>
-
-        <div class="hero-small">
-            OZON BANK · ФИЗ
-        </div>
-
-        <div class="hero-title">
-            ФИЗ
-        </div>
-
-        <div class="hero-text">
-            Выберите нужный раздел
-            рабочего мануала.
-        </div>
-
-    </div>
-
-
-    <div class="section-title">
-        Разделы · ФИЗ
-    </div>
-
-
-    <div id="ozonFizItems"></div>
-
-
-</div>
-
-
-<!-- =========================
-     TABLES
-========================= -->
-
-<div id="tables" class="page">
-
-
-    <div class="top">
-
-        <div class="brand">
-            <img src="logo.png" alt="AXEO">
-        </div>
-
-        <div class="status"></div>
-
-    </div>
-
-
-    <div class="hero">
-
-        <div class="hero-light"></div>
-
-        <div class="hero-small">
-            WORKSPACE
-        </div>
-
-        <div class="hero-title">
-            Таблицы
-        </div>
-
-        <div class="hero-text">
-            Рабочие данные команды.
-        </div>
-
-    </div>
-
-
-    <div class="empty">
-
-        <div style="
-            color:var(--gold);
-            font-size:25px;
-            margin-bottom:12px;
-            text-shadow:
-                0 0 15px rgba(214,173,91,.65);
-        ">
-            ▦
-        </div>
-
-        Здесь появятся
-        рабочие таблицы.
-
-        <br><br>
-
-        Добавим их после
-        подключения материалов.
-
-    </div>
-
-
-</div>
-
-
-<!-- =========================
-     GUIDE
-========================= -->
-
-<div id="guide" class="page">
-
-
-    <div class="top">
-
-        <div class="brand">
-            <img src="logo.png" alt="AXEO">
-        </div>
-
-        <div class="status"></div>
-
-    </div>
-
-
-    <div class="hero">
-
-        <div class="hero-light"></div>
-
-        <div class="hero-small">
-            QUICK START
-        </div>
-
-        <div class="hero-title">
-            Руководство
-        </div>
-
-        <div class="hero-text">
-            Пошаговое обучение
-            для нового сотрудника.
-        </div>
-
-    </div>
-
-
-    <div class="section-title">
-        Обучение
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">
-            ШАГ 01
-        </div>
-
-        <div class="step-title">
-            С чего начать
-        </div>
-
-        <div class="step-text">
-            Первые шаги и основная
-            информация для новичка.
-        </div>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">
-            ШАГ 02
-        </div>
-
-        <div class="step-title">
-            Основные термины
-        </div>
-
-        <div class="step-text">
-            Разберём основные рабочие
-            понятия.
-        </div>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">
-            ШАГ 03
-        </div>
-
-        <div class="step-title">
-            Первые действия
-        </div>
-
-        <div class="step-text">
-            Пошаговый порядок
-            начала работы.
-        </div>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">
-            ШАГ 04
-        </div>
-
-        <div class="step-title">
-            Частые ошибки
-        </div>
-
-        <div class="step-text">
-            Что важно знать и чего
-            стоит избегать.
-        </div>
-
-    </div>
-
-
-</div>
-
-
-</div>
-
-
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<div class="navigation">
-
-
-    <button
-        class="nav-button active"
+        class="nav-item active"
+        data-page="home"
         onclick="openPage('home')"
     >
 
@@ -2657,650 +1171,286 @@ body::after {
             ⌂
         </span>
 
-        Главная
+        <span>
+            Главная
+        </span>
 
     </button>
 
 
     <button
-        class="nav-button"
+        class="nav-item"
+        data-page="manuals"
         onclick="openPage('manuals')"
     >
 
         <span class="nav-icon">
-            ◈
+            ♧
         </span>
 
-        Мануалы
+        <span>
+            Мануалы
+        </span>
 
     </button>
 
 
     <button
-        class="nav-button"
-        onclick="openPage('tables')"
+        class="nav-item"
+        data-page="media"
+        onclick="openPage('media')"
     >
 
         <span class="nav-icon">
-            ▦
+            ▣
         </span>
 
-        Таблицы
+        <span>
+            Медиа
+        </span>
 
     </button>
 
 
     <button
-        class="nav-button"
-        onclick="openPage('guide')"
+        class="nav-item"
+        data-page="newbie"
+        onclick="openPage('newbie')"
     >
 
         <span class="nav-icon">
             ◎
         </span>
 
-        Новичку
+        <span>
+            Новичку
+        </span>
 
     </button>
 
-
-</div>
+</nav>
 
 
 <script>
 
+/* =========================================
+   TELEGRAM
+========================================= */
 
-/* =========================
-   DATA
-========================= */
+const tg = window.Telegram?.WebApp;
 
+if (tg) {
+    tg.ready();
+    tg.expand();
 
-/*
-   Сюда позже вставим реальные
-   ссылки Telegraph.
-
-   Сейчас ссылки пустые.
-*/
-
-
-var manuals = {
-
-    alpha: {
-
-        name: "Альфа-Банк",
-
-        sections: [
-
-            {
-                name: "Ферма",
-                icon: "◈",
-                description: "Мануал по ферме",
-                url: "https://t.me/+swgOPz7Ay1YxOTMy"
-            },
-
-            {
-                name: "КА",
-                icon: "◇",
-                description: "Мануал по КА",
-                url: "https://t.me/+W2gAo2bIWu4yZjUy"
-            },
-
-            {
-                name: "Сушка",
-                icon: "◌",
-                description: "Мануал по сушке",
-                url: "https://t.me/+W2gAo2bIWu4yZjUy"
-            },
-
-            {
-                name: "Советы по работе",
-                icon: "✦",
-                description: "Полезные рекомендации",
-                url: ""
-            }
-
-        ]
-
-    },
-
-
-    tbank: {
-
-        name: "Т-Банк",
-
-        sections: [
-
-            {
-                name: "Ферма",
-                icon: "◈",
-                description: "Мануал по ферме",
-                url: ""
-            },
-
-            {
-                name: "КА",
-                icon: "◇",
-                description: "Мануал по КА",
-                url: ""
-            },
-
-            {
-                name: "Сушка",
-                icon: "◌",
-                description: "Мануал по сушке",
-                url: ""
-            },
-
-            {
-                name: "Советы по работе",
-                icon: "✦",
-                description: "Полезные рекомендации",
-                url: ""
-            }
-
-        ]
-
-    },
-
-
-    sber: {
-
-        name: "Сбербанк",
-
-        sections: [
-
-            {
-                name: "Ферма",
-                icon: "◈",
-                description: "Мануал по ферме",
-                url: ""
-            },
-
-            {
-                name: "КА",
-                icon: "◇",
-                description: "Мануал по КА",
-                url: ""
-            },
-
-            {
-                name: "Сушка",
-                icon: "◌",
-                description: "Мануал по сушке",
-                url: ""
-            },
-
-            {
-                name: "Советы по работе",
-                icon: "✦",
-                description: "Полезные рекомендации",
-                url: ""
-            }
-
-        ]
-
-    },
-
-
-    ozon: {
-
-        name: "Озон Банк",
-
-        special: true,
-
-        sections: [
-
-            {
-                name: "ГУ",
-                icon: "G",
-                description: "Мануал ГУ",
-                url: "GU_URL"
-            },
-
-            {
-                name: "ФИЗ",
-                icon: "F",
-                description: "Мануалы ФИЗ",
-                page: "ozonFiz"
-            }
-
-        ]
-
-    },
-
-
-    uralsib: {
-
-        name: "Уралсиб",
-
-        sections: [
-
-            {
-                name: "Ферма",
-                icon: "◈",
-                description: "Мануал по ферме",
-                url: ""
-            },
-
-            {
-                name: "КА",
-                icon: "◇",
-                description: "Мануал по КА",
-                url: ""
-            },
-
-            {
-                name: "Сушка",
-                icon: "◌",
-                description: "Мануал по сушке",
-                url: ""
-            },
-
-            {
-                name: "Советы по работе",
-                icon: "✦",
-                description: "Полезные рекомендации",
-                url: ""
-            }
-
-        ]
-
+    if (tg.setHeaderColor) {
+        tg.setHeaderColor("#030914");
     }
 
-};
-
-
-/* =========================
-   OZON FIZ DATA
-========================= */
-
-var ozonFizSections = [
-
-    {
-        name: "Ферма",
-        icon: "◈",
-        description: "Мануал по ферме",
-        url: ""
-    },
-
-    {
-        name: "КА",
-        icon: "◇",
-        description: "Мануал по КА",
-        url: ""
-    },
-
-    {
-        name: "Сушка",
-        icon: "◌",
-        description: "Мануал по сушке",
-        url: ""
-    },
-
-    {
-        name: "Советы по работе",
-        icon: "✦",
-        description: "Полезные рекомендации",
-        url: ""
+    if (tg.setBackgroundColor) {
+        tg.setBackgroundColor("#030914");
     }
+}
+
+
+/* =========================================
+   MANUAL NAMES
+========================================= */
+
+const manuals = [
+
+    "Цупис",
+
+    "СберКА",
+
+    "Яндекс ГУ",
+
+    "Т-Банк Ферма\\Агро",
+
+    "РокетБанк",
+
+    "АльфаКА",
+
+    "ОзонКА",
+
+    "Т-Банк КА",
+
+    "Отп КА",
+
+    "МобКом",
+
+    "МКБ",
+
+    "РСХБ",
+
+    "Юмани",
+
+    "СберБанк",
+
+    "ОзонФиз",
+
+    "ОТП Ферма",
+
+    "Райффайзен",
+
+    "ОзонГУ",
+
+    "АльфаБанк",
+
+    "Т-Банк",
+
+    "ОТП",
+
+    "ПСБ",
+
+    "WB",
+
+    "АкБарс",
+
+    "Альфа Ферма",
+
+    "НовикомБанк",
+
+    "ВБРР",
+
+    "Ренессанс КА",
+
+    "Газпром",
+
+    "ВТБ",
+
+    "Яндекс Физ",
+
+    "ЦифраБанк",
+
+    "Юнистрим",
+
+    "АБР",
+
+    "Авангард"
 
 ];
 
 
-/* =========================
+/* =========================================
+   RENDER MANUALS
+========================================= */
+
+function renderManuals(list = manuals) {
+
+    const container =
+        document.getElementById("manualList");
+
+    container.innerHTML = "";
+
+    list.forEach((name, index) => {
+
+        const item =
+            document.createElement("div");
+
+        item.className = "manual-item";
+
+        item.innerHTML = `
+
+            <div class="manual-number">
+                ${String(index + 1).padStart(2, "0")}
+            </div>
+
+            <div class="manual-name">
+                ${name}
+            </div>
+
+            <div class="manual-arrow">
+                →
+            </div>
+
+        `;
+
+        container.appendChild(item);
+
+    });
+
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function filterManuals() {
+
+    const query =
+        document
+            .getElementById("manualSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const filtered =
+        manuals.filter(name =>
+            name.toLowerCase().includes(query)
+        );
+
+    renderManuals(filtered);
+
+}
+
+
+/* =========================================
    PAGE NAVIGATION
-========================= */
+========================================= */
 
-function openPage(id) {
+function openPage(page) {
 
-    var pages =
-        document.querySelectorAll(".page");
+    document
+        .querySelectorAll(".page")
+        .forEach(element => {
 
+            element.classList.remove("active");
 
-    for (
-        var i = 0;
-        i < pages.length;
-        i++
-    ) {
-
-        pages[i]
-            .classList
-            .remove("active");
-
-    }
+        });
 
 
-    var target =
-        document.getElementById(id);
-
+    const target =
+        document.getElementById(page + "Page");
 
     if (target) {
-
-        target
-            .classList
-            .add("active");
-
+        target.classList.add("active");
     }
 
 
-    var buttons =
-        document.querySelectorAll(".nav-button");
-
-
-    for (
-        var j = 0;
-        j < buttons.length;
-        j++
-    ) {
-
-        buttons[j]
-            .classList
-            .remove("active");
-
-    }
-
-
-    var map = {
-
-        home: 0,
-        manuals: 1,
-        tables: 2,
-        guide: 3
-
-    };
-
-
-    if (
-        map[id] !== undefined
-    ) {
-
-        buttons[map[id]]
-            .classList
-            .add("active");
-
-    }
-
-
-    window.scrollTo(
-        0,
-        0
-    );
-
-}
-
-
-/* =========================
-   OPEN BANK
-========================= */
-
-function openBank(bankId) {
-
-    var bank =
-        manuals[bankId];
-
-
-    if (!bank) return;
-
-
-    document.getElementById(
-        "bankMenuTitle"
-    ).innerText =
-        bank.name;
-
-
-    document.getElementById(
-        "bankMenuSmall"
-    ).innerText =
-        bank.special
-            ? "OZON BANK"
-            : "BANK DOCUMENTATION";
-
-
-    document.getElementById(
-        "bankMenuText"
-    ).innerText =
-        bank.special
-            ? "Выберите тип мануала."
-            : "Выберите нужный раздел.";
-
-
-    var container =
-        document.getElementById(
-            "bankMenuItems"
-        );
-
-
-    container.innerHTML = "";
-
-
-    for (
-        var i = 0;
-        i < bank.sections.length;
-        i++
-    ) {
-
-        createSectionCard(
-            container,
-            bank.sections[i]
-        );
-
-    }
-
-
-    openPage("bankMenu");
-
-}
-
-
-/* =========================
-   OPEN OZON FIZ
-========================= */
-
-function openOzonFiz() {
-
-    var container =
-        document.getElementById(
-            "ozonFizItems"
-        );
-
-
-    container.innerHTML = "";
-
-
-    for (
-        var i = 0;
-        i < ozonFizSections.length;
-        i++
-    ) {
-
-        createSectionCard(
-            container,
-            ozonFizSections[i]
-        );
-
-    }
-
-
-    openPage("ozonFiz");
-
-}
-
-
-/* =========================
-   CREATE SECTION CARD
-========================= */
-
-function createSectionCard(
-    container,
-    section
-) {
-
-    var button =
-        document.createElement(
-            "button"
-        );
-
-
-    button.className =
-        "section-card";
-
-
-    button.innerHTML = `
-
-        <div class="section-icon">
-            ${section.icon}
-        </div>
-
-        <div class="section-content">
-
-            <div class="section-name">
-                ${section.name}
-            </div>
-
-            <div class="section-description">
-                ${section.description}
-            </div>
-
-        </div>
-
-        <div class="section-arrow">
-            →
-        </div>
-
-    `;
-
-
-    button.onclick =
-        function() {
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(button => {
+
+            button.classList.remove("active");
 
             if (
-                section.page === "ozonFiz"
+                button.dataset.page === page
             ) {
 
-                openOzonFiz();
-
-                return;
+                button.classList.add("active");
 
             }
 
-
-            openArticle(
-                section.url
-            );
-
-        };
+        });
 
 
-    container.appendChild(
-        button
-    );
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
-/* =========================
-   TELEGRAPH ARTICLE
-========================= */
+/* =========================================
+   START
+========================================= */
 
-function openArticle(url) {
-
-    if (
-        !url ||
-        url === "GU_URL"
-    ) {
-
-        alert(
-            "Ссылка на Telegraph пока не добавлена."
-        );
-
-        return;
-
-    }
-
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-}
-
-
-/* =========================
-   TELEGRAM WEB APP
-========================= */
-
-if (
-    window.Telegram &&
-    window.Telegram.WebApp
-) {
-
-    Telegram.WebApp.ready();
-
-    Telegram.WebApp.expand();
-
-}
-
-
-/* =========================
-   TOUCH GLOW
-========================= */
-
-document.addEventListener(
-    "touchstart",
-    function(event) {
-
-        var target =
-            event.target.closest(
-                ".tile, .big-card, .bank-card, .section-card"
-            );
-
-
-        if (!target) return;
-
-
-        target.style.boxShadow =
-            "0 0 35px rgba(214,173,91,.20)";
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-document.addEventListener(
-    "touchend",
-    function(event) {
-
-        var target =
-            event.target.closest(
-                ".tile, .big-card, .bank-card, .section-card"
-            );
-
-
-        if (!target) return;
-
-
-        setTimeout(
-            function() {
-
-                target.style.boxShadow =
-                    "";
-
-            },
-            180
-        );
-
-    },
-    {
-        passive: true
-    }
-);
-
+renderManuals();
 
 </script>
-
 
 </body>
 </html>
