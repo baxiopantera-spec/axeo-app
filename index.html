@@ -1503,6 +1503,112 @@ body:after{
 
 
 /* =========================================================
+   MANUAL GROUPS / CHOOSER
+========================================================= */
+
+.manual-count{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:28px;
+    height:22px;
+    padding:0 7px;
+    margin-right:2px;
+    border:1px solid rgba(231,185,79,.15);
+    border-radius:8px;
+    background:rgba(231,185,79,.055);
+    color:#a89a7a;
+    font-size:8px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.manual-choice-list{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.manual-choice{
+    width:100%;
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 11px;
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:14px;
+    background:linear-gradient(145deg,rgba(16,20,26,.98),rgba(7,9,12,.99));
+    color:#fff;
+    text-align:left;
+    cursor:pointer;
+    font-family:inherit;
+    transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+
+.manual-choice:hover{
+    transform:translateX(2px);
+    border-color:rgba(231,185,79,.28);
+    background:linear-gradient(145deg,rgba(22,26,33,.98),rgba(8,10,13,.99));
+}
+
+.manual-choice:active{
+    transform:scale(.99);
+}
+
+.manual-choice-icon{
+    width:34px;
+    height:34px;
+    flex:0 0 34px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:rgba(231,185,79,.07);
+    border:1px solid rgba(231,185,79,.16);
+    color:var(--gold2);
+    font-size:15px;
+    font-weight:900;
+}
+
+.manual-choice-text{
+    min-width:0;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.manual-choice-text strong{
+    font-size:11px;
+    font-weight:800;
+    line-height:1.2;
+}
+
+.manual-choice-text small{
+    margin-top:4px;
+    color:#68717d;
+    font-size:8px;
+    line-height:1.3;
+}
+
+.manual-choice-arrow{
+    color:#65707d;
+    font-size:15px;
+}
+
+.manual-choice-back{
+    min-height:46px;
+    opacity:.8;
+    margin-bottom:1px;
+}
+
+.manual-choice-back .manual-choice-icon{
+    width:30px;
+    height:30px;
+    flex-basis:30px;
+    font-size:13px;
+}
+
+/* =========================================================
    MOBILE
 ========================================================= */
 
@@ -2653,253 +2759,238 @@ if(tg){
 
 const manuals = [
 
-    {
-        name:"АБР",
-        sub:"Азиатско-Тихоокеанский Банк",
-        short:"АБ",
-        color:"#65a7ff",
-        bg:"#152b47"
-    },
-
-    {
-        name:"Авангард",
-        sub:"Банк Авангард",
-        short:"А",
-        color:"#ff7259",
-        bg:"#401a16"
-    },
-
-    {
-        name:"АкБарс",
-        sub:"Ак Барс Банк",
-        short:"АК",
-        color:"#5abf82",
-        bg:"#123b26"
-    },
-
-    {
-        name:"АльфаБанк",
+{
+        name:"Альфа Банк",
         sub:"Альфа-Банк",
         short:"A",
         color:"#ff4b4b",
-        bg:"#421414"
+        bg:"#421414",
+        children:[
+            {
+                type:"method", name:"КА", children:[
+                    {type:"leaf", name:"Альфа Банк — КА", display:"Альфа Банк", sub:"КА", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКА", password:"alfaka123"}
+                ]
+            },
+            {
+                type:"method", name:"Классика", children:[
+                    {type:"leaf", name:"Альфа Банк — Классика — 1 мануал", display:"Альфа Банк", sub:"Классика • 1 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика1", password:"alfa123"},
+                    {type:"leaf", name:"Альфа Банк — Классика — 2 мануал", display:"Альфа Банк", sub:"Классика • 2 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика2", password:"alfa123"},
+                    {type:"leaf", name:"Альфа Банк — Классика — 3 мануал", display:"Альфа Банк", sub:"Классика • 3 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика3", password:"alfa123"}
+                ]
+            },
+            {type:"method", name:"Ферма", children:[
+                {type:"leaf", name:"Альфа Банк — Ферма", display:"Альфа Банк", sub:"Ферма", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"Альфа Ферма", password:"alfafarm123"}
+            ]},
+            {type:"method", name:"Агроферма", children:[
+                {type:"leaf", name:"Альфа Банк — Агроферма", display:"Альфа Банк", sub:"Агроферма", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"Альфа Агроферма", password:"alfafarm123"}
+            ]}
+        ]
     },
 
-    {
-        name:"АльфаКА",
-        sub:"Альфа-Банк",
-        short:"A",
-        color:"#ff4b4b",
-        bg:"#421414"
-    },
-
-    {
-        name:"Альфа Ферма",
-        sub:"Альфа-Банк",
-        short:"A",
-        color:"#ff4b4b",
-        bg:"#421414"
-    },
-
-    {
-        name:"ВБРР",
-        sub:"Всероссийский банк развития регионов",
-        short:"В",
-        color:"#58b3ff",
-        bg:"#142d45"
-    },
-
-    {
-        name:"ВТБ",
-        sub:"ВТБ",
-        short:"В",
-        color:"#4d91ff",
-        bg:"#14284a"
-    },
-
-    {
-        name:"Газпром",
-        sub:"Газпромбанк",
-        short:"Г",
-        color:"#63a9ff",
-        bg:"#142b48"
-    },
-
-    {
-        name:"МКБ",
-        sub:"Московский кредитный банк",
-        short:"МК",
-        color:"#54a5ff",
-        bg:"#142d49"
-    },
-
-    {
-        name:"МобКом",
-        sub:"Mobile Commerce",
-        short:"M",
-        color:"#58a9ff",
-        bg:"#152d47"
-    },
-
-    {
-        name:"НовикомБанк",
-        sub:"Новикомбанк",
-        short:"Н",
-        color:"#63a7ff",
-        bg:"#152b45"
-    },
-
-    {
-        name:"Озон ГУ",
-        sub:"Ozon",
-        short:"O",
-        color:"#5b8cff",
-        bg:"#17264a"
-    },
-
-    {
-        name:"ОзонКА",
-        sub:"Ozon",
-        short:"O",
-        color:"#5b8cff",
-        bg:"#17264a"
-    },
-
-    {
-        name:"Озон Физ",
-        sub:"Ozon",
-        short:"O",
-        color:"#5b8cff",
-        bg:"#17264a"
-    },
-
-    {
-        name:"ОТП",
-        sub:"ОТП Банк",
-        short:"О",
-        color:"#ff674f",
-        bg:"#421a15"
-    },
-
-    {
-        name:"ОТП КА",
-        sub:"ОТП Банк",
-        short:"О",
-        color:"#ff674f",
-        bg:"#421a15"
-    },
-
-    {
-        name:"ОТП Ферма",
-        sub:"ОТП Банк",
-        short:"О",
-        color:"#ff674f",
-        bg:"#421a15"
-    },
-
-    {
-        name:"ПСБ",
-        sub:"Промсвязьбанк",
-        short:"П",
-        color:"#68a8ff",
-        bg:"#172d4a"
-    },
-
-    {
-        name:"Райффайзен",
-        sub:"Raiffeisen",
-        short:"R",
-        color:"#ffe047",
-        bg:"#403911"
-    },
-
-    {
-        name:"Ренессанс КА",
-        sub:"Ренессанс Банк",
-        short:"Р",
-        color:"#ff6c58",
-        bg:"#421b17"
-    },
-
-    {
-        name:"РокетБанк",
-        sub:"Roket",
-        short:"R",
-        color:"#d34dff",
-        bg:"#32103c"
-    },
-
-    {
-        name:"РСХБ",
-        sub:"Россельхозбанк",
-        short:"Р",
-        color:"#56c878",
-        bg:"#123722"
-    },
-
-    {
-        name:"СберБанк",
-        sub:"Сбербанк",
-        short:"С",
-        color:"#48d597",
-        bg:"#12392d"
-    },
-
-    {
+{
         name:"Т-Банк",
         sub:"T-Bank",
         short:"Т",
         color:"#ffcc33",
-        bg:"#3c3310"
+        bg:"#3c3310",
+        children:[
+            {type:"method", name:"Классика", children:[
+                {type:"leaf", name:"Т-Банк — Классика — 1 мануал", display:"Т-Банк", sub:"Классика • 1 мануал", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-БанкКлассика1", password:"tbank123"},
+                {type:"leaf", name:"Т-Банк — Классика — 2 мануал", display:"Т-Банк", sub:"Классика • 2 мануал", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-БанкКлассика2", password:"tbank123"}
+            ]},
+            {type:"method", name:"Ферма", children:[
+                {type:"leaf", name:"Т-Банк — Ферма", display:"Т-Банк", sub:"Ферма", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк Ферма", password:"tbank123"}
+            ]},
+            {type:"method", name:"Агроферма", children:[
+                {type:"leaf", name:"Т-Банк — Агроферма", display:"Т-Банк", sub:"Агроферма", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк Агроферма", password:"tbank123"}
+            ]},
+            {type:"method", name:"КА", children:[
+                {type:"leaf", name:"Т-Банк — КА", display:"Т-Банк", sub:"КА", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк КА", password:"tbankka123"}
+            ]}
+        ]
     },
 
-    {
-        name:"Т-Банк КА",
-        sub:"Т-Банк",
-        short:"Т",
-        color:"#ffcc33",
-        bg:"#3c3310"
+{
+        name:"СберБанк",
+        sub:"Сбербанк",
+        short:"С",
+        color:"#48d597",
+        bg:"#12392d",
+        children:[
+            {type:"method", name:"Классика", children:[
+                {type:"leaf", name:"СберБанк — Классика — 1 мануал", display:"СберБанк", sub:"Классика • 1 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКлассика1", password:"sber123"},
+                {type:"leaf", name:"СберБанк — Классика — 2 мануал", display:"СберБанк", sub:"Классика • 2 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКлассика2", password:"sber123"}
+            ]},
+            {type:"method", name:"КА", children:[
+                {type:"leaf", name:"СберБанк — КА — 1 мануал", display:"СберБанк", sub:"КА • 1 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКА1", password:"sber123"},
+                {type:"leaf", name:"СберБанк — КА — 2 мануал", display:"СберБанк", sub:"КА • 2 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКА2", password:"sber123"}
+            ]}
+        ]
     },
 
-    {
-        name:"WB",
-        sub:"Wildberries",
-        short:"WB",
-        color:"#b35cff",
-        bg:"#321444"
+{
+        name:"Озон",
+        sub:"Ozon",
+        short:"O",
+        color:"#5b8cff",
+        bg:"#17264a",
+        children:[
+            {type:"method", name:"ГУ", children:[
+                {type:"leaf", name:"Озон — ГУ", display:"Озон", sub:"ГУ", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"Озон ГУ", password:"ozongu123"}
+            ]},
+            {type:"method", name:"КА", children:[
+                {type:"leaf", name:"Озон — КА", display:"Озон", sub:"КА", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"ОзонКА", password:"ozonka123"}
+            ]},
+            {type:"method", name:"ФИЗ", children:[
+                {type:"leaf", name:"Озон — ФИЗ", display:"Озон", sub:"ФИЗ", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"Озон Физ", password:"ozonphys123"}
+            ]}
+        ]
     },
 
-    {
-        name:"ЮMoney",
-        sub:"ЮMoney",
-        short:"Ю",
-        color:"#ffcc32",
-        bg:"#40330d"
+{
+        name:"ОТП",
+        sub:"ОТП Банк",
+        short:"О",
+        color:"#ff674f",
+        bg:"#421a15",
+        children:[
+            {type:"method", name:"Классика", children:[
+                {type:"leaf", name:"ОТП — Классика", display:"ОТП", sub:"Классика", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП", password:"otp123"}
+            ]},
+            {type:"method", name:"КА", children:[
+                {type:"leaf", name:"ОТП — КА", display:"ОТП", sub:"КА", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП КА", password:"otpka123"}
+            ]},
+            {type:"method", name:"Ферма", children:[
+                {type:"leaf", name:"ОТП — Ферма", display:"ОТП", sub:"Ферма", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП Ферма", password:"otpfarm123"}
+            ]}
+        ]
     },
 
-    {
-        name:"Юнистрим",
-        sub:"Юнистрим",
-        short:"Ю",
-        color:"#e9a83e",
-        bg:"#3b2810"
-    },
-
-    {
-        name:"Яндекс Физ",
+{
+        name:"Яндекс",
         sub:"Яндекс",
         short:"Я",
         color:"#ff5549",
-        bg:"#421815"
+        bg:"#421815",
+        children:[
+            {type:"method", name:"ГУ", children:[
+                {type:"leaf", name:"Яндекс — ГУ — 1 мануал", display:"Яндекс", sub:"ГУ • 1 мануал", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"ЯндексГУ1", password:"yandex123"},
+                {type:"leaf", name:"Яндекс — ГУ — 2 мануал (ферма)", display:"Яндекс", sub:"ГУ • 2 мануал (ферма)", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"ЯндексГУ2", password:"yandex123"}
+            ]},
+            {type:"method", name:"ФИЗ", children:[
+                {type:"leaf", name:"Яндекс — ФИЗ", display:"Яндекс", sub:"ФИЗ", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"Яндекс Физ", password:"yandex123"}
+            ]}
+        ]
     },
 
-    {
-        name:"ЦифраБанк",
-        sub:"Цифра Банк",
-        short:"Ц",
-        color:"#53aaff",
-        bg:"#142b45"
-    }
+{name:"WB", sub:"Wildberries", short:"WB", color:"#b35cff", bg:"#321444", children:[
+        {type:"leaf", name:"WB — Мануал", display:"WB", sub:"Wildberries", short:"WB", color:"#b35cff", bg:"#321444", contentKey:"WB", password:"wb123"}
+    ]},
+
+{
+        name:"АБР",
+        sub:"Азиатско-Тихоокеанский Банк",
+        short:"АБ",
+        color:"#65a7ff",
+        bg:"#152b47",
+        children:[
+            {
+                type:"leaf",
+                name:"АБР — Мануал",
+                display:"АБР",
+                sub:"Азиатско-Тихоокеанский Банк",
+                short:"АБ",
+                color:"#65a7ff",
+                bg:"#152b47",
+                contentKey:"АБР",
+                password:"abr123"
+            }
+        ]
+    },
+
+{
+        name:"Авангард",
+        sub:"Банк Авангард",
+        short:"А",
+        color:"#ff7259",
+        bg:"#401a16",
+        children:[{
+            type:"leaf", name:"Авангард — Мануал", display:"Авангард", sub:"Банк Авангард",
+            short:"А", color:"#ff7259", bg:"#401a16", contentKey:"Авангард", password:"avangard123"
+        }]
+    },
+
+{
+        name:"АкБарс",
+        sub:"Ак Барс Банк",
+        short:"АК",
+        color:"#5abf82",
+        bg:"#123b26",
+        children:[{
+            type:"leaf", name:"АкБарс — Мануал", display:"АкБарс", sub:"Ак Барс Банк",
+            short:"АК", color:"#5abf82", bg:"#123b26", contentKey:"АкБарс", password:"akbars123"
+        }]
+    },
+
+{name:"ВБРР", sub:"Всероссийский банк развития регионов", short:"В", color:"#58b3ff", bg:"#142d45", children:[
+        {type:"leaf", name:"ВБРР — Мануал", display:"ВБРР", sub:"Всероссийский банк развития регионов", short:"В", color:"#58b3ff", bg:"#142d45", contentKey:"ВБРР", password:"vbrr123"}
+    ]},
+
+{name:"ВТБ", sub:"ВТБ", short:"В", color:"#4d91ff", bg:"#14284a", children:[
+        {type:"leaf", name:"ВТБ — Мануал", display:"ВТБ", sub:"ВТБ", short:"В", color:"#4d91ff", bg:"#14284a", contentKey:"ВТБ", password:"vtb123"}
+    ]},
+
+{name:"Газпром", sub:"Газпромбанк", short:"Г", color:"#63a9ff", bg:"#142b48", children:[
+        {type:"leaf", name:"Газпром — Мануал", display:"Газпром", sub:"Газпромбанк", short:"Г", color:"#63a9ff", bg:"#142b48", contentKey:"Газпром", password:"gazprom123"}
+    ]},
+
+{name:"МКБ", sub:"Московский кредитный банк", short:"МК", color:"#54a5ff", bg:"#142d49", children:[
+        {type:"leaf", name:"МКБ — Мануал", display:"МКБ", sub:"Московский кредитный банк", short:"МК", color:"#54a5ff", bg:"#142d49", contentKey:"МКБ", password:"mkb123"}
+    ]},
+
+{name:"МобКом", sub:"Mobile Commerce", short:"M", color:"#58a9ff", bg:"#152d47", children:[
+        {type:"leaf", name:"МобКом — Мануал", display:"МобКом", sub:"Mobile Commerce", short:"M", color:"#58a9ff", bg:"#152d47", contentKey:"МобКом", password:"mobcom123"}
+    ]},
+
+{name:"НовикомБанк", sub:"Новикомбанк", short:"Н", color:"#63a7ff", bg:"#152b45", children:[
+        {type:"leaf", name:"НовикомБанк — Мануал", display:"НовикомБанк", sub:"Новикомбанк", short:"Н", color:"#63a7ff", bg:"#152b45", contentKey:"НовикомБанк", password:"novikom123"}
+    ]},
+
+{name:"ПСБ", sub:"Промсвязьбанк", short:"П", color:"#68a8ff", bg:"#172d4a", children:[
+        {type:"leaf", name:"ПСБ — Мануал", display:"ПСБ", sub:"Промсвязьбанк", short:"П", color:"#68a8ff", bg:"#172d4a", contentKey:"ПСБ", password:"psb123"}
+    ]},
+
+{name:"Райффайзен", sub:"Raiffeisen", short:"R", color:"#ffe047", bg:"#403911", children:[
+        {type:"leaf", name:"Райффайзен — Мануал", display:"Райффайзен", sub:"Raiffeisen", short:"R", color:"#ffe047", bg:"#403911", contentKey:"Райффайзен", password:"raiffeisen123"}
+    ]},
+
+{name:"Ренессанс Банк", sub:"Ренессанс Банк • КА", short:"Р", color:"#ff6c58", bg:"#421b17", children:[
+        {type:"leaf", name:"Ренессанс Банк — КА", display:"Ренессанс Банк", sub:"КА", short:"Р", color:"#ff6c58", bg:"#421b17", contentKey:"Ренессанс КА", password:"renaissance123"}
+    ]},
+
+{name:"Рокет Банк", sub:"Roket", short:"R", color:"#d34dff", bg:"#32103c", children:[
+        {type:"leaf", name:"Рокет Банк — Мануал", display:"Рокет Банк", sub:"Roket", short:"R", color:"#d34dff", bg:"#32103c", contentKey:"РокетБанк", password:"rocket123"}
+    ]},
+
+{name:"РСХБ", sub:"Россельхозбанк", short:"Р", color:"#56c878", bg:"#123722", children:[
+        {type:"leaf", name:"РСХБ — Мануал", display:"РСХБ", sub:"Россельхозбанк", short:"Р", color:"#56c878", bg:"#123722", contentKey:"РСХБ", password:"rshb123"}
+    ]},
+
+{name:"ЦифраБанк", sub:"Цифра Банк", short:"Ц", color:"#53aaff", bg:"#142b45", children:[
+        {type:"leaf", name:"ЦифраБанк — Мануал", display:"ЦифраБанк", sub:"Цифра Банк", short:"Ц", color:"#53aaff", bg:"#142b45", contentKey:"ЦифраБанк", password:"cifra123"}
+    ]},
+
+{name:"ЦУПИС", sub:"ЦУПИС", short:"Ц", color:"#7aa8ff", bg:"#182a4b", children:[
+        {type:"leaf", name:"ЦУПИС — Мануал", display:"ЦУПИС", sub:"ЦУПИС", short:"Ц", color:"#7aa8ff", bg:"#182a4b", contentKey:"ЦУПИС", password:"cupis123"}
+    ]},
+
+{name:"ЮMoney", sub:"ЮMoney", short:"Ю", color:"#ffcc32", bg:"#40330d", children:[
+        {type:"leaf", name:"ЮMoney — Мануал", display:"ЮMoney", sub:"ЮMoney", short:"Ю", color:"#ffcc32", bg:"#40330d", contentKey:"ЮMoney", password:"yoomoney123"}
+    ]},
+
+{name:"Юнистрим", sub:"Юнистрим", short:"Ю", color:"#e9a83e", bg:"#3b2810", children:[
+        {type:"leaf", name:"Юнистрим — Мануал", display:"Юнистрим", sub:"Юнистрим", short:"Ю", color:"#e9a83e", bg:"#3b2810", contentKey:"Юнистрим", password:"unistream123"}
+    ]},
 
 ];
 
@@ -2908,58 +2999,31 @@ const manuals = [
    PASSWORDS
 ===================================================== */
 
-const manualPasswords = {
+/*
+   Пароли теперь хранятся прямо у конечного мануала.
+   Чтобы поменять пароль, меняй поле password у нужного элемента.
+*/
 
-    "АБР":"abr123",
-    "Авангард":"avangard123",
-    "АкБарс":"akbars123",
+const manualPasswords = {};
 
-    "АльфаБанк":"alfa123",
-    "АльфаКА":"alfaka123",
-    "Альфа Ферма":"alfafarm123",
+function buildManualPasswords(nodes){
+    nodes.forEach(node => {
+        if(node.type === "leaf"){
+            manualPasswords[node.name] = node.password;
+        }else if(Array.isArray(node.children)){
+            buildManualPasswords(node.children);
+        }
+    });
+}
 
-    "ВБРР":"vbrr123",
-    "ВТБ":"vtb123",
-    "Газпром":"gazprom123",
-
-    "МКБ":"mkb123",
-    "МобКом":"mobcom123",
-    "НовикомБанк":"novikom123",
-
-    "Озон ГУ":"ozongu123",
-    "ОзонКА":"ozonka123",
-    "Озон Физ":"ozonphys123",
-
-    "ОТП":"otp123",
-    "ОТП КА":"otpka123",
-    "ОТП Ферма":"otpfarm123",
-
-    "ПСБ":"psb123",
-    "Райффайзен":"raiffeisen123",
-    "Ренессанс КА":"renaissance123",
-    "РокетБанк":"rocket123",
-
-    "РСХБ":"rshb123",
-    "СберБанк":"sber123",
-
-    "Т-Банк":"tbank123",
-    "Т-Банк КА":"tbankka123",
-
-    "WB":"wb123",
-
-    "ЮMoney":"yoomoney123",
-    "Юнистрим":"unistream123",
-
-    "Яндекс Физ":"yandex123",
-
-    "ЦифраБанк":"cifra123"
-
-};
+buildManualPasswords(manuals);
 
 
 /* =====================================================
    MANUAL CONTENT
 ===================================================== */
+
+
 
 const manualContents = {
 
@@ -3257,6 +3321,36 @@ const manualContents = {
 };
 
 
+
+
+/* =====================================================
+   NEW GROUPED MANUAL CONTENT
+===================================================== */
+
+Object.assign(manualContents, {
+
+    "СберКлассика1": `<h3>СберБанк — Классика — 1 мануал</h3><p>Здесь будет содержимое первого мануала Классики СберБанка.</p>`,
+    "СберКлассика2": `<h3>СберБанк — Классика — 2 мануал</h3><p>Здесь будет содержимое второго мануала Классики СберБанка.</p>`,
+    "СберКА1": `<h3>СберБанк — КА — 1 мануал</h3><p>Здесь будет содержимое первого мануала КА СберБанка.</p>`,
+    "СберКА2": `<h3>СберБанк — КА — 2 мануал</h3><p>Здесь будет содержимое второго мануала КА СберБанка.</p>`,
+
+    "ЯндексГУ1": `<h3>Яндекс — ГУ — 1 мануал</h3><p>Здесь будет содержимое первого мануала ГУ Яндекса.</p>`,
+    "ЯндексГУ2": `<h3>Яндекс — ГУ — 2 мануал (ферма)</h3><p>Здесь будет содержимое второго мануала ГУ Яндекса — ферма.</p>`,
+
+    "Т-БанкКлассика1": `<h3>Т-Банк — Классика — 1 мануал</h3><p>Здесь будет содержимое первого мануала Классики Т-Банка.</p>`,
+    "Т-БанкКлассика2": `<h3>Т-Банк — Классика — 2 мануал</h3><p>Здесь будет содержимое второго мануала Классики Т-Банка.</p>`,
+    "Т-Банк Ферма": `<h3>Т-Банк — Ферма</h3><p>Здесь будет содержимое мануала Фермы Т-Банка.</p>`,
+    "Т-Банк Агроферма": `<h3>Т-Банк — Агроферма</h3><p>Здесь будет содержимое мануала Агрофермы Т-Банка.</p>`,
+
+    "АльфаКлассика1": `<h3>Альфа Банк — Классика — 1 мануал</h3><p>Здесь будет содержимое первого мануала Классики Альфа-Банка.</p>`,
+    "АльфаКлассика2": `<h3>Альфа Банк — Классика — 2 мануал</h3><p>Здесь будет содержимое второго мануала Классики Альфа-Банка.</p>`,
+    "АльфаКлассика3": `<h3>Альфа Банк — Классика — 3 мануал</h3><p>Здесь будет содержимое третьего мануала Классики Альфа-Банка.</p>`,
+    "Альфа Агроферма": `<h3>Альфа Банк — Агроферма</h3><p>Здесь будет содержимое мануала Агрофермы Альфа-Банка.</p>`,
+
+    "ЦУПИС": `<h3>ЦУПИС — рабочий мануал</h3><p>Здесь будет содержимое мануала ЦУПИС.</p>`
+});
+
+
 /* =====================================================
    BANK LOGOS
 ===================================================== */
@@ -3428,8 +3522,45 @@ function getLogo(bank){
 
 
 /* =====================================================
-   RENDER MANUALS
+   MANUAL HELPERS
 ===================================================== */
+
+function isLeaf(node){
+    return node && node.type === "leaf";
+}
+
+function nodeMatches(node, query){
+    const q = String(query || "").toLowerCase().trim();
+
+    if(!q){
+        return true;
+    }
+
+    const haystack = [
+        node.name,
+        node.sub,
+        node.display,
+        node.short
+    ].filter(Boolean).join(" ").toLowerCase();
+
+    if(haystack.includes(q)){
+        return true;
+    }
+
+    if(Array.isArray(node.children)){
+        return node.children.some(child => nodeMatches(child, q));
+    }
+
+    return false;
+}
+
+function getNodeLabel(node){
+    return node.name || node.display || "Мануал";
+}
+
+function getNodeSubtitle(node){
+    return node.sub || "Рабочий раздел";
+}
 
 function renderManuals(list = manuals){
 
@@ -3443,7 +3574,6 @@ function renderManuals(list = manuals){
     }
 
     container.innerHTML = "";
-
 
     if(!list.length){
 
@@ -3462,26 +3592,27 @@ function renderManuals(list = manuals){
         const item =
             document.createElement("div");
 
-
         item.className =
             "manual-item";
-
 
         item.style.setProperty(
             "--accent",
             bank.color
         );
 
-
         item.onclick = function(){
-
-            openManualPassword(bank);
-
+            openManualGroup(bank);
         };
 
+        const hasChildren =
+            Array.isArray(bank.children) &&
+            bank.children.length > 0;
+
+        const indicator = hasChildren
+            ? `<span class="manual-count">${getLeafCount(bank)} м.</span>`
+            : "";
 
         item.innerHTML = `
-
             <div
                 class="bank-logo"
                 style="
@@ -3489,42 +3620,41 @@ function renderManuals(list = manuals){
                     --logo-bg:${bank.bg};
                 "
             >
-
                 ${getLogo(bank)}
-
             </div>
-
 
             <div class="manual-name">
-
-                <strong>
-                    ${bank.name}
-                </strong>
-
-                <span>
-                    ${bank.sub}
-                </span>
-
+                <strong>${bank.name}</strong>
+                <span>${bank.sub}</span>
             </div>
 
+            ${indicator}
 
             <div class="manual-arrow">
                 →
             </div>
-
         `;
 
-
         container.appendChild(item);
-
     });
-
 }
 
+function getLeafCount(node){
+    if(!node) return 0;
 
-/* =====================================================
-   SEARCH
-===================================================== */
+    if(isLeaf(node)){
+        return 1;
+    }
+
+    if(!Array.isArray(node.children)){
+        return 0;
+    }
+
+    return node.children.reduce(
+        (sum, child) => sum + getLeafCount(child),
+        0
+    );
+}
 
 function filterManuals(){
 
@@ -3537,31 +3667,214 @@ function filterManuals(){
         return;
     }
 
-
     const query =
         input.value
             .toLowerCase()
             .trim();
 
-
     const filtered =
-        manuals.filter(bank =>
-
-            bank.name
-                .toLowerCase()
-                .includes(query)
-
-            ||
-
-            bank.sub
-                .toLowerCase()
-                .includes(query)
-
+        manuals.filter(
+            bank => nodeMatches(bank, query)
         );
 
-
     renderManuals(filtered);
+}
 
+
+/* =====================================================
+   MANUAL CHOOSER
+===================================================== */
+
+let manualChoiceStack = [];
+let manualChoiceRoot = null;
+let manualChoiceNodes = [];
+
+function openManualGroup(bank){
+
+    if(!bank){
+        return;
+    }
+
+    const children =
+        Array.isArray(bank.children)
+            ? bank.children
+            : [];
+
+    if(children.length === 1 && isLeaf(children[0])){
+        openManualPassword(children[0]);
+        return;
+    }
+
+    if(!children.length){
+        openManualPassword({
+            name: bank.name,
+            display: bank.name,
+            sub: bank.sub,
+            short: bank.short,
+            color: bank.color,
+            bg: bank.bg,
+            contentKey: bank.contentKey,
+            password: bank.password
+        });
+        return;
+    }
+
+    manualChoiceRoot = bank;
+    manualChoiceStack = [];
+
+    openManualChoiceLevel(
+        bank,
+        children,
+        bank.name,
+        bank.sub
+    );
+}
+
+function openManualChoiceLevel(
+    bank,
+    nodes,
+    title,
+    subtitle
+){
+
+    manualChoiceNodes = nodes;
+
+    const modal =
+        document.getElementById(
+            "manualContentModal"
+        );
+
+    const titleEl =
+        document.getElementById(
+            "manualContentTitle"
+        );
+
+    const subtitleEl =
+        document.getElementById(
+            "manualContentSubtitle"
+        );
+
+    const body =
+        document.getElementById(
+            "manualContentBody"
+        );
+
+    const logo =
+        document.getElementById(
+            "manualContentLogo"
+        );
+
+    if(!modal || !body){
+        return;
+    }
+
+    titleEl.textContent = title;
+    subtitleEl.textContent = subtitle || "Выберите направление";
+
+    logo.innerHTML = getLogo(bank);
+    logo.style.color = bank.color;
+    logo.style.background = bank.bg;
+
+    let html = `
+        <div class="manual-choice-list">
+    `;
+
+    if(manualChoiceStack.length > 0){
+        html += `
+            <button
+                type="button"
+                class="manual-choice manual-choice-back"
+                onclick="manualChoiceBack()"
+            >
+                <span class="manual-choice-icon">←</span>
+                <span class="manual-choice-text">
+                    <strong>Назад</strong>
+                    <small>Вернуться на предыдущий уровень</small>
+                </span>
+            </button>
+        `;
+    }
+
+    nodes.forEach((node, index) => {
+
+        const leaf = isLeaf(node);
+        const count = leaf ? 0 : getLeafCount(node);
+
+        html += `
+            <button
+                type="button"
+                class="manual-choice"
+                onclick="manualChoiceSelect(${index})"
+            >
+                <span class="manual-choice-icon">
+                    ${leaf ? "◈" : "›"}
+                </span>
+
+                <span class="manual-choice-text">
+                    <strong>${getNodeLabel(node)}</strong>
+                    <small>
+                        ${leaf ? getNodeSubtitle(node) : `${count} ${count === 1 ? "мануал" : "мануала"}`}
+                    </small>
+                </span>
+
+                <span class="manual-choice-arrow">→</span>
+            </button>
+        `;
+    });
+
+    html += `</div>`;
+
+    body.innerHTML = html;
+    modal.classList.add("show");
+}
+
+function manualChoiceSelect(index){
+
+    const node =
+        manualChoiceNodes[index];
+
+    if(!node){
+        return;
+    }
+
+    if(isLeaf(node)){
+        closeManualContent();
+        openManualPassword(node);
+        return;
+    }
+
+    manualChoiceStack.push({
+        nodes: manualChoiceNodes,
+        title: document.getElementById("manualContentTitle").textContent,
+        subtitle: document.getElementById("manualContentSubtitle").textContent
+    });
+
+    openManualChoiceLevel(
+        manualChoiceRoot,
+        node.children || [],
+        node.name,
+        node.children && node.children.length === 1 && isLeaf(node.children[0])
+            ? node.name
+            : "Выберите мануал"
+    );
+}
+
+function manualChoiceBack(){
+
+    const previous =
+        manualChoiceStack.pop();
+
+    if(!previous){
+        closeManualContent();
+        return;
+    }
+
+    openManualChoiceLevel(
+        manualChoiceRoot,
+        previous.nodes,
+        previous.title,
+        previous.subtitle
+    );
 }
 
 
@@ -3576,10 +3889,9 @@ let selectedManual = null;
    OPEN PASSWORD MODAL
 ===================================================== */
 
-function openManualPassword(bank){
+function openManualPassword(manual){
 
-    selectedManual = bank;
-
+    selectedManual = manual;
 
     const modal =
         document.getElementById(
@@ -3601,35 +3913,23 @@ function openManualPassword(bank){
             "manualPasswordError"
         );
 
-
     if(!modal || !input){
         return;
     }
 
-
     title.textContent =
-        "Доступ: " + bank.name;
-
+        "Доступ: " + (manual.display || manual.name);
 
     input.value = "";
-
-    input.classList.remove(
-        "error"
-    );
-
+    input.classList.remove("error");
     error.textContent = "";
 
-
-    modal.classList.add(
-        "show"
-    );
-
+    modal.classList.add("show");
 
     setTimeout(
         () => input.focus(),
         120
     );
-
 }
 
 
@@ -3645,16 +3945,10 @@ function closePasswordModal(){
         );
 
     if(modal){
-
-        modal.classList.remove(
-            "show"
-        );
-
+        modal.classList.remove("show");
     }
 
-
     selectedManual = null;
-
 }
 
 
@@ -3668,7 +3962,6 @@ function checkManualPassword(){
         return;
     }
 
-
     const input =
         document.getElementById(
             "manualPasswordInput"
@@ -3679,63 +3972,37 @@ function checkManualPassword(){
             "manualPasswordError"
         );
 
-
     const entered =
         input.value.trim();
 
-
     const correct =
-        manualPasswords[
-            selectedManual.name
-        ];
-
+        selectedManual.password ||
+        manualPasswords[selectedManual.name];
 
     if(
         correct &&
         entered === correct
     ){
 
-        input.classList.remove(
-            "error"
-        );
-
+        input.classList.remove("error");
         error.textContent = "";
 
-
-        const bank =
-            selectedManual;
-
+        const manual = selectedManual;
 
         closePasswordModal();
-
-
-        openManualContent(
-            bank
-        );
-
+        openManualContent(manual);
 
         return;
-
     }
 
-
-    input.classList.add(
-        "error"
-    );
-
-
-    error.textContent =
-        "Неверный пароль";
-
-
+    input.classList.add("error");
+    error.textContent = "Неверный пароль";
     input.value = "";
-
 
     setTimeout(
         () => input.focus(),
         50
     );
-
 }
 
 
@@ -3743,7 +4010,7 @@ function checkManualPassword(){
    OPEN MANUAL CONTENT
 ===================================================== */
 
-function openManualContent(bank){
+function openManualContent(manual){
 
     const modal =
         document.getElementById(
@@ -3770,40 +4037,32 @@ function openManualContent(bank){
             "manualContentLogo"
         );
 
-
     if(!modal){
         return;
     }
 
-
     title.textContent =
-        bank.name;
-
+        manual.display || manual.name;
 
     subtitle.textContent =
-        bank.sub;
-
+        manual.sub || "Рабочая инструкция";
 
     logo.innerHTML =
-        getLogo(bank);
-
+        getLogo(manual);
 
     logo.style.color =
-        bank.color;
-
+        manual.color;
 
     logo.style.background =
-        bank.bg;
-
+        manual.bg;
 
     body.innerHTML =
         manualContents[
-            bank.name
-        ]
-        ||
+            manual.contentKey || manual.name
+        ] ||
         `
             <h3>
-                ${bank.name}
+                ${manual.display || manual.name}
             </h3>
 
             <p>
@@ -3811,11 +4070,7 @@ function openManualContent(bank){
             </p>
         `;
 
-
-    modal.classList.add(
-        "show"
-    );
-
+    modal.classList.add("show");
 }
 
 
