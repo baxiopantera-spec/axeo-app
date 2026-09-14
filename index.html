@@ -17,7 +17,6 @@
 
 /* =========================================================
    CLEAN FINAL UI
-   Single coherent stylesheet — no conflicting overrides
 ========================================================= */
 
 *{
@@ -52,7 +51,10 @@ body{
     padding-bottom:84px;
 }
 
-/* ========================= BACKGROUND ========================= */
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 body:before{
     content:"";
@@ -61,10 +63,27 @@ body:before{
     z-index:-10;
     pointer-events:none;
     background:
-        radial-gradient(circle at 10% 5%,rgba(70,115,180,.10),transparent 28%),
-        radial-gradient(circle at 90% 18%,rgba(231,185,79,.07),transparent 25%),
-        radial-gradient(circle at 50% 100%,rgba(90,70,150,.07),transparent 30%),
-        linear-gradient(115deg,transparent 0%,rgba(231,185,79,.022) 30%,transparent 55%),
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(70,115,180,.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 18%,
+            rgba(231,185,79,.07),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(90,70,150,.07),
+            transparent 30%
+        ),
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(231,185,79,.022) 30%,
+            transparent 55%
+        ),
         #040506;
 }
 
@@ -75,20 +94,39 @@ body:after{
     z-index:-9;
     pointer-events:none;
     background-image:
-        linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.014) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.014) 1px,
+            transparent 1px
+        );
     background-size:42px 42px;
-    mask-image:linear-gradient(to bottom,black,transparent 92%);
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 92%
+    );
     opacity:.75;
     animation:gridMove 24s linear infinite;
 }
 
 @keyframes gridMove{
-    from{background-position:0 0}
-    to{background-position:42px 42px}
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:42px 42px;
+    }
 }
 
-/* ========================= DECOR ========================= */
+
+/* =========================================================
+   DECOR
+========================================================= */
 
 .future-decoration{
     position:fixed;
@@ -100,19 +138,45 @@ body:after{
     width:120px;
     height:1px;
     opacity:.28;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
     animation:scanLine 4s ease-in-out infinite;
 }
 
-.tech-line.one{top:22%;left:-32px}
-.tech-line.two{top:68%;right:-32px;animation-delay:2s}
-
-@keyframes scanLine{
-    0%,100%{opacity:.08;transform:translateX(0)}
-    50%{opacity:.55;transform:translateX(40px)}
+.tech-line.one{
+    top:22%;
+    left:-32px;
 }
 
-/* ========================= LAYOUT ========================= */
+.tech-line.two{
+    top:68%;
+    right:-32px;
+    animation-delay:2s;
+}
+
+@keyframes scanLine{
+
+    0%,100%{
+        opacity:.08;
+        transform:translateX(0);
+    }
+
+    50%{
+        opacity:.55;
+        transform:translateX(40px);
+    }
+
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
 
 .container{
     width:100%;
@@ -132,11 +196,23 @@ body:after{
 }
 
 @keyframes pageIn{
-    from{opacity:0;transform:translateY(8px)}
-    to{opacity:1;transform:translateY(0)}
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
-/* ========================= TOPBAR ========================= */
+
+/* =========================================================
+   TOPBAR
+========================================================= */
 
 .topbar{
     position:relative;
@@ -151,7 +227,11 @@ body:after{
     border:1px solid rgba(231,185,79,.20);
     border-radius:24px;
     background:
-        linear-gradient(135deg,rgba(18,21,27,.98),rgba(7,9,12,.99));
+        linear-gradient(
+            135deg,
+            rgba(18,21,27,.98),
+            rgba(7,9,12,.99)
+        );
     box-shadow:
         0 18px 48px rgba(0,0,0,.38),
         inset 0 0 32px rgba(255,255,255,.014),
@@ -165,14 +245,15 @@ body:after{
     right:8%;
     top:0;
     height:1px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(231,185,79,.85),
-        rgba(255,255,255,.5),
-        rgba(82,150,255,.75),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(231,185,79,.85),
+            rgba(255,255,255,.5),
+            rgba(82,150,255,.75),
+            transparent
+        );
     box-shadow:0 0 14px rgba(231,185,79,.22);
 }
 
@@ -183,12 +264,13 @@ body:after{
     right:18%;
     bottom:0;
     height:1px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(231,185,79,.35),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(231,185,79,.35),
+            transparent
+        );
 }
 
 .brand{
@@ -230,20 +312,24 @@ body:after{
     white-space:nowrap;
 }
 
-/* NOTFAKE СЛЕВА */
+
+/* NOTFAKE */
 
 .brand-side-rp .brand-main{
     color:#fff;
     text-align:right;
-    text-shadow:0 0 16px rgba(231,185,79,.22);
+    text-shadow:
+        0 0 16px rgba(231,185,79,.22);
 }
 
-/* ROSPLAT СПРАВА */
+
+/* ROSPLAT */
 
 .brand-side-nf .brand-main{
     color:#fff;
     text-align:left;
-    text-shadow:0 0 16px rgba(82,150,255,.22);
+    text-shadow:
+        0 0 16px rgba(82,150,255,.22);
 }
 
 .brand-logo{
@@ -267,16 +353,12 @@ body:after{
     padding:2px;
 }
 
-/* NOTFAKE */
-
 .brand-logo.nf{
     border-color:rgba(231,185,79,.58);
     box-shadow:
         0 0 24px rgba(231,185,79,.14),
         inset 0 0 18px rgba(231,185,79,.05);
 }
-
-/* ROSPLAT */
 
 .brand-logo.rp{
     border-color:rgba(82,150,255,.58);
@@ -296,15 +378,17 @@ body:after{
 }
 
 @keyframes brandGlow{
+
     0%,100%{
         opacity:.25;
-        transform:scale(.985)
+        transform:scale(.985);
     }
 
     50%{
         opacity:.85;
-        transform:scale(1.01)
+        transform:scale(1.01);
     }
+
 }
 
 .brand-x{
@@ -318,8 +402,10 @@ body:after{
     color:#fff;
     font-size:18px;
     font-weight:900;
-    text-shadow:0 0 12px rgba(255,255,255,.45);
-    box-shadow:0 0 20px rgba(231,185,79,.10);
+    text-shadow:
+        0 0 12px rgba(255,255,255,.45);
+    box-shadow:
+        0 0 20px rgba(231,185,79,.10);
 }
 
 .brand-x:before{
@@ -333,15 +419,17 @@ body:after{
 }
 
 @keyframes xPulse{
+
     0%,100%{
         opacity:.15;
-        transform:scale(.9)
+        transform:scale(.9);
     }
 
     50%{
         opacity:.65;
-        transform:scale(1.08)
+        transform:scale(1.08);
     }
+
 }
 
 .brand-sub{
@@ -356,7 +444,10 @@ body:after{
     display:none!important;
 }
 
-/* ========================= HERO ========================= */
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     position:relative;
@@ -417,7 +508,10 @@ body:after{
     text-shadow:0 2px 10px rgba(0,0,0,.85);
 }
 
-/* ========================= SECTION TITLE ========================= */
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
 .section-title{
     display:flex;
@@ -434,14 +528,18 @@ body:after{
     content:"";
     flex:1;
     height:1px;
-    background:linear-gradient(
-        90deg,
-        rgba(255,255,255,.10),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.10),
+            transparent
+        );
 }
 
-/* ========================= QUICK ACCESS ========================= */
+
+/* =========================================================
+   QUICK ACCESS
+========================================================= */
 
 .main-grid{
     width:100%;
@@ -652,7 +750,10 @@ body:after{
     line-height:1.22;
 }
 
-/* ========================= NETWORK / INFO ========================= */
+
+/* =========================================================
+   INFO
+========================================================= */
 
 .info-card{
     width:100%;
@@ -666,7 +767,8 @@ body:after{
             rgba(16,20,26,.96),
             rgba(7,9,12,.99)
         );
-    box-shadow:inset 0 0 22px rgba(255,255,255,.012);
+    box-shadow:
+        inset 0 0 22px rgba(255,255,255,.012);
 }
 
 .info-card h3{
@@ -681,7 +783,10 @@ body:after{
     line-height:1.35;
 }
 
-/* ========================= MANUALS ========================= */
+
+/* =========================================================
+   MANUALS
+========================================================= */
 
 .search-box{
     position:relative;
@@ -739,6 +844,20 @@ body:after{
             rgba(8,10,13,.99)
         );
     overflow:hidden;
+    cursor:pointer;
+    transition:
+        transform .18s ease,
+        border-color .18s ease,
+        background .18s ease;
+}
+
+.manual-item:hover{
+    transform:translateX(2px);
+    border-color:rgba(231,185,79,.24);
+}
+
+.manual-item:active{
+    transform:scale(.99);
 }
 
 .manual-item:before{
@@ -810,7 +929,17 @@ body:after{
     font-size:15px;
 }
 
-/* ========================= CONNECT ========================= */
+.empty{
+    padding:30px 15px;
+    text-align:center;
+    color:#58616d;
+    font-size:11px;
+}
+
+
+/* =========================================================
+   CONNECT
+========================================================= */
 
 .connect-options{
     display:flex;
@@ -902,7 +1031,10 @@ body:after{
     display:block;
 }
 
-/* ========================= TABLES / GUIDE / MEDIA ========================= */
+
+/* =========================================================
+   TABLES / GUIDE / MEDIA
+========================================================= */
 
 .table-grid{
     display:grid;
@@ -970,14 +1102,10 @@ body:after{
     line-height:1.35;
 }
 
-.empty{
-    padding:30px 15px;
-    text-align:center;
-    color:#58616d;
-    font-size:11px;
-}
 
-/* ========================= BOTTOM NAV ========================= */
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
 .bottom-nav{
     position:fixed;
@@ -1043,7 +1171,340 @@ body:after{
     box-shadow:0 0 10px var(--gold);
 }
 
-/* ========================= MOBILE ========================= */
+
+/* =========================================================
+   PASSWORD MODAL
+========================================================= */
+
+.manual-modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(0,0,0,.74);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.manual-modal.show{
+    display:flex;
+    animation:modalFade .2s ease;
+}
+
+@keyframes modalFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+.manual-modal-box{
+    position:relative;
+    width:100%;
+    max-width:400px;
+    padding:22px;
+    border:1px solid rgba(231,185,79,.25);
+    border-radius:22px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,22,28,.99),
+            rgba(7,9,12,.99)
+        );
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        0 0 35px rgba(231,185,79,.06);
+    animation:modalIn .25s ease;
+}
+
+@keyframes modalIn{
+
+    from{
+        opacity:0;
+        transform:translateY(12px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+.manual-modal-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:32px;
+    height:32px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+    background:rgba(255,255,255,.035);
+    color:#89929e;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.manual-modal-icon{
+    width:48px;
+    height:48px;
+    margin-bottom:13px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    color:var(--gold2);
+    background:rgba(231,185,79,.08);
+    border:1px solid rgba(231,185,79,.2);
+    font-size:21px;
+}
+
+.manual-modal-title{
+    margin:0;
+    padding-right:35px;
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+}
+
+.manual-modal-subtitle{
+    margin:6px 0 18px;
+    color:#727c88;
+    font-size:10px;
+    line-height:1.4;
+}
+
+.manual-password-input{
+    width:100%;
+    height:46px;
+    padding:0 13px;
+    border:1px solid rgba(255,255,255,.09);
+    outline:none;
+    border-radius:13px;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    font-size:13px;
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+}
+
+.manual-password-input::placeholder{
+    color:#58616d;
+}
+
+.manual-password-input:focus{
+    border-color:rgba(231,185,79,.45);
+    box-shadow:
+        0 0 18px rgba(231,185,79,.07);
+}
+
+.manual-password-input.error{
+    border-color:rgba(255,85,85,.7);
+    box-shadow:
+        0 0 18px rgba(255,85,85,.08);
+    animation:shake .25s ease;
+}
+
+@keyframes shake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-5px);
+    }
+
+    75%{
+        transform:translateX(5px);
+    }
+
+}
+
+.manual-error{
+    min-height:16px;
+    margin-top:7px;
+    color:#ff6868;
+    font-size:9px;
+}
+
+.manual-open-btn{
+    width:100%;
+    height:45px;
+    margin-top:8px;
+    border:0;
+    border-radius:13px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold2),
+            var(--gold)
+        );
+    color:#090909;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.5px;
+    cursor:pointer;
+    box-shadow:
+        0 8px 25px rgba(231,185,79,.13);
+}
+
+.manual-open-btn:active{
+    transform:scale(.985);
+}
+
+
+/* =========================================================
+   MANUAL CONTENT MODAL
+========================================================= */
+
+.manual-content-modal{
+    position:fixed;
+    inset:0;
+    z-index:1100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.manual-content-modal.show{
+    display:flex;
+    animation:modalFade .2s ease;
+}
+
+.manual-content-box{
+    position:relative;
+    width:100%;
+    max-width:620px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:20px;
+    border:1px solid rgba(231,185,79,.2);
+    border-radius:21px;
+    background:
+        linear-gradient(
+            145deg,
+            #11151b,
+            #07090c
+        );
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.7);
+}
+
+.manual-content-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding-right:38px;
+    margin-bottom:17px;
+}
+
+.manual-content-logo{
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+    display:grid;
+    place-items:center;
+    border-radius:11px;
+    background:rgba(231,185,79,.08);
+    border:1px solid rgba(231,185,79,.18);
+    color:var(--gold2);
+    font-size:17px;
+}
+
+.manual-content-title{
+    min-width:0;
+}
+
+.manual-content-title strong{
+    display:block;
+    color:#fff;
+    font-size:15px;
+}
+
+.manual-content-title span{
+    display:block;
+    margin-top:3px;
+    color:#69727e;
+    font-size:8px;
+}
+
+.manual-content-close{
+    position:absolute;
+    top:13px;
+    right:13px;
+    width:34px;
+    height:34px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+    background:rgba(255,255,255,.035);
+    color:#89929e;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.manual-content-body{
+    color:#c7ced6;
+    font-size:10px;
+    line-height:1.55;
+}
+
+.manual-content-body h3{
+    margin:16px 0 7px;
+    color:var(--gold2);
+    font-size:12px;
+}
+
+.manual-content-body p{
+    margin:7px 0;
+}
+
+.manual-content-body ul{
+    margin:7px 0;
+    padding-left:18px;
+}
+
+.manual-content-body li{
+    margin:5px 0;
+}
+
+.manual-content-body .manual-alert{
+    margin:12px 0;
+    padding:11px 12px;
+    border-radius:12px;
+    border:1px solid rgba(231,185,79,.14);
+    background:rgba(231,185,79,.045);
+    color:#d8dde3;
+}
+
+.manual-content-body .manual-code{
+    margin:10px 0;
+    padding:10px 12px;
+    border-radius:10px;
+    background:#050608;
+    border:1px solid rgba(255,255,255,.06);
+    color:#ffd979;
+    font-family:monospace;
+    font-size:9px;
+    overflow-x:auto;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:430px){
 
@@ -1065,7 +1526,10 @@ body:after{
 
     .brand{
         gap:10px;
-        grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+        grid-template-columns:
+            minmax(0,1fr)
+            auto
+            minmax(0,1fr);
     }
 
     .brand-side{
@@ -1162,6 +1626,21 @@ body:after{
         font-size:8.5px;
     }
 
+    .manual-modal{
+        padding:12px;
+    }
+
+    .manual-modal-box{
+        padding:18px;
+        border-radius:20px;
+    }
+
+    .manual-content-box{
+        max-height:92vh;
+        padding:17px;
+        border-radius:19px;
+    }
+
 }
 
 @media(max-width:360px){
@@ -1246,12 +1725,16 @@ body:after{
 
 </head>
 
+
 <body>
+
 
 <div class="future-decoration tech-line one"></div>
 <div class="future-decoration tech-line two"></div>
 
+
 <div class="container">
+
 
 <!-- =================================================
      HEADER
@@ -1261,15 +1744,26 @@ body:after{
 
     <div class="brand">
 
-        <!-- NOTFAKE — СЛЕВА -->
+
+        <!-- =========================================
+             NOTFAKE — СЛЕВА
+        ========================================== -->
 
         <div class="brand-side brand-side-rp">
 
             <div class="brand-word">
-                <div class="brand-main">NotFake</div>
+
+                <div class="brand-main">
+                    NotFake
+                </div>
+
             </div>
 
-            <div class="brand-logo nf" aria-label="NotFake logo">
+
+            <div
+                class="brand-logo nf"
+                aria-label="NotFake logo"
+            >
 
                 <img
                     src="https://baxiopantera-spec.github.io/axeo-app/images/notfake.png?v=5"
@@ -1281,18 +1775,28 @@ body:after{
         </div>
 
 
-        <!-- X -->
+        <!-- =========================================
+             X
+        ========================================== -->
 
-        <div class="brand-x" aria-hidden="true">
+        <div
+            class="brand-x"
+            aria-hidden="true"
+        >
             ×
         </div>
 
 
-        <!-- ROSPLAT — СПРАВА -->
+        <!-- =========================================
+             ROSPLAT — СПРАВА
+        ========================================== -->
 
         <div class="brand-side brand-side-nf">
 
-            <div class="brand-logo rp" aria-label="RosPlat logo">
+            <div
+                class="brand-logo rp"
+                aria-label="RosPlat logo"
+            >
 
                 <img
                     src="https://baxiopantera-spec.github.io/axeo-app/images/rosplat.png?v=5"
@@ -1301,11 +1805,17 @@ body:after{
 
             </div>
 
+
             <div class="brand-word">
-                <div class="brand-main">RosPlat</div>
+
+                <div class="brand-main">
+                    RosPlat
+                </div>
+
             </div>
 
         </div>
+
 
     </div>
 
@@ -1321,6 +1831,7 @@ body:after{
     class="page active"
 >
 
+
     <!-- HERO -->
 
     <div class="hero">
@@ -1329,9 +1840,11 @@ body:after{
             PRIVATE PROCESSING NETWORK
         </div>
 
+
         <h1>
             Not Fake Community
         </h1>
+
 
         <p>
             Закрытая рабочая экосистема.
@@ -1350,6 +1863,7 @@ body:after{
 
 
     <div class="main-grid">
+
 
         <!-- MANUALS -->
 
@@ -1450,6 +1964,7 @@ body:after{
 
         </div>
 
+
     </div>
 
 
@@ -1458,6 +1973,7 @@ body:after{
     <div class="section-title">
         NETWORK
     </div>
+
 
     <div class="info-card">
 
@@ -1475,6 +1991,7 @@ body:after{
 
     </div>
 
+
 </section>
 
 
@@ -1491,11 +2008,13 @@ body:after{
         BANKING MANUALS
     </div>
 
+
     <div class="search-box">
 
         <div class="search-icon">
             ⌕
         </div>
+
 
         <input
             id="manualSearch"
@@ -1505,6 +2024,7 @@ body:after{
         >
 
     </div>
+
 
     <div
         id="manualList"
@@ -1527,6 +2047,7 @@ body:after{
         CONNECTION
     </div>
 
+
     <div class="info-card">
 
         <h3>
@@ -1540,7 +2061,9 @@ body:after{
 
     </div>
 
+
     <div class="connect-options">
+
 
         <button
             class="connect-option"
@@ -1550,6 +2073,7 @@ body:after{
             <div class="connect-icon">
                 ◈
             </div>
+
 
             <div class="connect-info">
 
@@ -1563,6 +2087,7 @@ body:after{
                 </span>
 
             </div>
+
 
             <div class="connect-check">
                 →
@@ -1580,6 +2105,7 @@ body:after{
                 ◇
             </div>
 
+
             <div class="connect-info">
 
                 <strong>
@@ -1593,13 +2119,16 @@ body:after{
 
             </div>
 
+
             <div class="connect-check">
                 →
             </div>
 
         </button>
 
+
     </div>
+
 
     <div
         id="roleMessage"
@@ -1622,6 +2151,7 @@ body:after{
         WORKSPACE
     </div>
 
+
     <div class="info-card">
 
         <h3>
@@ -1635,7 +2165,9 @@ body:after{
 
     </div>
 
+
     <div class="table-grid">
+
 
         <div class="table-card">
 
@@ -1649,6 +2181,7 @@ body:after{
 
         </div>
 
+
         <div class="table-card">
 
             <strong>
@@ -1660,6 +2193,7 @@ body:after{
             </span>
 
         </div>
+
 
         <div class="table-card">
 
@@ -1673,6 +2207,7 @@ body:after{
 
         </div>
 
+
         <div class="table-card">
 
             <strong>
@@ -1684,6 +2219,7 @@ body:after{
             </span>
 
         </div>
+
 
     </div>
 
@@ -1702,6 +2238,7 @@ body:after{
     <div class="section-title">
         QUICK START
     </div>
+
 
     <div class="guide-step">
 
@@ -1725,6 +2262,7 @@ body:after{
 
     </div>
 
+
     <div class="guide-step">
 
         <div class="guide-num">
@@ -1747,6 +2285,7 @@ body:after{
 
     </div>
 
+
     <div class="guide-step">
 
         <div class="guide-num">
@@ -1768,6 +2307,7 @@ body:after{
         </div>
 
     </div>
+
 
     <div class="guide-step">
 
@@ -1806,6 +2346,7 @@ body:after{
         MEDIA SOURCES
     </div>
 
+
     <div class="info-card">
 
         <h3>
@@ -1819,6 +2360,7 @@ body:after{
         </p>
 
     </div>
+
 
     <div class="guide-step">
 
@@ -1840,6 +2382,7 @@ body:after{
         </div>
 
     </div>
+
 
     <div class="guide-step">
 
@@ -1864,19 +2407,155 @@ body:after{
 
 </section>
 
+
+</div>
+
+
+<!-- =================================================
+     PASSWORD MODAL
+================================================= -->
+
+<div
+    id="manualPasswordModal"
+    class="manual-modal"
+>
+
+    <div class="manual-modal-box">
+
+
+        <button
+            class="manual-modal-close"
+            onclick="closePasswordModal()"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="manual-modal-icon">
+            🔐
+        </div>
+
+
+        <h2
+            id="passwordModalTitle"
+            class="manual-modal-title"
+        >
+            Доступ к мануалу
+        </h2>
+
+
+        <p class="manual-modal-subtitle">
+            Введите персональный пароль
+            для доступа к рабочему мануалу.
+        </p>
+
+
+        <input
+            id="manualPasswordInput"
+            class="manual-password-input"
+            type="password"
+            placeholder="Введите пароль"
+            autocomplete="off"
+        >
+
+
+        <div
+            id="manualPasswordError"
+            class="manual-error"
+        ></div>
+
+
+        <button
+            class="manual-open-btn"
+            onclick="checkManualPassword()"
+            type="button"
+        >
+            ОТКРЫТЬ МАНУАЛ
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     MANUAL CONTENT MODAL
+================================================= -->
+
+<div
+    id="manualContentModal"
+    class="manual-content-modal"
+>
+
+    <div class="manual-content-box">
+
+
+        <button
+            class="manual-content-close"
+            onclick="closeManualContent()"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="manual-content-header">
+
+
+            <div
+                id="manualContentLogo"
+                class="manual-content-logo"
+            >
+                ◈
+            </div>
+
+
+            <div class="manual-content-title">
+
+                <strong
+                    id="manualContentTitle"
+                >
+                    Мануал
+                </strong>
+
+
+                <span
+                    id="manualContentSubtitle"
+                >
+                    Рабочая инструкция
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            id="manualContentBody"
+            class="manual-content-body"
+        ></div>
+
+
+    </div>
+
 </div>
 
 
 <!-- =================================================
      BOTTOM NAVIGATION
-===================================================== -->
+================================================= -->
 
 <nav class="bottom-nav">
+
 
     <button
         class="nav-item active"
         data-page="home"
         onclick="openPage('home')"
+        type="button"
     >
 
         <div class="nav-icon">
@@ -1889,10 +2568,12 @@ body:after{
 
     </button>
 
+
     <button
         class="nav-item"
         data-page="manuals"
         onclick="openPage('manuals')"
+        type="button"
     >
 
         <div class="nav-icon">
@@ -1905,10 +2586,12 @@ body:after{
 
     </button>
 
+
     <button
         class="nav-item"
         data-page="connect"
         onclick="openPage('connect')"
+        type="button"
     >
 
         <div class="nav-icon">
@@ -1921,10 +2604,12 @@ body:after{
 
     </button>
 
+
     <button
         class="nav-item"
         data-page="guide"
         onclick="openPage('guide')"
+        type="button"
     >
 
         <div class="nav-icon">
@@ -1936,6 +2621,7 @@ body:after{
         </span>
 
     </button>
+
 
 </nav>
 
@@ -1963,7 +2649,6 @@ if(tg){
 
 /* =====================================================
    MANUAL DATA
-   ALPHABETICAL ORDER
 ===================================================== */
 
 const manuals = [
@@ -2220,6 +2905,359 @@ const manuals = [
 
 
 /* =====================================================
+   PASSWORDS
+===================================================== */
+
+const manualPasswords = {
+
+    "АБР":"abr123",
+    "Авангард":"avangard123",
+    "АкБарс":"akbars123",
+
+    "АльфаБанк":"alfa123",
+    "АльфаКА":"alfaka123",
+    "Альфа Ферма":"alfafarm123",
+
+    "ВБРР":"vbrr123",
+    "ВТБ":"vtb123",
+    "Газпром":"gazprom123",
+
+    "МКБ":"mkb123",
+    "МобКом":"mobcom123",
+    "НовикомБанк":"novikom123",
+
+    "Озон ГУ":"ozongu123",
+    "ОзонКА":"ozonka123",
+    "Озон Физ":"ozonphys123",
+
+    "ОТП":"otp123",
+    "ОТП КА":"otpka123",
+    "ОТП Ферма":"otpfarm123",
+
+    "ПСБ":"psb123",
+    "Райффайзен":"raiffeisen123",
+    "Ренессанс КА":"renaissance123",
+    "РокетБанк":"rocket123",
+
+    "РСХБ":"rshb123",
+    "СберБанк":"sber123",
+
+    "Т-Банк":"tbank123",
+    "Т-Банк КА":"tbankka123",
+
+    "WB":"wb123",
+
+    "ЮMoney":"yoomoney123",
+    "Юнистрим":"unistream123",
+
+    "Яндекс Физ":"yandex123",
+
+    "ЦифраБанк":"cifra123"
+
+};
+
+
+/* =====================================================
+   MANUAL CONTENT
+===================================================== */
+
+const manualContents = {
+
+    "АБР":`
+        <h3>АБР — рабочий мануал</h3>
+
+        <p>
+            Здесь будет размещён полный
+            рабочий мануал АБР.
+        </p>
+
+        <div class="manual-alert">
+            ⚠️ Информация предназначена
+            для участников рабочего пространства.
+        </div>
+
+        <h3>Основная информация</h3>
+
+        <p>
+            Добавь сюда необходимые инструкции,
+            команды и последовательность действий.
+        </p>
+    `,
+
+
+    "Авангард":`
+        <h3>Авангард — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Авангарда.
+        </p>
+    `,
+
+
+    "АкБарс":`
+        <h3>АкБарс — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала АкБарса.
+        </p>
+    `,
+
+
+    "АльфаБанк":`
+        <h3>АльфаБанк — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала АльфаБанка.
+        </p>
+    `,
+
+
+    "АльфаКА":`
+        <h3>АльфаКА — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала АльфаКА.
+        </p>
+    `,
+
+
+    "Альфа Ферма":`
+        <h3>Альфа Ферма — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Альфа Фермы.
+        </p>
+    `,
+
+
+    "ВБРР":`
+        <h3>ВБРР — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ВБРР.
+        </p>
+    `,
+
+
+    "ВТБ":`
+        <h3>ВТБ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ВТБ.
+        </p>
+    `,
+
+
+    "Газпром":`
+        <h3>Газпром — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Газпромбанка.
+        </p>
+    `,
+
+
+    "МКБ":`
+        <h3>МКБ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала МКБ.
+        </p>
+    `,
+
+
+    "МобКом":`
+        <h3>МобКом — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала МобКом.
+        </p>
+    `,
+
+
+    "НовикомБанк":`
+        <h3>НовикомБанк — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала НовикомБанка.
+        </p>
+    `,
+
+
+    "Озон ГУ":`
+        <h3>Озон ГУ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Озон ГУ.
+        </p>
+    `,
+
+
+    "ОзонКА":`
+        <h3>ОзонКА — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ОзонКА.
+        </p>
+    `,
+
+
+    "Озон Физ":`
+        <h3>Озон Физ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Озон Физ.
+        </p>
+    `,
+
+
+    "ОТП":`
+        <h3>ОТП — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ОТП.
+        </p>
+    `,
+
+
+    "ОТП КА":`
+        <h3>ОТП КА — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ОТП КА.
+        </p>
+    `,
+
+
+    "ОТП Ферма":`
+        <h3>ОТП Ферма — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ОТП Ферма.
+        </p>
+    `,
+
+
+    "ПСБ":`
+        <h3>ПСБ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ПСБ.
+        </p>
+    `,
+
+
+    "Райффайзен":`
+        <h3>Райффайзен — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Райффайзен.
+        </p>
+    `,
+
+
+    "Ренессанс КА":`
+        <h3>Ренессанс КА — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Ренессанс КА.
+        </p>
+    `,
+
+
+    "РокетБанк":`
+        <h3>РокетБанк — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала РокетБанка.
+        </p>
+    `,
+
+
+    "РСХБ":`
+        <h3>РСХБ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Россельхозбанка.
+        </p>
+    `,
+
+
+    "СберБанк":`
+        <h3>СберБанк — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала СберБанка.
+        </p>
+    `,
+
+
+    "Т-Банк":`
+        <h3>Т-Банк — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Т-Банка.
+        </p>
+    `,
+
+
+    "Т-Банк КА":`
+        <h3>Т-Банк КА — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Т-Банк КА.
+        </p>
+    `,
+
+
+    "WB":`
+        <h3>WB — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Wildberries.
+        </p>
+    `,
+
+
+    "ЮMoney":`
+        <h3>ЮMoney — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ЮMoney.
+        </p>
+    `,
+
+
+    "Юнистрим":`
+        <h3>Юнистрим — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Юнистрим.
+        </p>
+    `,
+
+
+    "Яндекс Физ":`
+        <h3>Яндекс Физ — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала Яндекс.
+        </p>
+    `,
+
+
+    "ЦифраБанк":`
+        <h3>ЦифраБанк — рабочий мануал</h3>
+
+        <p>
+            Здесь будет содержимое мануала ЦифраБанка.
+        </p>
+    `
+
+};
+
+
+/* =====================================================
    BANK LOGOS
 ===================================================== */
 
@@ -2424,13 +3462,22 @@ function renderManuals(list = manuals){
         const item =
             document.createElement("div");
 
+
         item.className =
             "manual-item";
+
 
         item.style.setProperty(
             "--accent",
             bank.color
         );
+
+
+        item.onclick = function(){
+
+            openManualPassword(bank);
+
+        };
 
 
         item.innerHTML = `
@@ -2519,6 +3566,351 @@ function filterManuals(){
 
 
 /* =====================================================
+   PASSWORD STATE
+===================================================== */
+
+let selectedManual = null;
+
+
+/* =====================================================
+   OPEN PASSWORD MODAL
+===================================================== */
+
+function openManualPassword(bank){
+
+    selectedManual = bank;
+
+
+    const modal =
+        document.getElementById(
+            "manualPasswordModal"
+        );
+
+    const title =
+        document.getElementById(
+            "passwordModalTitle"
+        );
+
+    const input =
+        document.getElementById(
+            "manualPasswordInput"
+        );
+
+    const error =
+        document.getElementById(
+            "manualPasswordError"
+        );
+
+
+    if(!modal || !input){
+        return;
+    }
+
+
+    title.textContent =
+        "Доступ: " + bank.name;
+
+
+    input.value = "";
+
+    input.classList.remove(
+        "error"
+    );
+
+    error.textContent = "";
+
+
+    modal.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        () => input.focus(),
+        120
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE PASSWORD MODAL
+===================================================== */
+
+function closePasswordModal(){
+
+    const modal =
+        document.getElementById(
+            "manualPasswordModal"
+        );
+
+    if(modal){
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    selectedManual = null;
+
+}
+
+
+/* =====================================================
+   CHECK PASSWORD
+===================================================== */
+
+function checkManualPassword(){
+
+    if(!selectedManual){
+        return;
+    }
+
+
+    const input =
+        document.getElementById(
+            "manualPasswordInput"
+        );
+
+    const error =
+        document.getElementById(
+            "manualPasswordError"
+        );
+
+
+    const entered =
+        input.value.trim();
+
+
+    const correct =
+        manualPasswords[
+            selectedManual.name
+        ];
+
+
+    if(
+        correct &&
+        entered === correct
+    ){
+
+        input.classList.remove(
+            "error"
+        );
+
+        error.textContent = "";
+
+
+        const bank =
+            selectedManual;
+
+
+        closePasswordModal();
+
+
+        openManualContent(
+            bank
+        );
+
+
+        return;
+
+    }
+
+
+    input.classList.add(
+        "error"
+    );
+
+
+    error.textContent =
+        "Неверный пароль";
+
+
+    input.value = "";
+
+
+    setTimeout(
+        () => input.focus(),
+        50
+    );
+
+}
+
+
+/* =====================================================
+   OPEN MANUAL CONTENT
+===================================================== */
+
+function openManualContent(bank){
+
+    const modal =
+        document.getElementById(
+            "manualContentModal"
+        );
+
+    const title =
+        document.getElementById(
+            "manualContentTitle"
+        );
+
+    const subtitle =
+        document.getElementById(
+            "manualContentSubtitle"
+        );
+
+    const body =
+        document.getElementById(
+            "manualContentBody"
+        );
+
+    const logo =
+        document.getElementById(
+            "manualContentLogo"
+        );
+
+
+    if(!modal){
+        return;
+    }
+
+
+    title.textContent =
+        bank.name;
+
+
+    subtitle.textContent =
+        bank.sub;
+
+
+    logo.innerHTML =
+        getLogo(bank);
+
+
+    logo.style.color =
+        bank.color;
+
+
+    logo.style.background =
+        bank.bg;
+
+
+    body.innerHTML =
+        manualContents[
+            bank.name
+        ]
+        ||
+        `
+            <h3>
+                ${bank.name}
+            </h3>
+
+            <p>
+                Мануал пока не добавлен.
+            </p>
+        `;
+
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE MANUAL CONTENT
+===================================================== */
+
+function closeManualContent(){
+
+    const modal =
+        document.getElementById(
+            "manualContentModal"
+        );
+
+
+    if(modal){
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+document
+    .getElementById(
+        "manualPasswordInput"
+    )
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Enter"
+            ){
+
+                event.preventDefault();
+
+                checkManualPassword();
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   MODAL BACKDROP
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const passwordModal =
+            document.getElementById(
+                "manualPasswordModal"
+            );
+
+        const contentModal =
+            document.getElementById(
+                "manualContentModal"
+            );
+
+
+        if(
+            event.target ===
+            passwordModal
+        ){
+
+            closePasswordModal();
+
+        }
+
+
+        if(
+            event.target ===
+            contentModal
+        ){
+
+            closeManualContent();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    CONNECT ROLE
 ===================================================== */
 
@@ -2569,7 +3961,9 @@ function selectRole(button, role){
 function openPage(page){
 
     document
-        .querySelectorAll(".page")
+        .querySelectorAll(
+            ".page"
+        )
         .forEach(element => {
 
             element.classList.remove(
@@ -2595,7 +3989,9 @@ function openPage(page){
 
 
     document
-        .querySelectorAll(".nav-item")
+        .querySelectorAll(
+            ".nav-item"
+        )
         .forEach(button => {
 
             button.classList.remove(
@@ -2604,7 +4000,8 @@ function openPage(page){
 
 
             if(
-                button.dataset.page === page
+                button.dataset.page ===
+                page
             ){
 
                 button.classList.add(
