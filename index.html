@@ -2744,6 +2744,13 @@ const tg =
         ? window.Telegram.WebApp
         : null;
 
+/* =====================================================
+   SECURE MANUAL AUTH BACKEND
+===================================================== */
+
+const MANUAL_AUTH_API = "https://manual-auth.onrender.com";
+let manualSessionToken = "";
+
 if(tg){
 
     tg.ready();
@@ -2768,21 +2775,21 @@ const manuals = [
         children:[
             {
                 type:"method", name:"КА", children:[
-                    {type:"leaf", name:"Альфа Банк — КА", display:"Альфа Банк", sub:"КА", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКА", password:"alfaka123"}
+                    {type:"leaf", name:"Альфа Банк — КА", display:"Альфа Банк", sub:"КА", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКА"}
                 ]
             },
             {
                 type:"method", name:"Классика", children:[
-                    {type:"leaf", name:"Альфа Банк — Классика — 1 мануал", display:"Альфа Банк", sub:"Классика • 1 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика1", password:"alfa123"},
-                    {type:"leaf", name:"Альфа Банк — Классика — 2 мануал", display:"Альфа Банк", sub:"Классика • 2 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика2", password:"alfa123"},
-                    {type:"leaf", name:"Альфа Банк — Классика — 3 мануал", display:"Альфа Банк", sub:"Классика • 3 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика3", password:"alfa123"}
+                    {type:"leaf", name:"Альфа Банк — Классика — 1 мануал", display:"Альфа Банк", sub:"Классика • 1 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика1"},
+                    {type:"leaf", name:"Альфа Банк — Классика — 2 мануал", display:"Альфа Банк", sub:"Классика • 2 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика2"},
+                    {type:"leaf", name:"Альфа Банк — Классика — 3 мануал", display:"Альфа Банк", sub:"Классика • 3 мануал", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"АльфаКлассика3"}
                 ]
             },
             {type:"method", name:"Ферма", children:[
-                {type:"leaf", name:"Альфа Банк — Ферма", display:"Альфа Банк", sub:"Ферма", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"Альфа Ферма", password:"alfafarm123"}
+                {type:"leaf", name:"Альфа Банк — Ферма", display:"Альфа Банк", sub:"Ферма", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"Альфа Ферма"}
             ]},
             {type:"method", name:"Агроферма", children:[
-                {type:"leaf", name:"Альфа Банк — Агроферма", display:"Альфа Банк", sub:"Агроферма", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"Альфа Агроферма", password:"alfafarm123"}
+                {type:"leaf", name:"Альфа Банк — Агроферма", display:"Альфа Банк", sub:"Агроферма", short:"A", color:"#ff4b4b", bg:"#421414", contentKey:"Альфа Агроферма"}
             ]}
         ]
     },
@@ -2795,17 +2802,17 @@ const manuals = [
         bg:"#3c3310",
         children:[
             {type:"method", name:"Классика", children:[
-                {type:"leaf", name:"Т-Банк — Классика — 1 мануал", display:"Т-Банк", sub:"Классика • 1 мануал", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-БанкКлассика1", password:"tbank123"},
-                {type:"leaf", name:"Т-Банк — Классика — 2 мануал", display:"Т-Банк", sub:"Классика • 2 мануал", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-БанкКлассика2", password:"tbank123"}
+                {type:"leaf", name:"Т-Банк — Классика — 1 мануал", display:"Т-Банк", sub:"Классика • 1 мануал", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-БанкКлассика1"},
+                {type:"leaf", name:"Т-Банк — Классика — 2 мануал", display:"Т-Банк", sub:"Классика • 2 мануал", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-БанкКлассика2"}
             ]},
             {type:"method", name:"Ферма", children:[
-                {type:"leaf", name:"Т-Банк — Ферма", display:"Т-Банк", sub:"Ферма", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк Ферма", password:"tbank123"}
+                {type:"leaf", name:"Т-Банк — Ферма", display:"Т-Банк", sub:"Ферма", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк Ферма"}
             ]},
             {type:"method", name:"Агроферма", children:[
-                {type:"leaf", name:"Т-Банк — Агроферма", display:"Т-Банк", sub:"Агроферма", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк Агроферма", password:"tbank123"}
+                {type:"leaf", name:"Т-Банк — Агроферма", display:"Т-Банк", sub:"Агроферма", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк Агроферма"}
             ]},
             {type:"method", name:"КА", children:[
-                {type:"leaf", name:"Т-Банк — КА", display:"Т-Банк", sub:"КА", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк КА", password:"tbankka123"}
+                {type:"leaf", name:"Т-Банк — КА", display:"Т-Банк", sub:"КА", short:"Т", color:"#ffcc33", bg:"#3c3310", contentKey:"Т-Банк КА"}
             ]}
         ]
     },
@@ -2818,12 +2825,12 @@ const manuals = [
         bg:"#12392d",
         children:[
             {type:"method", name:"Классика", children:[
-                {type:"leaf", name:"СберБанк — Классика — 1 мануал", display:"СберБанк", sub:"Классика • 1 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКлассика1", password:"sber123"},
-                {type:"leaf", name:"СберБанк — Классика — 2 мануал", display:"СберБанк", sub:"Классика • 2 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКлассика2", password:"sber123"}
+                {type:"leaf", name:"СберБанк — Классика — 1 мануал", display:"СберБанк", sub:"Классика • 1 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКлассика1"},
+                {type:"leaf", name:"СберБанк — Классика — 2 мануал", display:"СберБанк", sub:"Классика • 2 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКлассика2"}
             ]},
             {type:"method", name:"КА", children:[
-                {type:"leaf", name:"СберБанк — КА — 1 мануал", display:"СберБанк", sub:"КА • 1 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКА1", password:"sber123"},
-                {type:"leaf", name:"СберБанк — КА — 2 мануал", display:"СберБанк", sub:"КА • 2 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКА2", password:"sber123"}
+                {type:"leaf", name:"СберБанк — КА — 1 мануал", display:"СберБанк", sub:"КА • 1 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКА1"},
+                {type:"leaf", name:"СберБанк — КА — 2 мануал", display:"СберБанк", sub:"КА • 2 мануал", short:"С", color:"#48d597", bg:"#12392d", contentKey:"СберКА2"}
             ]}
         ]
     },
@@ -2836,13 +2843,13 @@ const manuals = [
         bg:"#17264a",
         children:[
             {type:"method", name:"ГУ", children:[
-                {type:"leaf", name:"Озон — ГУ", display:"Озон", sub:"ГУ", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"Озон ГУ", password:"ozongu123"}
+                {type:"leaf", name:"Озон — ГУ", display:"Озон", sub:"ГУ", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"Озон ГУ"}
             ]},
             {type:"method", name:"КА", children:[
-                {type:"leaf", name:"Озон — КА", display:"Озон", sub:"КА", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"ОзонКА", password:"ozonka123"}
+                {type:"leaf", name:"Озон — КА", display:"Озон", sub:"КА", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"ОзонКА"}
             ]},
             {type:"method", name:"ФИЗ", children:[
-                {type:"leaf", name:"Озон — ФИЗ", display:"Озон", sub:"ФИЗ", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"Озон Физ", password:"ozonphys123"}
+                {type:"leaf", name:"Озон — ФИЗ", display:"Озон", sub:"ФИЗ", short:"O", color:"#5b8cff", bg:"#17264a", contentKey:"Озон Физ"}
             ]}
         ]
     },
@@ -2855,13 +2862,13 @@ const manuals = [
         bg:"#421a15",
         children:[
             {type:"method", name:"Классика", children:[
-                {type:"leaf", name:"ОТП — Классика", display:"ОТП", sub:"Классика", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП", password:"otp123"}
+                {type:"leaf", name:"ОТП — Классика", display:"ОТП", sub:"Классика", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП"}
             ]},
             {type:"method", name:"КА", children:[
-                {type:"leaf", name:"ОТП — КА", display:"ОТП", sub:"КА", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП КА", password:"otpka123"}
+                {type:"leaf", name:"ОТП — КА", display:"ОТП", sub:"КА", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП КА"}
             ]},
             {type:"method", name:"Ферма", children:[
-                {type:"leaf", name:"ОТП — Ферма", display:"ОТП", sub:"Ферма", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП Ферма", password:"otpfarm123"}
+                {type:"leaf", name:"ОТП — Ферма", display:"ОТП", sub:"Ферма", short:"О", color:"#ff674f", bg:"#421a15", contentKey:"ОТП Ферма"}
             ]}
         ]
     },
@@ -2874,17 +2881,17 @@ const manuals = [
         bg:"#421815",
         children:[
             {type:"method", name:"ГУ", children:[
-                {type:"leaf", name:"Яндекс — ГУ — 1 мануал", display:"Яндекс", sub:"ГУ • 1 мануал", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"ЯндексГУ1", password:"yandex123"},
-                {type:"leaf", name:"Яндекс — ГУ — 2 мануал (ферма)", display:"Яндекс", sub:"ГУ • 2 мануал (ферма)", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"ЯндексГУ2", password:"yandex123"}
+                {type:"leaf", name:"Яндекс — ГУ — 1 мануал", display:"Яндекс", sub:"ГУ • 1 мануал", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"ЯндексГУ1"},
+                {type:"leaf", name:"Яндекс — ГУ — 2 мануал (ферма)", display:"Яндекс", sub:"ГУ • 2 мануал (ферма)", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"ЯндексГУ2"}
             ]},
             {type:"method", name:"ФИЗ", children:[
-                {type:"leaf", name:"Яндекс — ФИЗ", display:"Яндекс", sub:"ФИЗ", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"Яндекс Физ", password:"yandex123"}
+                {type:"leaf", name:"Яндекс — ФИЗ", display:"Яндекс", sub:"ФИЗ", short:"Я", color:"#ff5549", bg:"#421815", contentKey:"Яндекс Физ"}
             ]}
         ]
     },
 
 {name:"WB", sub:"Wildberries", short:"WB", color:"#b35cff", bg:"#321444", children:[
-        {type:"leaf", name:"WB — Мануал", display:"WB", sub:"Wildberries", short:"WB", color:"#b35cff", bg:"#321444", contentKey:"WB", password:"wb123"}
+        {type:"leaf", name:"WB — Мануал", display:"WB", sub:"Wildberries", short:"WB", color:"#b35cff", bg:"#321444", contentKey:"WB"}
     ]},
 
 {
@@ -2902,8 +2909,7 @@ const manuals = [
                 short:"АБ",
                 color:"#65a7ff",
                 bg:"#152b47",
-                contentKey:"АБР",
-                password:"abr123"
+                contentKey:"АБР"
             }
         ]
     },
@@ -2916,7 +2922,7 @@ const manuals = [
         bg:"#401a16",
         children:[{
             type:"leaf", name:"Авангард — Мануал", display:"Авангард", sub:"Банк Авангард",
-            short:"А", color:"#ff7259", bg:"#401a16", contentKey:"Авангард", password:"avangard123"
+            short:"А", color:"#ff7259", bg:"#401a16", contentKey:"Авангард"
         }]
     },
 
@@ -2928,428 +2934,81 @@ const manuals = [
         bg:"#123b26",
         children:[{
             type:"leaf", name:"АкБарс — Мануал", display:"АкБарс", sub:"Ак Барс Банк",
-            short:"АК", color:"#5abf82", bg:"#123b26", contentKey:"АкБарс", password:"akbars123"
+            short:"АК", color:"#5abf82", bg:"#123b26", contentKey:"АкБарс"
         }]
     },
 
 {name:"ВБРР", sub:"Всероссийский банк развития регионов", short:"В", color:"#58b3ff", bg:"#142d45", children:[
-        {type:"leaf", name:"ВБРР — Мануал", display:"ВБРР", sub:"Всероссийский банк развития регионов", short:"В", color:"#58b3ff", bg:"#142d45", contentKey:"ВБРР", password:"vbrr123"}
+        {type:"leaf", name:"ВБРР — Мануал", display:"ВБРР", sub:"Всероссийский банк развития регионов", short:"В", color:"#58b3ff", bg:"#142d45", contentKey:"ВБРР"}
     ]},
 
 {name:"ВТБ", sub:"ВТБ", short:"В", color:"#4d91ff", bg:"#14284a", children:[
-        {type:"leaf", name:"ВТБ — Мануал", display:"ВТБ", sub:"ВТБ", short:"В", color:"#4d91ff", bg:"#14284a", contentKey:"ВТБ", password:"vtb123"}
+        {type:"leaf", name:"ВТБ — Мануал", display:"ВТБ", sub:"ВТБ", short:"В", color:"#4d91ff", bg:"#14284a", contentKey:"ВТБ"}
     ]},
 
 {name:"Газпром", sub:"Газпромбанк", short:"Г", color:"#63a9ff", bg:"#142b48", children:[
-        {type:"leaf", name:"Газпром — Мануал", display:"Газпром", sub:"Газпромбанк", short:"Г", color:"#63a9ff", bg:"#142b48", contentKey:"Газпром", password:"gazprom123"}
+        {type:"leaf", name:"Газпром — Мануал", display:"Газпром", sub:"Газпромбанк", short:"Г", color:"#63a9ff", bg:"#142b48", contentKey:"Газпром"}
     ]},
 
 {name:"МКБ", sub:"Московский кредитный банк", short:"МК", color:"#54a5ff", bg:"#142d49", children:[
-        {type:"leaf", name:"МКБ — Мануал", display:"МКБ", sub:"Московский кредитный банк", short:"МК", color:"#54a5ff", bg:"#142d49", contentKey:"МКБ", password:"mkb123"}
+        {type:"leaf", name:"МКБ — Мануал", display:"МКБ", sub:"Московский кредитный банк", short:"МК", color:"#54a5ff", bg:"#142d49", contentKey:"МКБ"}
     ]},
 
 {name:"МобКом", sub:"Mobile Commerce", short:"M", color:"#58a9ff", bg:"#152d47", children:[
-        {type:"leaf", name:"МобКом — Мануал", display:"МобКом", sub:"Mobile Commerce", short:"M", color:"#58a9ff", bg:"#152d47", contentKey:"МобКом", password:"mobcom123"}
+        {type:"leaf", name:"МобКом — Мануал", display:"МобКом", sub:"Mobile Commerce", short:"M", color:"#58a9ff", bg:"#152d47", contentKey:"МобКом"}
     ]},
 
 {name:"НовикомБанк", sub:"Новикомбанк", short:"Н", color:"#63a7ff", bg:"#152b45", children:[
-        {type:"leaf", name:"НовикомБанк — Мануал", display:"НовикомБанк", sub:"Новикомбанк", short:"Н", color:"#63a7ff", bg:"#152b45", contentKey:"НовикомБанк", password:"novikom123"}
+        {type:"leaf", name:"НовикомБанк — Мануал", display:"НовикомБанк", sub:"Новикомбанк", short:"Н", color:"#63a7ff", bg:"#152b45", contentKey:"НовикомБанк"}
     ]},
 
 {name:"ПСБ", sub:"Промсвязьбанк", short:"П", color:"#68a8ff", bg:"#172d4a", children:[
-        {type:"leaf", name:"ПСБ — Мануал", display:"ПСБ", sub:"Промсвязьбанк", short:"П", color:"#68a8ff", bg:"#172d4a", contentKey:"ПСБ", password:"psb123"}
+        {type:"leaf", name:"ПСБ — Мануал", display:"ПСБ", sub:"Промсвязьбанк", short:"П", color:"#68a8ff", bg:"#172d4a", contentKey:"ПСБ"}
     ]},
 
 {name:"Райффайзен", sub:"Raiffeisen", short:"R", color:"#ffe047", bg:"#403911", children:[
-        {type:"leaf", name:"Райффайзен — Мануал", display:"Райффайзен", sub:"Raiffeisen", short:"R", color:"#ffe047", bg:"#403911", contentKey:"Райффайзен", password:"raiffeisen123"}
+        {type:"leaf", name:"Райффайзен — Мануал", display:"Райффайзен", sub:"Raiffeisen", short:"R", color:"#ffe047", bg:"#403911", contentKey:"Райффайзен"}
     ]},
 
 {name:"Ренессанс Банк", sub:"Ренессанс Банк • КА", short:"Р", color:"#ff6c58", bg:"#421b17", children:[
-        {type:"leaf", name:"Ренессанс Банк — КА", display:"Ренессанс Банк", sub:"КА", short:"Р", color:"#ff6c58", bg:"#421b17", contentKey:"Ренессанс КА", password:"renaissance123"}
+        {type:"leaf", name:"Ренессанс Банк — КА", display:"Ренессанс Банк", sub:"КА", short:"Р", color:"#ff6c58", bg:"#421b17", contentKey:"Ренессанс КА"}
     ]},
 
 {name:"Рокет Банк", sub:"Roket", short:"R", color:"#d34dff", bg:"#32103c", children:[
-        {type:"leaf", name:"Рокет Банк — Мануал", display:"Рокет Банк", sub:"Roket", short:"R", color:"#d34dff", bg:"#32103c", contentKey:"РокетБанк", password:"rocket123"}
+        {type:"leaf", name:"Рокет Банк — Мануал", display:"Рокет Банк", sub:"Roket", short:"R", color:"#d34dff", bg:"#32103c", contentKey:"РокетБанк"}
     ]},
 
 {name:"РСХБ", sub:"Россельхозбанк", short:"Р", color:"#56c878", bg:"#123722", children:[
-        {type:"leaf", name:"РСХБ — Мануал", display:"РСХБ", sub:"Россельхозбанк", short:"Р", color:"#56c878", bg:"#123722", contentKey:"РСХБ", password:"rshb123"}
+        {type:"leaf", name:"РСХБ — Мануал", display:"РСХБ", sub:"Россельхозбанк", short:"Р", color:"#56c878", bg:"#123722", contentKey:"РСХБ"}
     ]},
 
 {name:"ЦифраБанк", sub:"Цифра Банк", short:"Ц", color:"#53aaff", bg:"#142b45", children:[
-        {type:"leaf", name:"ЦифраБанк — Мануал", display:"ЦифраБанк", sub:"Цифра Банк", short:"Ц", color:"#53aaff", bg:"#142b45", contentKey:"ЦифраБанк", password:"cifra123"}
+        {type:"leaf", name:"ЦифраБанк — Мануал", display:"ЦифраБанк", sub:"Цифра Банк", short:"Ц", color:"#53aaff", bg:"#142b45", contentKey:"ЦифраБанк"}
     ]},
 
 {name:"ЦУПИС", sub:"ЦУПИС", short:"Ц", color:"#7aa8ff", bg:"#182a4b", children:[
-        {type:"leaf", name:"ЦУПИС — Мануал", display:"ЦУПИС", sub:"ЦУПИС", short:"Ц", color:"#7aa8ff", bg:"#182a4b", contentKey:"ЦУПИС", password:"cupis123"}
+        {type:"leaf", name:"ЦУПИС — Мануал", display:"ЦУПИС", sub:"ЦУПИС", short:"Ц", color:"#7aa8ff", bg:"#182a4b", contentKey:"ЦУПИС"}
     ]},
 
 {name:"ЮMoney", sub:"ЮMoney", short:"Ю", color:"#ffcc32", bg:"#40330d", children:[
-        {type:"leaf", name:"ЮMoney — Мануал", display:"ЮMoney", sub:"ЮMoney", short:"Ю", color:"#ffcc32", bg:"#40330d", contentKey:"ЮMoney", password:"yoomoney123"}
+        {type:"leaf", name:"ЮMoney — Мануал", display:"ЮMoney", sub:"ЮMoney", short:"Ю", color:"#ffcc32", bg:"#40330d", contentKey:"ЮMoney"}
     ]},
 
 {name:"Юнистрим", sub:"Юнистрим", short:"Ю", color:"#e9a83e", bg:"#3b2810", children:[
-        {type:"leaf", name:"Юнистрим — Мануал", display:"Юнистрим", sub:"Юнистрим", short:"Ю", color:"#e9a83e", bg:"#3b2810", contentKey:"Юнистрим", password:"unistream123"}
+        {type:"leaf", name:"Юнистрим — Мануал", display:"Юнистрим", sub:"Юнистрим", short:"Ю", color:"#e9a83e", bg:"#3b2810", contentKey:"Юнистрим"}
     ]},
 
 ];
 
 
-/* =====================================================
-   PASSWORDS
-===================================================== */
-
-/*
-   Пароли теперь хранятся прямо у конечного мануала.
-   Чтобы поменять пароль, меняй поле password у нужного элемента.
-*/
-
-const manualPasswords = {};
-
-function buildManualPasswords(nodes){
-    nodes.forEach(node => {
-        if(node.type === "leaf"){
-            manualPasswords[node.name] = node.password;
-        }else if(Array.isArray(node.children)){
-            buildManualPasswords(node.children);
-        }
-    });
-}
-
-buildManualPasswords(manuals);
-
-
+/* Local passwords removed: verification is performed by auth server. */
 /* =====================================================
    MANUAL CONTENT
+
+   Содержимое защищённых мануалов загружается
+   с auth-сервера только после успешной проверки
+   ежедневного пароля.
 ===================================================== */
-
-
-
-const manualContents = {
-
-    "АБР":`
-        <h3>АБР — рабочий мануал</h3>
-
-        <p>
-            Здесь будет размещён полный
-            рабочий мануал АБР.
-        </p>
-
-        <div class="manual-alert">
-            ⚠️ Информация предназначена
-            для участников рабочего пространства.
-        </div>
-
-        <h3>Основная информация</h3>
-
-        <p>
-            Добавь сюда необходимые инструкции,
-            команды и последовательность действий.
-        </p>
-    `,
-
-
-    "Авангард":`
-        <h3>Авангард — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Авангарда.
-        </p>
-    `,
-
-
-    "АкБарс":`
-        <h3>АкБарс — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала АкБарса.
-        </p>
-    `,
-
-
-    "АльфаБанк":`
-        <h3>АльфаБанк — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала АльфаБанка.
-        </p>
-    `,
-
-
-    "АльфаКА":`
-        <h3>АльфаКА — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала АльфаКА.
-        </p>
-    `,
-
-
-    "Альфа Ферма":`
-        <h3>Альфа Ферма — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Альфа Фермы.
-        </p>
-    `,
-
-
-    "ВБРР":`
-        <h3>ВБРР — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ВБРР.
-        </p>
-    `,
-
-
-    "ВТБ":`
-        <h3>ВТБ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ВТБ.
-        </p>
-    `,
-
-
-    "Газпром":`
-        <h3>Газпром — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Газпромбанка.
-        </p>
-    `,
-
-
-    "МКБ":`
-        <h3>МКБ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала МКБ.
-        </p>
-    `,
-
-
-    "МобКом":`
-        <h3>МобКом — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала МобКом.
-        </p>
-    `,
-
-
-    "НовикомБанк":`
-        <h3>НовикомБанк — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала НовикомБанка.
-        </p>
-    `,
-
-
-    "Озон ГУ":`
-        <h3>Озон ГУ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Озон ГУ.
-        </p>
-    `,
-
-
-    "ОзонКА":`
-        <h3>ОзонКА — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ОзонКА.
-        </p>
-    `,
-
-
-    "Озон Физ":`
-        <h3>Озон Физ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Озон Физ.
-        </p>
-    `,
-
-
-    "ОТП":`
-        <h3>ОТП — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ОТП.
-        </p>
-    `,
-
-
-    "ОТП КА":`
-        <h3>ОТП КА — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ОТП КА.
-        </p>
-    `,
-
-
-    "ОТП Ферма":`
-        <h3>ОТП Ферма — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ОТП Ферма.
-        </p>
-    `,
-
-
-    "ПСБ":`
-        <h3>ПСБ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ПСБ.
-        </p>
-    `,
-
-
-    "Райффайзен":`
-        <h3>Райффайзен — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Райффайзен.
-        </p>
-    `,
-
-
-    "Ренессанс КА":`
-        <h3>Ренессанс КА — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Ренессанс КА.
-        </p>
-    `,
-
-
-    "РокетБанк":`
-        <h3>РокетБанк — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала РокетБанка.
-        </p>
-    `,
-
-
-    "РСХБ":`
-        <h3>РСХБ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Россельхозбанка.
-        </p>
-    `,
-
-
-    "СберБанк":`
-        <h3>СберБанк — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала СберБанка.
-        </p>
-    `,
-
-
-    "Т-Банк":`
-        <h3>Т-Банк — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Т-Банка.
-        </p>
-    `,
-
-
-    "Т-Банк КА":`
-        <h3>Т-Банк КА — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Т-Банк КА.
-        </p>
-    `,
-
-
-    "WB":`
-        <h3>WB — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Wildberries.
-        </p>
-    `,
-
-
-    "ЮMoney":`
-        <h3>ЮMoney — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ЮMoney.
-        </p>
-    `,
-
-
-    "Юнистрим":`
-        <h3>Юнистрим — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Юнистрим.
-        </p>
-    `,
-
-
-    "Яндекс Физ":`
-        <h3>Яндекс Физ — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала Яндекс.
-        </p>
-    `,
-
-
-    "ЦифраБанк":`
-        <h3>ЦифраБанк — рабочий мануал</h3>
-
-        <p>
-            Здесь будет содержимое мануала ЦифраБанка.
-        </p>
-    `
-
-};
-
-
-
-
-/* =====================================================
-   NEW GROUPED MANUAL CONTENT
-===================================================== */
-
-Object.assign(manualContents, {
-
-    "СберКлассика1": `<h3>СберБанк — Классика — 1 мануал</h3><p>Здесь будет содержимое первого мануала Классики СберБанка.</p>`,
-    "СберКлассика2": `<h3>СберБанк — Классика — 2 мануал</h3><p>Здесь будет содержимое второго мануала Классики СберБанка.</p>`,
-    "СберКА1": `<h3>СберБанк — КА — 1 мануал</h3><p>Здесь будет содержимое первого мануала КА СберБанка.</p>`,
-    "СберКА2": `<h3>СберБанк — КА — 2 мануал</h3><p>Здесь будет содержимое второго мануала КА СберБанка.</p>`,
-
-    "ЯндексГУ1": `<h3>Яндекс — ГУ — 1 мануал</h3><p>Здесь будет содержимое первого мануала ГУ Яндекса.</p>`,
-    "ЯндексГУ2": `<h3>Яндекс — ГУ — 2 мануал (ферма)</h3><p>Здесь будет содержимое второго мануала ГУ Яндекса — ферма.</p>`,
-
-    "Т-БанкКлассика1": `<h3>Т-Банк — Классика — 1 мануал</h3><p>Здесь будет содержимое первого мануала Классики Т-Банка.</p>`,
-    "Т-БанкКлассика2": `<h3>Т-Банк — Классика — 2 мануал</h3><p>Здесь будет содержимое второго мануала Классики Т-Банка.</p>`,
-    "Т-Банк Ферма": `<h3>Т-Банк — Ферма</h3><p>Здесь будет содержимое мануала Фермы Т-Банка.</p>`,
-    "Т-Банк Агроферма": `<h3>Т-Банк — Агроферма</h3><p>Здесь будет содержимое мануала Агрофермы Т-Банка.</p>`,
-
-    "АльфаКлассика1": `<h3>Альфа Банк — Классика — 1 мануал</h3><p>Здесь будет содержимое первого мануала Классики Альфа-Банка.</p>`,
-    "АльфаКлассика2": `<h3>Альфа Банк — Классика — 2 мануал</h3><p>Здесь будет содержимое второго мануала Классики Альфа-Банка.</p>`,
-    "АльфаКлассика3": `<h3>Альфа Банк — Классика — 3 мануал</h3><p>Здесь будет содержимое третьего мануала Классики Альфа-Банка.</p>`,
-    "Альфа Агроферма": `<h3>Альфа Банк — Агроферма</h3><p>Здесь будет содержимое мануала Агрофермы Альфа-Банка.</p>`,
-
-    "ЦУПИС": `<h3>ЦУПИС — рабочий мануал</h3><p>Здесь будет содержимое мануала ЦУПИС.</p>`
-});
-
 
 /* =====================================================
    BANK LOGOS
@@ -3956,7 +3615,7 @@ function closePasswordModal(){
    CHECK PASSWORD
 ===================================================== */
 
-function checkManualPassword(){
+async function checkManualPassword(){
 
     if(!selectedManual){
         return;
@@ -3972,37 +3631,99 @@ function checkManualPassword(){
             "manualPasswordError"
         );
 
+    const button =
+        document.querySelector(
+            ".manual-open-btn"
+        );
+
     const entered =
         input.value.trim();
 
-    const correct =
-        selectedManual.password ||
-        manualPasswords[selectedManual.name];
-
-    if(
-        correct &&
-        entered === correct
-    ){
-
-        input.classList.remove("error");
-        error.textContent = "";
-
-        const manual = selectedManual;
-
-        closePasswordModal();
-        openManualContent(manual);
-
+    if(!entered){
+        input.classList.add("error");
+        error.textContent = "Введите пароль";
         return;
     }
 
-    input.classList.add("error");
-    error.textContent = "Неверный пароль";
-    input.value = "";
+    input.classList.remove("error");
+    error.textContent = "";
 
-    setTimeout(
-        () => input.focus(),
-        50
-    );
+    if(button){
+        button.disabled = true;
+        button.textContent = "ПРОВЕРКА...";
+    }
+
+    try{
+
+        const manualKey =
+            selectedManual.contentKey ||
+            selectedManual.name;
+
+        const response =
+            await fetch(
+                MANUAL_AUTH_API + "/api/manual/verify",
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        manualKey:manualKey,
+                        password:entered
+                    })
+                }
+            );
+
+        const data = await response.json();
+
+        if(!response.ok || !data.ok){
+
+            input.classList.add("error");
+            error.textContent =
+                response.status === 429
+                    ? "Слишком много попыток. Подождите немного."
+                    : "Неверный или устаревший пароль";
+
+            input.value = "";
+
+            setTimeout(
+                () => input.focus(),
+                50
+            );
+
+            return;
+        }
+
+        manualSessionToken = data.token || "";
+
+        const opened =
+            await openManualContent(
+                selectedManual
+            );
+
+        if(opened){
+            closePasswordModal();
+        }
+
+    }catch(errorObject){
+
+        console.error(
+            "Manual auth error:",
+            errorObject
+        );
+
+        error.textContent =
+            "Сервер проверки недоступен";
+
+    }finally{
+
+        if(button){
+            button.disabled = false;
+            button.textContent =
+                "ОТКРЫТЬ МАНУАЛ";
+        }
+
+    }
 }
 
 
@@ -4010,7 +3731,7 @@ function checkManualPassword(){
    OPEN MANUAL CONTENT
 ===================================================== */
 
-function openManualContent(manual){
+async function openManualContent(manual){
 
     const modal =
         document.getElementById(
@@ -4037,9 +3758,13 @@ function openManualContent(manual){
             "manualContentLogo"
         );
 
-    if(!modal){
-        return;
+    if(!modal || !manualSessionToken){
+        return false;
     }
+
+    const key =
+        manual.contentKey ||
+        manual.name;
 
     title.textContent =
         manual.display || manual.name;
@@ -4056,21 +3781,65 @@ function openManualContent(manual){
     logo.style.background =
         manual.bg;
 
-    body.innerHTML =
-        manualContents[
-            manual.contentKey || manual.name
-        ] ||
-        `
-            <h3>
-                ${manual.display || manual.name}
-            </h3>
-
-            <p>
-                Мануал пока не добавлен.
-            </p>
-        `;
+    body.innerHTML = `
+        <div class="manual-alert">
+            Загрузка защищённого мануала…
+        </div>
+    `;
 
     modal.classList.add("show");
+
+    try{
+
+        const response =
+            await fetch(
+                MANUAL_AUTH_API +
+                "/api/manual/content?key=" +
+                encodeURIComponent(key),
+                {
+                    headers:{
+                        "Authorization":
+                            "Bearer " +
+                            manualSessionToken
+                    }
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(!response.ok || !data.ok){
+
+            modal.classList.remove("show");
+            manualSessionToken = "";
+
+            if(response.status === 401){
+                document.getElementById("manualPasswordError").textContent =
+                    "Сессия истекла. Запросите пароль заново.";
+                return false;
+            }
+
+            return false;
+        }
+
+        body.innerHTML =
+            data.html ||
+            `<h3>${manual.display || manual.name}</h3><p>Мануал пока не добавлен.</p>`;
+
+        return true;
+
+    }catch(errorObject){
+
+        console.error(
+            "Manual content error:",
+            errorObject
+        );
+
+        modal.classList.remove("show");
+        body.innerHTML = "";
+        return false;
+
+    }
 }
 
 
@@ -4093,6 +3862,8 @@ function closeManualContent(){
         );
 
     }
+
+    manualSessionToken = "";
 
 }
 
